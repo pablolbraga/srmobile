@@ -2,35 +2,32 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/constantes.dart';
-import 'package:srmobile/models/usuariomodel.dart';
+import 'package:srmobile/helpers/variaveisglobais.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class AlterarSenha extends StatefulWidget {
+  const AlterarSenha({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<AlterarSenha> createState() => _AlterarSenhaState();
 }
 
-class _LoginState extends State<Login> {
-  final TextEditingController _ctrLogin = TextEditingController();
+class _AlterarSenhaState extends State<AlterarSenha> {
+  final TextEditingController _ctrConfirmarSenha = TextEditingController();
   final TextEditingController _ctrSenha = TextEditingController();
   bool _esconderSenha = true;
+  bool _esconderConfirmarSenha = true;
   String _mensagemErro = "";
-  bool _serviceStatus = false;
-  late LocationPermission permission;
-  bool _hasPermission = false;
   late ProgressDialog pr;
   @override
   Widget build(BuildContext context) {
     pr = ProgressDialog(context, showLogs: true);
     pr.style(message: "Validando dados...");
-    _validarPermissoes();
     return WillPopScope(
       onWillPop: _voltarTela,
       child: Scaffold(
+        appBar: AppBar(title: const Text("Alterar Senha")),
         body: Container(
           decoration: const BoxDecoration(color: Color(0xffD9EFF3)),
           padding: const EdgeInsets.all(16),
@@ -39,37 +36,6 @@ class _LoginState extends State<Login> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Image.asset(
-                      "images/LogoNovaTransparente.png",
-                      width: 300,
-                      height: 250,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: TextField(
-                      controller: _ctrLogin,
-                      autofocus: true,
-                      keyboardType: TextInputType.text,
-                      style: const TextStyle(fontSize: 20),
-                      decoration: InputDecoration(
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(32, 16, 32, 16),
-                        hintText: "Login",
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(32),
-                        ),
-                        prefixIcon: const Icon(
-                          Icons.person,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8),
                     child: TextField(
@@ -106,6 +72,40 @@ class _LoginState extends State<Login> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8),
+                    child: TextField(
+                      controller: _ctrConfirmarSenha,
+                      obscureText: _esconderConfirmarSenha,
+                      keyboardType: TextInputType.text,
+                      style: const TextStyle(fontSize: 20),
+                      decoration: InputDecoration(
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(32, 16, 32, 16),
+                        hintText: "Confirmar Senha",
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(32),
+                        ),
+                        prefixIcon: const Icon(
+                          Icons.lock,
+                          color: Colors.blue,
+                        ),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            _mostrarConfirmarSenha();
+                          },
+                          icon: Icon(
+                            _esconderConfirmarSenha == true
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.fromLTRB(32, 16, 32, 16),
@@ -114,31 +114,12 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       child: const Text(
-                        "Acessar",
+                        "Gravar",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                       onPressed: () {
                         _validarCampos();
                       },
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 8),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Center(
-                      child: GestureDetector(
-                        child: const Text(
-                          "Esqueceu a senha? Clique aqui.",
-                          style: TextStyle(color: Colors.blue),
-                        ),
-                        onTap: () {
-                          setState(() {
-                            _esqueceuSenha();
-                          });
-                        },
-                      ),
                     ),
                   ),
                   const Padding(
@@ -173,16 +154,28 @@ class _LoginState extends State<Login> {
     });
   }
 
+  void _mostrarConfirmarSenha() {
+    setState(() {
+      _esconderConfirmarSenha = !_esconderConfirmarSenha;
+    });
+  }
+
   void _validarCampos() {
-    String login = _ctrLogin.text;
+    String confirmarSenha = _ctrConfirmarSenha.text;
     String senha = _ctrSenha.text;
 
-    if (login.isNotEmpty) {
+    if (confirmarSenha.isNotEmpty) {
       if (senha.isNotEmpty) {
-        setState(() {
-          _mensagemErro = "";
-          _acessarSistema();
-        });
+        if (senha == confirmarSenha) {
+          setState(() {
+            _mensagemErro = "";
+            _enviarDados();
+          });
+        } else {
+          setState(() {
+            _mensagemErro = "Senhas estão diferentes";
+          });
+        }
       } else {
         setState(() {
           _mensagemErro = "Senha não informada.";
@@ -190,74 +183,38 @@ class _LoginState extends State<Login> {
       }
     } else {
       setState(() {
-        _mensagemErro = "Login não informado.";
+        _mensagemErro = "Confirmação de senha não informada.";
       });
     }
   }
 
-  void _esqueceuSenha() {
-    Navigator.pushNamed(context, "esqueceusenha");
-  }
-
-  void _acessarSistema() async {
+  void _enviarDados() async {
+    var idperson = VariaveisGlobais.dadosUsuario?.idperson;
     pr.show();
-    String url = "$URL_VALIDAR_LOGIN_SENHA${_ctrLogin.text}/${_ctrSenha.text}";
-    Response response = await Dio().get(url);
-    if (response.statusCode == 200) {
-      var usuarios = (response.data as List).map((item) {
-        return UsuarioModel.fromJson(item);
-      }).toList();
-      Future.delayed(const Duration(seconds: 5)).then((value) {
-        pr.hide().whenComplete(() {
-          if (usuarios.length > 0) {
-            if (usuarios[0].primeiroacesso == "S") {
-              // Acessa a tela para colocar uma nova senha
-              Navigator.pushNamed(context, "alterarsenha");
-            } else {
-              // Acesso validado. Vai para à página de opções
-            }
+    String url = "$URL_ALTERAR_SENHA${idperson.toString()}/${_ctrSenha.text}";
+    Future.delayed(const Duration(seconds: 5)).then((value) {
+      pr.hide().whenComplete(() async {
+        Response response = await Dio().get(url);
+        if (response.statusCode == 200) {
+          String retorno = response.data.toString();
+          if (retorno == "true") {
+            setState(() {
+              _mensagemErro = "";
+              Navigator.pushNamed(context, "/");
+            });
           } else {
             setState(() {
-              _mensagemErro = "Login e/ou senha incorreto(s)";
+              _mensagemErro =
+                  "Erro em alterar a senha. Tente novamente mais tarde.";
             });
           }
-        });
-      });
-    } else {
-      setState(() {
-        _mensagemErro = "Erro ao acessar o sistema.";
-      });
-    }
-  }
-
-  void _validarPermissoes() async {
-    _serviceStatus = await Geolocator.isLocationServiceEnabled();
-    if (_serviceStatus) {
-      permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          setState(() {
-            _hasPermission = false;
-            _mensagemErro = "As permissões de localização foram negadas.";
-          });
-        } else if (permission == LocationPermission.deniedForever) {
-          setState(() {
-            _hasPermission = false;
-            _mensagemErro =
-                "AS permissões de localização estão negadas permanentemente.";
-          });
         } else {
-          _hasPermission = true;
+          setState(() {
+            _mensagemErro =
+                "Erro em alterar a senha. Tente novamente mais tarde.";
+          });
         }
-      } else {
-        _hasPermission = true;
-      }
-    } else {
-      setState(() {
-        _hasPermission = false;
-        _mensagemErro = "O serviço de GPS não está ativada. Ative o GPS";
       });
-    }
+    });
   }
 }

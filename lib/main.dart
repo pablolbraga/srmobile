@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:srmobile/views/alterarsenha.dart';
 import 'package:srmobile/views/esqueceusenha.dart';
 import 'package:srmobile/views/login.dart';
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) => const Login(),
-        "esqueceusenha": (context) => const EsqueceuSenha()
+        "esqueceusenha": (context) => const EsqueceuSenha(),
+        "alterarsenha": (context) => const AlterarSenha()
       },
     );
   }

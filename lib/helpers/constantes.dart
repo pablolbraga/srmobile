@@ -5,3 +5,4 @@ const URL_BASE =
 
 const URL_ESQUECEU_SENHA = "${URL_BASE}esqueceusenha/";
 const URL_VALIDAR_LOGIN_SENHA = "${URL_BASE}validarloginsenha/";
+const URL_ALTERAR_SENHA = "${URL_BASE}alterarsenha/";
