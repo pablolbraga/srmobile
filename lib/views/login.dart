@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_new
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -14,8 +15,12 @@ class _LoginState extends State<Login> {
   final TextEditingController _ctrSenha = TextEditingController();
   bool _esconderSenha = true;
   String _mensagemErro = "";
+  bool _serviceStatus = false;
+  late LocationPermission permission;
+  bool _hasPermission = false;
   @override
   Widget build(BuildContext context) {
+    _validarPermissoes();
     return WillPopScope(
       onWillPop: _voltarTela,
       child: Scaffold(
@@ -186,4 +191,35 @@ class _LoginState extends State<Login> {
   void _esqueceuSenha() {}
 
   void _acessarSistema() {}
+
+  void _validarPermissoes() async {
+    _serviceStatus = await Geolocator.isLocationServiceEnabled();
+    if (_serviceStatus) {
+      permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          setState(() {
+            _hasPermission = false;
+            _mensagemErro = "As permissões de localização foram negadas.";
+          });
+        } else if (permission == LocationPermission.deniedForever) {
+          setState(() {
+            _hasPermission = false;
+            _mensagemErro =
+                "AS permissões de localização estão negadas permanentemente.";
+          });
+        } else {
+          _hasPermission = true;
+        }
+      } else {
+        _hasPermission = true;
+      }
+    } else {
+      setState(() {
+        _hasPermission = false;
+        _mensagemErro = "O serviço de GPS não está ativada. Ative o GPS";
+      });
+    }
+  }
 }
