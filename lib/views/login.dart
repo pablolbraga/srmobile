@@ -1,7 +1,11 @@
-// ignore_for_file: unnecessary_new
+// ignore_for_file: unnecessary_new, unused_local_variable, unused_field, prefer_is_empty
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
+import 'package:srmobile/helpers/constantes.dart';
+import 'package:srmobile/models/usuariomodel.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -18,8 +22,11 @@ class _LoginState extends State<Login> {
   bool _serviceStatus = false;
   late LocationPermission permission;
   bool _hasPermission = false;
+  late ProgressDialog pr;
   @override
   Widget build(BuildContext context) {
+    pr = ProgressDialog(context, showLogs: true);
+    pr.style(message: "Validando dados...");
     _validarPermissoes();
     return WillPopScope(
       onWillPop: _voltarTela,
@@ -192,7 +199,35 @@ class _LoginState extends State<Login> {
     Navigator.pushNamed(context, "esqueceusenha");
   }
 
-  void _acessarSistema() {}
+  void _acessarSistema() async {
+    pr.show();
+    String url = "$URL_VALIDAR_LOGIN_SENHA${_ctrLogin.text}/${_ctrSenha.text}";
+    Response response = await Dio().get(url);
+    if (response.statusCode == 200) {
+      var usuarios = (response.data as List).map((item) {
+        return UsuarioModel.fromJson(item);
+      }).toList();
+      Future.delayed(const Duration(seconds: 5)).then((value) {
+        pr.hide().whenComplete(() {
+          if (usuarios.length > 0) {
+            if (usuarios[0].primeiroacesso == "S") {
+              // Acessa a tela para colocar uma nova senha
+            } else {
+              // Acesso validado. Vai para à página de opções
+            }
+          } else {
+            setState(() {
+              _mensagemErro = "Login e/ou senha incorreto(s)";
+            });
+          }
+        });
+      });
+    } else {
+      setState(() {
+        _mensagemErro = "Erro ao acessar o sistema.";
+      });
+    }
+  }
 
   void _validarPermissoes() async {
     _serviceStatus = await Geolocator.isLocationServiceEnabled();
