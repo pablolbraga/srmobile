@@ -188,7 +188,9 @@ class _LoginState extends State<Login> {
     }
   }
 
-  void _esqueceuSenha() {}
+  void _esqueceuSenha() {
+    Navigator.pushNamed(context, "esqueceusenha");
+  }
 
   void _acessarSistema() {}
 

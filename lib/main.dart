@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:srmobile/views/esqueceusenha.dart';
 import 'package:srmobile/views/login.dart';
 
 void main() {
@@ -15,7 +16,10 @@ class MyApp extends StatelessWidget {
       title: 'Saúde Residence - Mobile',
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
-      routes: {"/": (context) => const Login()},
+      routes: {
+        "/": (context) => const Login(),
+        "esqueceusenha": (context) => const EsqueceuSenha()
+      },
     );
   }
 }
