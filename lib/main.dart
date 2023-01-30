@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:srmobile/views/agenda.dart';
 import 'package:srmobile/views/alterarsenha.dart';
 import 'package:srmobile/views/esqueceusenha.dart';
+import 'package:srmobile/views/fichaterapia.dart';
 import 'package:srmobile/views/login.dart';
 import 'package:srmobile/views/opcao.dart';
 
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         "esqueceusenha": (context) => const EsqueceuSenha(),
         "alterarsenha": (context) => const AlterarSenha(),
         "opcao": (context) => const Opcao(),
-        "agenda": (context) => const Agenda()
+        "agenda": (context) => const Agenda(),
+        "fichaterapia": (context) => const FichaTerapia()
       },
     );
   }

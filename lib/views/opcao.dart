@@ -15,6 +15,7 @@ class _OpcaoState extends State<Opcao> {
     return WillPopScope(
       onWillPop: _voltarTela,
       child: Scaffold(
+        appBar: AppBar(title: const Text("Selecione uma opção")),
         body: Container(
           decoration: const BoxDecoration(color: Color(0xffD9EFF3)),
           padding: const EdgeInsets.all(16),
