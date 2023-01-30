@@ -7,4 +7,6 @@ class VariaveisGlobais {
   static AgendaModel? dadosAgenda;
   static String? dataInicioAtendimento;
   static FichaTerapiaModel? dadosFichaTerapia;
+  static String? assinaturaPaciente;
+  static String? assinaturaProfissional;
 }

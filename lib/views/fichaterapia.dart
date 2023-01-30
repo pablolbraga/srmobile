@@ -174,5 +174,6 @@ class _FichaTerapiaState extends State<FichaTerapia> {
     ficha.execucaotecnicaproposta = _selExecucao;
     ficha.observacao = _ctrEvolucao.text;
     VariaveisGlobais.dadosFichaTerapia = ficha;
+    Navigator.pushNamed(context, "assinatura_paciente");
   }
 }
