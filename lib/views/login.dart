@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/constantes.dart';
+import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/usuariomodel.dart';
 
 class Login extends StatefulWidget {
@@ -215,6 +216,8 @@ class _LoginState extends State<Login> {
               Navigator.pushNamed(context, "alterarsenha");
             } else {
               // Acesso validado. Vai para à página de opções
+              VariaveisGlobais.dadosUsuario = usuarios[0];
+              Navigator.pushNamed(context, "opcao");
             }
           } else {
             setState(() {

@@ -38,6 +38,7 @@ dependencies:
   geolocator: ^9.0.2
   dio: ^4.0.6
   progress_dialog_null_safe: ^1.0.7
+  date_format: ^2.0.7
 
 dev_dependencies:
   flutter_test:
