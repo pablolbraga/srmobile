@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -7,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:signature/signature.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 
-class AssinaturaPaciente extends StatefulWidget {
-  const AssinaturaPaciente({super.key});
+class AssinaturaProfissional extends StatefulWidget {
+  const AssinaturaProfissional({super.key});
 
   @override
-  State<AssinaturaPaciente> createState() => _AssinaturaPacienteState();
+  State<AssinaturaProfissional> createState() => _AssinaturaProfissionalState();
 }
 
-class _AssinaturaPacienteState extends State<AssinaturaPaciente> {
-  final _ctrAssinaturaPaciente = SignatureController(
+class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
+  final _ctrAssinaturaProfissional = SignatureController(
       penStrokeWidth: 4,
       penColor: Colors.black,
       exportBackgroundColor: Colors.transparent);
@@ -25,7 +23,7 @@ class _AssinaturaPacienteState extends State<AssinaturaPaciente> {
       onWillPop: _voltarTela,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Assinatura do Paciente"),
+          title: const Text("Assinatura do Profissional"),
         ),
         body: Container(
           decoration: const BoxDecoration(color: Color(0xffD9EFF3)),
@@ -36,7 +34,7 @@ class _AssinaturaPacienteState extends State<AssinaturaPaciente> {
                   Flexible(
                     flex: 2,
                     child: Signature(
-                      controller: _ctrAssinaturaPaciente,
+                      controller: _ctrAssinaturaProfissional,
                       height: 200,
                       backgroundColor: Colors.grey[200]!,
                     ),
@@ -53,14 +51,12 @@ class _AssinaturaPacienteState extends State<AssinaturaPaciente> {
                       icon: const Icon(Icons.check),
                       color: Colors.blue,
                       onPressed: () async {
-                        if (_ctrAssinaturaPaciente.isNotEmpty) {
-                          final Uint8List? dataPaciente =
-                              await _ctrAssinaturaPaciente.toPngBytes();
-                          if (dataPaciente != null) {
-                            VariaveisGlobais.assinaturaPaciente =
-                                base64Encode(dataPaciente);
-                            Navigator.pushNamed(
-                                context, "assinatura_profissional");
+                        if (_ctrAssinaturaProfissional.isNotEmpty) {
+                          final Uint8List? dataProfissional =
+                              await _ctrAssinaturaProfissional.toPngBytes();
+                          if (dataProfissional != null) {
+                            VariaveisGlobais.assinaturaProfissional =
+                                base64Encode(dataProfissional);
                           }
                         }
                       },
@@ -70,7 +66,7 @@ class _AssinaturaPacienteState extends State<AssinaturaPaciente> {
                       color: Colors.blue,
                       onPressed: () async {
                         setState(() {
-                          _ctrAssinaturaPaciente.undo();
+                          _ctrAssinaturaProfissional.undo();
                         });
                       },
                     ),
@@ -79,7 +75,7 @@ class _AssinaturaPacienteState extends State<AssinaturaPaciente> {
                       color: Colors.blue,
                       onPressed: () async {
                         setState(() {
-                          _ctrAssinaturaPaciente.redo();
+                          _ctrAssinaturaProfissional.redo();
                         });
                       },
                     ),
@@ -88,7 +84,7 @@ class _AssinaturaPacienteState extends State<AssinaturaPaciente> {
                       color: Colors.blue,
                       onPressed: () async {
                         setState(() {
-                          _ctrAssinaturaPaciente.clear();
+                          _ctrAssinaturaProfissional.clear();
                         });
                       },
                     ),
@@ -103,13 +99,7 @@ class _AssinaturaPacienteState extends State<AssinaturaPaciente> {
   }
 
   Future<bool> _voltarTela() async {
-    switch (VariaveisGlobais.dadosUsuario?.idespecialidade) {
-      case 148815: // Medico
-
-        break;
-      default:
-        Navigator.pushNamed(context, "fichaterapia");
-    }
+    Navigator.pushNamed(context, "assinatura_paciente");
     return true;
   }
 }
