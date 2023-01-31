@@ -10,9 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:signature/signature.dart';
+import 'package:srmobile/db/fichaterapiadb.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
+import 'package:srmobile/models/fichaterapiadbmodel.dart';
 
 class AssinaturaProfissional extends StatefulWidget {
   const AssinaturaProfissional({super.key});
@@ -84,7 +86,10 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                               case 0:
                                 break;
                               default:
-                                _enviarDadosTerapia();
+                                {
+                                  _enviarDadosTerapiaBancoInterno();
+                                  _enviarDadosTerapia();
+                                }
                             }
                           }
                         }
@@ -132,23 +137,6 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
     return true;
   }
 
-  void _enviarDadosTerapia() async {
-    pr.show();
-    Dio dio = Dio();
-    Response response = await dio.post(URL_ADICIONAR_FICHA_TERAPIA,
-        data: VariaveisGlobais.dadosFichaTerapia?.toJson());
-    if (response.statusCode == 200) {
-      Future.delayed(const Duration(seconds: 10)).then((value) {
-        pr.hide().whenComplete(() {
-          Navigator.pushNamed(context, "agenda");
-        });
-      });
-    } else {
-      Uteis.mostrarAviso(context, "Erro",
-          "Erro ao enviar os dados. Erro: ${response.statusMessage}$response");
-    }
-  }
-
   void _getLocation() async {
     position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
@@ -172,5 +160,46 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
         _ctrLongitude.text = long;
       });
     });
+  }
+
+  void _enviarDadosTerapia() async {
+    pr.show();
+    Dio dio = Dio();
+    Response response = await dio.post(URL_ADICIONAR_FICHA_TERAPIA,
+        data: VariaveisGlobais.dadosFichaTerapia?.toJson());
+    if (response.statusCode == 200) {
+      Future.delayed(const Duration(seconds: 10)).then((value) {
+        pr.hide().whenComplete(() {
+          Navigator.pushNamed(context, "agenda");
+        });
+      });
+    } else {
+      Uteis.mostrarAviso(context, "Erro",
+          "Erro ao enviar os dados. Erro: ${response.statusMessage}$response");
+    }
+  }
+
+  void _enviarDadosTerapiaBancoInterno() {
+    var ft = FichaTerapiaDbModel();
+    ft.idadmission = VariaveisGlobais.dadosFichaTerapia?.idadmission;
+    ft.idprofessional = VariaveisGlobais.dadosFichaTerapia?.idprofessional;
+    ft.idcapconsult = VariaveisGlobais.dadosFichaTerapia?.idcapconsult;
+    ft.idprofagenda = VariaveisGlobais.dadosFichaTerapia?.idprofagenda;
+    ft.datainicio = VariaveisGlobais.dadosFichaTerapia?.datainicio;
+    ft.datafim = VariaveisGlobais.dadosFichaTerapia?.datafim;
+    ft.participacaocliente =
+        VariaveisGlobais.dadosFichaTerapia?.participacaocliente;
+    ft.execucaotecnicaproposta =
+        VariaveisGlobais.dadosFichaTerapia?.execucaotecnicaproposta;
+    ft.observacao = VariaveisGlobais.dadosFichaTerapia?.observacao;
+    ft.assinaturapaciente =
+        VariaveisGlobais.dadosFichaTerapia?.assinaturapaciente;
+    ft.assinaturaprofissional =
+        VariaveisGlobais.dadosFichaTerapia?.assinaturaprofissional;
+    ft.latitude = VariaveisGlobais.dadosFichaTerapia?.latitude;
+    ft.longitude = VariaveisGlobais.dadosFichaTerapia?.longitude;
+    ft.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
+    FichaTerapiaDb db = FichaTerapiaDb();
+    db.incluir(ft);
   }
 }

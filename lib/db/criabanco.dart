@@ -24,5 +24,27 @@ class CriaBanco {
         version: 1, onCreate: _onCreate);
   }
 
-  _onCreate(db, versao) async {}
+  _onCreate(db, versao) async {
+    await db.execute(_sqlFichaTerapia);
+  }
+
+  String get _sqlFichaTerapia => '''
+  CREATE TABLE TB_FICHATERAPIA(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT, 
+    IDADMISSION INTEGER, 
+    IDCAPCONSULT INTEGER, 
+    IDPROFAGENDA INTEGER, 
+    DATAINICIO TEXT, 
+    DATAFIM TEXT, 
+    PARTICIPACAOCLIENTE TEXT, 
+    EXECUCAOTECNICAPROPOSTA TEXT, 
+    OBSERVACAO TEXT, 
+    ASSINATURAPACIENTE TEXT, 
+    ASSINATURAPROFISSIONAL TEXT, 
+    LATITUDE TEXT, 
+    LONGITUDE TEXT, 
+    IDPROFESSIONAL INTEGER, 
+    NMPACIENTE TEXT
+  );
+  ''';
 }
