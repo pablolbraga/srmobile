@@ -91,10 +91,13 @@ class _AgendaState extends State<Agenda> {
                                 ss
                               ]);
                               // Verifica a especialidade e abre a ficha
-                              if (VariaveisGlobais
-                                      .dadosUsuario?.idespecialidade ==
-                                  122646) {
-                                Navigator.pushNamed(context, "fichaterapia");
+                              switch (VariaveisGlobais
+                                  .dadosUsuario?.idespecialidade) {
+                                case 148815:
+                                  Navigator.pushNamed(context, "fichamedica");
+                                  break;
+                                default:
+                                  Navigator.pushNamed(context, "fichaterapia");
                               }
                             },
                             child: Padding(

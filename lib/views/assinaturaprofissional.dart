@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, unused_local_variable
 
 import 'dart:async';
 import 'dart:convert';
@@ -83,12 +83,21 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                 base64Encode(dataProfissional);
                             switch (VariaveisGlobais
                                 .dadosUsuario?.idespecialidade) {
-                              case 0:
+                              case 148815: // Medico
+                                {
+                                  _enviarDados(
+                                      URL_ADICIONAR_FICHA_MEDICA,
+                                      VariaveisGlobais.dadosFichaMedica
+                                          ?.toJson());
+                                }
                                 break;
-                              default:
+                              default: // Fisio, Fono e TO
                                 {
                                   _enviarDadosTerapiaBancoInterno();
-                                  _enviarDadosTerapia();
+                                  _enviarDados(
+                                      URL_ADICIONAR_FICHA_TERAPIA,
+                                      VariaveisGlobais.dadosFichaTerapia
+                                          ?.toJson());
                                 }
                             }
                           }
@@ -162,11 +171,10 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
     });
   }
 
-  void _enviarDadosTerapia() async {
+  void _enviarDados(String url, dynamic dados) async {
     pr.show();
     Dio dio = Dio();
-    Response response = await dio.post(URL_ADICIONAR_FICHA_TERAPIA,
-        data: VariaveisGlobais.dadosFichaTerapia?.toJson());
+    Response response = await dio.post(url, data: dados);
     if (response.statusCode == 200) {
       Future.delayed(const Duration(seconds: 10)).then((value) {
         pr.hide().whenComplete(() {

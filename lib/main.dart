@@ -4,6 +4,7 @@ import 'package:srmobile/views/alterarsenha.dart';
 import 'package:srmobile/views/assinaturapaciente.dart';
 import 'package:srmobile/views/assinaturaprofissional.dart';
 import 'package:srmobile/views/esqueceusenha.dart';
+import 'package:srmobile/views/fichamedica.dart';
 import 'package:srmobile/views/fichaterapia.dart';
 import 'package:srmobile/views/login.dart';
 import 'package:srmobile/views/opcao.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         "opcao": (context) => const Opcao(),
         "agenda": (context) => const Agenda(),
         "fichaterapia": (context) => const FichaTerapia(),
+        "fichamedica": (context) => const FichaMedica(),
         "assinatura_paciente": (context) => const AssinaturaPaciente(),
         "assinatura_profissional": (context) => const AssinaturaProfissional()
       },

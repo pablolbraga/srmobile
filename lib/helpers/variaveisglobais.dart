@@ -1,4 +1,5 @@
 import 'package:srmobile/models/agendamodel.dart';
+import 'package:srmobile/models/fichamedicamodel.dart';
 import 'package:srmobile/models/fichaterapiamodel.dart';
 import 'package:srmobile/models/usuariomodel.dart';
 
@@ -9,4 +10,5 @@ class VariaveisGlobais {
   static FichaTerapiaModel? dadosFichaTerapia;
   static String? assinaturaPaciente;
   static String? assinaturaProfissional;
+  static FichaMedicaModel? dadosFichaMedica;
 }
