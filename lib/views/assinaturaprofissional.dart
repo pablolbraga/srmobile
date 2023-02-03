@@ -10,10 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:signature/signature.dart';
+import 'package:srmobile/db/fichamedicadb.dart';
 import 'package:srmobile/db/fichaterapiadb.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
+import 'package:srmobile/models/fichamedicadbmodel.dart';
 import 'package:srmobile/models/fichaterapiadbmodel.dart';
 
 class AssinaturaProfissional extends StatefulWidget {
@@ -85,6 +87,9 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                 .dadosUsuario?.idespecialidade) {
                               case 148815: // Medico
                                 {
+                                  VariaveisGlobais.dadosFichaMedica?.datafim =
+                                      dataFinal;
+                                  _enviarDadosMedicoBancoInterno();
                                   _enviarDados(
                                       URL_ADICIONAR_FICHA_MEDICA,
                                       VariaveisGlobais.dadosFichaMedica
@@ -93,6 +98,8 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                 break;
                               default: // Fisio, Fono e TO
                                 {
+                                  VariaveisGlobais.dadosFichaTerapia?.datafim =
+                                      dataFinal;
                                   _enviarDadosTerapiaBancoInterno();
                                   _enviarDados(
                                       URL_ADICIONAR_FICHA_TERAPIA,
@@ -209,5 +216,86 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
     ft.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
     FichaTerapiaDb db = FichaTerapiaDb();
     db.incluir(ft);
+  }
+
+  void _enviarDadosMedicoBancoInterno() {
+    var ficha = FichaMedicaDbModel();
+    ficha.idadmission = VariaveisGlobais.dadosFichaMedica?.idadmission;
+    ficha.idprofessional = VariaveisGlobais.dadosFichaMedica?.idprofessional;
+    ficha.idcapconsult = VariaveisGlobais.dadosFichaMedica?.idcapconsult;
+    ficha.idprofagenda = VariaveisGlobais.dadosFichaMedica?.idprofagenda;
+    ficha.datainicio = VariaveisGlobais.dadosFichaMedica?.datainicio;
+    ficha.datafim = VariaveisGlobais.dadosFichaMedica?.datafim;
+    ficha.hd = VariaveisGlobais.dadosFichaMedica?.hd;
+    ficha.acompanhante = VariaveisGlobais.dadosFichaMedica?.acompanhante;
+    ficha.situacaoclinica = VariaveisGlobais.dadosFichaMedica?.situacaoclinica;
+    ficha.justificativaatendimentodomiciliar =
+        VariaveisGlobais.dadosFichaMedica?.justificativaatendimentodomiciliar;
+    ficha.fisioterapiamotora =
+        VariaveisGlobais.dadosFichaMedica?.fisioterapiamotora;
+    ficha.fisioterapiarespiratoria =
+        VariaveisGlobais.dadosFichaMedica?.fisioterapiarespiratoria;
+    ficha.nutricionista = VariaveisGlobais.dadosFichaMedica?.nutricionista;
+    ficha.fonoterapia = VariaveisGlobais.dadosFichaMedica?.fonoterapia;
+    ficha.enfermagem = VariaveisGlobais.dadosFichaMedica?.enfermagem;
+    ficha.terapiaocupacional =
+        VariaveisGlobais.dadosFichaMedica?.terapiaocupacional;
+    ficha.psicologo = VariaveisGlobais.dadosFichaMedica?.psicologo;
+    ficha.examefisico = VariaveisGlobais.dadosFichaMedica?.examefisico;
+    ficha.antibiotico = VariaveisGlobais.dadosFichaMedica?.antibiotico;
+    ficha.nutricaooral = VariaveisGlobais.dadosFichaMedica?.nutricaooral;
+    ficha.nutricaogt = VariaveisGlobais.dadosFichaMedica?.nutricaogt;
+    ficha.nutricaocne = VariaveisGlobais.dadosFichaMedica?.nutricaocne;
+    ficha.nutricaoiv = VariaveisGlobais.dadosFichaMedica?.nutricaoiv;
+    ficha.atividadevidadiaria =
+        VariaveisGlobais.dadosFichaMedica?.atividadevidadiaria;
+    ficha.pamax = VariaveisGlobais.dadosFichaMedica?.pamax;
+    ficha.pamin = VariaveisGlobais.dadosFichaMedica?.pamin;
+    ficha.fc = VariaveisGlobais.dadosFichaMedica?.fc;
+    ficha.fr = VariaveisGlobais.dadosFichaMedica?.fr;
+    ficha.nivelconscienciarm =
+        VariaveisGlobais.dadosFichaMedica?.nivelconscienciarm;
+    ficha.nivelconscienciarv =
+        VariaveisGlobais.dadosFichaMedica?.nivelconscienciarv;
+    ficha.nivelconscienciaao =
+        VariaveisGlobais.dadosFichaMedica?.nivelconscienciaao;
+    ficha.nivelconscienciapontos =
+        VariaveisGlobais.dadosFichaMedica?.nivelconscienciapontos;
+    ficha.ventilacaomecanica =
+        VariaveisGlobais.dadosFichaMedica?.ventilacaomecanica;
+    ficha.ventilador = VariaveisGlobais.dadosFichaMedica?.ventilador;
+    ficha.ostomiatraqueostomia =
+        VariaveisGlobais.dadosFichaMedica?.ostomiatraqueostomia;
+    ficha.ostomiagastrostomia =
+        VariaveisGlobais.dadosFichaMedica?.ostomiagastrostomia;
+    ficha.ostomiacateternasoenteral =
+        VariaveisGlobais.dadosFichaMedica?.ostomiacateternasoenteral;
+    ficha.ostomiacistostomia =
+        VariaveisGlobais.dadosFichaMedica?.ostomiacistostomia;
+    ficha.ostomiacolostomia =
+        VariaveisGlobais.dadosFichaMedica?.ostomiacolostomia;
+    ficha.ostomiaoutros = VariaveisGlobais.dadosFichaMedica?.ostomiaoutros;
+    ficha.aspiracaotraqueal =
+        VariaveisGlobais.dadosFichaMedica?.aspiracaotraqueal;
+    ficha.acessovenoso = VariaveisGlobais.dadosFichaMedica?.acessovenoso;
+    ficha.suporteoxigeniocilindro =
+        VariaveisGlobais.dadosFichaMedica?.suporteoxigeniocilindro;
+    ficha.suporteoxigenioconcentrador =
+        VariaveisGlobais.dadosFichaMedica?.suporteoxigenioconcentrador;
+    ficha.oxigenoterapia = VariaveisGlobais.dadosFichaMedica?.oxigenoterapia;
+    ficha.solicitarexame = VariaveisGlobais.dadosFichaMedica?.solicitarexame;
+    ficha.mudancaprescricao =
+        VariaveisGlobais.dadosFichaMedica?.mudancaprescricao;
+    ficha.problemas = VariaveisGlobais.dadosFichaMedica?.problemas;
+    ficha.orientacao = VariaveisGlobais.dadosFichaMedica?.orientacao;
+    ficha.assinaturapaciente =
+        VariaveisGlobais.dadosFichaTerapia?.assinaturapaciente;
+    ficha.assinaturaprofissional =
+        VariaveisGlobais.dadosFichaTerapia?.assinaturaprofissional;
+    ficha.latitude = VariaveisGlobais.dadosFichaMedica?.latitude;
+    ficha.longitude = VariaveisGlobais.dadosFichaMedica?.longitude;
+    ficha.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
+    FichaMedicaDb db = FichaMedicaDb();
+    db.incluir(ficha);
   }
 }
