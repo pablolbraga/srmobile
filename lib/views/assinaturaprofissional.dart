@@ -89,6 +89,12 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                 {
                                   VariaveisGlobais.dadosFichaMedica?.datafim =
                                       dataFinal;
+                                  VariaveisGlobais.dadosFichaMedica
+                                          ?.assinaturapaciente =
+                                      VariaveisGlobais.assinaturaPaciente;
+                                  VariaveisGlobais.dadosFichaMedica
+                                          ?.assinaturaprofissional =
+                                      VariaveisGlobais.assinaturaProfissional;
                                   _enviarDadosMedicoBancoInterno();
                                   _enviarDados(
                                       URL_ADICIONAR_FICHA_MEDICA,
@@ -100,6 +106,12 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                 {
                                   VariaveisGlobais.dadosFichaTerapia?.datafim =
                                       dataFinal;
+                                  VariaveisGlobais.dadosFichaTerapia
+                                          ?.assinaturapaciente =
+                                      VariaveisGlobais.assinaturaPaciente;
+                                  VariaveisGlobais.dadosFichaTerapia
+                                          ?.assinaturaprofissional =
+                                      VariaveisGlobais.assinaturaProfissional;
                                   _enviarDadosTerapiaBancoInterno();
                                   _enviarDados(
                                       URL_ADICIONAR_FICHA_TERAPIA,
@@ -216,6 +228,7 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
     ft.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
     FichaTerapiaDb db = FichaTerapiaDb();
     db.incluir(ft);
+    Navigator.pushNamed(context, "agenda");
   }
 
   void _enviarDadosMedicoBancoInterno() {
@@ -289,13 +302,14 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
     ficha.problemas = VariaveisGlobais.dadosFichaMedica?.problemas;
     ficha.orientacao = VariaveisGlobais.dadosFichaMedica?.orientacao;
     ficha.assinaturapaciente =
-        VariaveisGlobais.dadosFichaTerapia?.assinaturapaciente;
+        VariaveisGlobais.dadosFichaMedica?.assinaturapaciente;
     ficha.assinaturaprofissional =
-        VariaveisGlobais.dadosFichaTerapia?.assinaturaprofissional;
+        VariaveisGlobais.dadosFichaMedica?.assinaturaprofissional;
     ficha.latitude = VariaveisGlobais.dadosFichaMedica?.latitude;
     ficha.longitude = VariaveisGlobais.dadosFichaMedica?.longitude;
     ficha.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
     FichaMedicaDb db = FichaMedicaDb();
     db.incluir(ficha);
+    Navigator.pushNamed(context, "agenda");
   }
 }

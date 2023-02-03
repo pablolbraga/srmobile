@@ -64,7 +64,7 @@ class _FichaMedicaState extends State<FichaMedica> {
 
   @override
   Widget build(BuildContext context) {
-    //retornarPlanoTerapeutico(VariaveisGlobais.dadosAgenda?.idadmission);
+    retornarPlanoTerapeutico(VariaveisGlobais.dadosAgenda?.idadmission);
     return WillPopScope(
         child: Scaffold(
           appBar: AppBar(
@@ -232,7 +232,7 @@ class _FichaMedicaState extends State<FichaMedica> {
               InputDecorator(
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  labelText: "Participação do Cliente",
+                  labelText: "",
                   labelStyle: const TextStyle(color: Colors.blue),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0)),
@@ -625,41 +625,49 @@ class _FichaMedicaState extends State<FichaMedica> {
                 ),
               ]),
               const SizedBox(height: 20.0),
-              criarTitulo("Oxigenoterapia"),
-              const SizedBox(height: 10.0),
-              InputDecorator(
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  labelText: "Tipo",
-                  labelStyle: const TextStyle(color: Colors.blue),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0)),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    value: _selOxigenoterapia,
-                    icon: const Icon(
-                      Icons.arrow_drop_down,
-                      color: Colors.blue,
+              Visibility(
+                visible: (_ctrSuporteOxigenioCilindro == true ||
+                    _ctrSuporteOxigenioConcentrador == true),
+                child: Column(children: [
+                  criarTitulo("Oxigenoterapia"),
+                  const SizedBox(height: 10.0),
+                  InputDecorator(
+                    decoration: InputDecoration(
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10.0),
+                      labelText: "Tipo",
+                      labelStyle: const TextStyle(color: Colors.blue),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
                     ),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: const TextStyle(color: Colors.blue),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        _selOxigenoterapia = newValue!;
-                      });
-                    },
-                    items: const [
-                      DropdownMenuItem(
-                          child: Text("NÃO INFORMADO"), value: "0"),
-                      DropdownMenuItem(child: Text("INTERMITENTE"), value: "1"),
-                      DropdownMenuItem(child: Text("CONTÍNUA"), value: "2"),
-                    ],
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: _selOxigenoterapia,
+                        icon: const Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.blue,
+                        ),
+                        iconSize: 24,
+                        elevation: 16,
+                        style: const TextStyle(color: Colors.blue),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _selOxigenoterapia = newValue!;
+                          });
+                        },
+                        items: const [
+                          DropdownMenuItem(
+                              child: Text("NÃO INFORMADO"), value: "0"),
+                          DropdownMenuItem(
+                              child: Text("INTERMITENTE"), value: "1"),
+                          DropdownMenuItem(child: Text("CONTÍNUA"), value: "2"),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 20.0),
+                ]),
               ),
-              const SizedBox(height: 20.0),
               criarTitulo("Solicitar Exame"),
               const SizedBox(height: 10.0),
               InputDecorator(
@@ -937,6 +945,6 @@ class _FichaMedicaState extends State<FichaMedica> {
     ficha.problemas = _ctrListaProblema.text;
     ficha.orientacao = _ctrOrientacaoConduta.text;
     VariaveisGlobais.dadosFichaMedica = ficha;
-    Navigator.pushNamed(context, "fichamedica");
+    Navigator.pushNamed(context, "assinatura_paciente");
   }
 }
