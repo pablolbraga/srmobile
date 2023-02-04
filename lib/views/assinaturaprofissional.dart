@@ -102,6 +102,43 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                           ?.toJson());
                                 }
                                 break;
+
+                              case 122632: // Enfermeiro
+                                {
+                                  VariaveisGlobais.dadosFichaEnfermagem
+                                      ?.datafim = dataFinal;
+                                  VariaveisGlobais.dadosFichaEnfermagem
+                                          ?.assinaturapaciente =
+                                      VariaveisGlobais.assinaturaPaciente;
+                                  VariaveisGlobais.dadosFichaEnfermagem
+                                          ?.assinaturaprofissional =
+                                      VariaveisGlobais.assinaturaProfissional;
+                                  //_enviarDadosEnfermagemBancoInterno();
+                                  _enviarDados(
+                                      URL_ADICIONAR_FICHA_ENFERMAGEM,
+                                      VariaveisGlobais.dadosFichaEnfermagem
+                                          ?.toJson());
+                                }
+                                break;
+
+                              case 243379: // Enfermeiro Noturno
+                                {
+                                  VariaveisGlobais.dadosFichaEnfermagem
+                                      ?.datafim = dataFinal;
+                                  VariaveisGlobais.dadosFichaEnfermagem
+                                          ?.assinaturapaciente =
+                                      VariaveisGlobais.assinaturaPaciente;
+                                  VariaveisGlobais.dadosFichaEnfermagem
+                                          ?.assinaturaprofissional =
+                                      VariaveisGlobais.assinaturaProfissional;
+                                  //_enviarDadosEnfermagemBancoInterno();
+                                  _enviarDados(
+                                      URL_ADICIONAR_FICHA_ENFERMAGEM,
+                                      VariaveisGlobais.dadosFichaEnfermagem
+                                          ?.toJson());
+                                }
+                                break;
+
                               default: // Fisio, Fono e TO
                                 {
                                   VariaveisGlobais.dadosFichaTerapia?.datafim =

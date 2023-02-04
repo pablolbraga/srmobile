@@ -93,8 +93,16 @@ class _AgendaState extends State<Agenda> {
                               // Verifica a especialidade e abre a ficha
                               switch (VariaveisGlobais
                                   .dadosUsuario?.idespecialidade) {
-                                case 148815:
+                                case 148815: // Medico
                                   Navigator.pushNamed(context, "fichamedica");
+                                  break;
+                                case 122632: // Enfermagem
+                                  Navigator.pushNamed(
+                                      context, "fichaenfermagem");
+                                  break;
+                                case 243379: // Enfermagem Noturna
+                                  Navigator.pushNamed(
+                                      context, "fichaenfermagem");
                                   break;
                                 default:
                                   Navigator.pushNamed(context, "fichaterapia");
