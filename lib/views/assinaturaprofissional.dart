@@ -10,11 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:signature/signature.dart';
+import 'package:srmobile/db/fichaenfermagemdb.dart';
 import 'package:srmobile/db/fichamedicadb.dart';
 import 'package:srmobile/db/fichaterapiadb.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
+import 'package:srmobile/models/fichaenfermagemdbmodel.dart';
 import 'package:srmobile/models/fichamedicadbmodel.dart';
 import 'package:srmobile/models/fichaterapiadbmodel.dart';
 
@@ -95,6 +97,10 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                   VariaveisGlobais.dadosFichaMedica
                                           ?.assinaturaprofissional =
                                       VariaveisGlobais.assinaturaProfissional;
+                                  VariaveisGlobais.dadosFichaMedica?.latitude =
+                                      _ctrLatitude.text;
+                                  VariaveisGlobais.dadosFichaMedica?.longitude =
+                                      _ctrLongitude.text;
                                   _enviarDadosMedicoBancoInterno();
                                   _enviarDados(
                                       URL_ADICIONAR_FICHA_MEDICA,
@@ -113,7 +119,11 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                   VariaveisGlobais.dadosFichaEnfermagem
                                           ?.assinaturaprofissional =
                                       VariaveisGlobais.assinaturaProfissional;
-                                  //_enviarDadosEnfermagemBancoInterno();
+                                  VariaveisGlobais.dadosFichaEnfermagem
+                                      ?.latitude = _ctrLatitude.text;
+                                  VariaveisGlobais.dadosFichaEnfermagem
+                                      ?.longitude = _ctrLongitude.text;
+                                  _enviarDadosEnfermagemBancoInterno();
                                   _enviarDados(
                                       URL_ADICIONAR_FICHA_ENFERMAGEM,
                                       VariaveisGlobais.dadosFichaEnfermagem
@@ -131,7 +141,11 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                   VariaveisGlobais.dadosFichaEnfermagem
                                           ?.assinaturaprofissional =
                                       VariaveisGlobais.assinaturaProfissional;
-                                  //_enviarDadosEnfermagemBancoInterno();
+                                  VariaveisGlobais.dadosFichaEnfermagem
+                                      ?.latitude = _ctrLatitude.text;
+                                  VariaveisGlobais.dadosFichaEnfermagem
+                                      ?.longitude = _ctrLongitude.text;
+                                  _enviarDadosEnfermagemBancoInterno();
                                   _enviarDados(
                                       URL_ADICIONAR_FICHA_ENFERMAGEM,
                                       VariaveisGlobais.dadosFichaEnfermagem
@@ -149,6 +163,10 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                   VariaveisGlobais.dadosFichaTerapia
                                           ?.assinaturaprofissional =
                                       VariaveisGlobais.assinaturaProfissional;
+                                  VariaveisGlobais.dadosFichaTerapia?.latitude =
+                                      _ctrLatitude.text;
+                                  VariaveisGlobais.dadosFichaTerapia
+                                      ?.longitude = _ctrLongitude.text;
                                   _enviarDadosTerapiaBancoInterno();
                                   _enviarDados(
                                       URL_ADICIONAR_FICHA_TERAPIA,
@@ -346,6 +364,113 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
     ficha.longitude = VariaveisGlobais.dadosFichaMedica?.longitude;
     ficha.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
     FichaMedicaDb db = FichaMedicaDb();
+    db.incluir(ficha);
+    Navigator.pushNamed(context, "agenda");
+  }
+
+  void _enviarDadosEnfermagemBancoInterno() {
+    var ficha = FichaEnfermagemDbModel();
+    ficha.idadmission = VariaveisGlobais.dadosFichaEnfermagem?.idadmission;
+    ficha.datainicio = VariaveisGlobais.dadosFichaEnfermagem?.datainicio;
+    ficha.datafim = VariaveisGlobais.dadosFichaEnfermagem?.datafim;
+    ficha.idprofessional =
+        VariaveisGlobais.dadosFichaEnfermagem?.idprofessional;
+    ficha.idprofagenda = VariaveisGlobais.dadosFichaEnfermagem?.idprofagenda;
+    ficha.idcapconsult = VariaveisGlobais.dadosFichaEnfermagem?.idcapconsult;
+    ficha.acompanhante = VariaveisGlobais.dadosFichaEnfermagem?.acompanhante;
+    ficha.hospital = VariaveisGlobais.dadosFichaEnfermagem?.hospital;
+    ficha.cuidadobanho = VariaveisGlobais.dadosFichaEnfermagem?.cuidadobanho;
+    ficha.cuidadovestir = VariaveisGlobais.dadosFichaEnfermagem?.cuidadovestir;
+    ficha.cuidadotransferencia =
+        VariaveisGlobais.dadosFichaEnfermagem?.cuidadotransferencia;
+    ficha.cuidadocontinencia =
+        VariaveisGlobais.dadosFichaEnfermagem?.cuidadocontinencia;
+    ficha.cuidadoalimentacao =
+        VariaveisGlobais.dadosFichaEnfermagem?.cuidadoalimentacao;
+    ficha.utilizacaotqt = VariaveisGlobais.dadosFichaEnfermagem?.utilizacaotqt;
+    ficha.utilizacaocne = VariaveisGlobais.dadosFichaEnfermagem?.utilizacaocne;
+    ficha.utilizacaogt = VariaveisGlobais.dadosFichaEnfermagem?.utilizacaogt;
+    ficha.utilizacaocvd = VariaveisGlobais.dadosFichaEnfermagem?.utilizacaocvd;
+    ficha.utilizacaooutros =
+        VariaveisGlobais.dadosFichaEnfermagem?.utilizacaooutros;
+    ficha.utilizacaooutrostexto =
+        VariaveisGlobais.dadosFichaEnfermagem?.utilizacaooutrostexto;
+    ficha.oxigenoterapiacilindro =
+        VariaveisGlobais.dadosFichaEnfermagem?.oxigenoterapiacilindro;
+    ficha.oxigenoterapiaconcentrador =
+        VariaveisGlobais.dadosFichaEnfermagem?.oxigenoterapiaconcentrador;
+    ficha.oxigenoterapiacontinuo =
+        VariaveisGlobais.dadosFichaEnfermagem?.oxigenoterapiacontinuo;
+    ficha.oxigenoterapianao =
+        VariaveisGlobais.dadosFichaEnfermagem?.oxigenoterapianao;
+    ficha.ventilacaomecanica =
+        VariaveisGlobais.dadosFichaEnfermagem?.ventilacaomecanica;
+    ficha.ventilacaomecanicaequipamento =
+        VariaveisGlobais.dadosFichaEnfermagem?.ventilacaomecanicaequipamento;
+    ficha.pamax = VariaveisGlobais.dadosFichaEnfermagem?.pamax;
+    ficha.pamin = VariaveisGlobais.dadosFichaEnfermagem?.pamin;
+    ficha.feridapressao = VariaveisGlobais.dadosFichaEnfermagem?.feridapressao;
+    ficha.feridavasculogencia =
+        VariaveisGlobais.dadosFichaEnfermagem?.feridavasculogencia;
+    ficha.feridacirurgia =
+        VariaveisGlobais.dadosFichaEnfermagem?.feridacirurgia;
+    ficha.feridaoutros = VariaveisGlobais.dadosFichaEnfermagem?.feridaoutros;
+    ficha.diag001 = VariaveisGlobais.dadosFichaEnfermagem?.diag001;
+    ficha.diag002 = VariaveisGlobais.dadosFichaEnfermagem?.diag002;
+    ficha.diag003 = VariaveisGlobais.dadosFichaEnfermagem?.diag003;
+    ficha.diag004 = VariaveisGlobais.dadosFichaEnfermagem?.diag004;
+    ficha.diag005 = VariaveisGlobais.dadosFichaEnfermagem?.diag005;
+    ficha.diag006 = VariaveisGlobais.dadosFichaEnfermagem?.diag006;
+    ficha.diag007 = VariaveisGlobais.dadosFichaEnfermagem?.diag007;
+    ficha.diag008 = VariaveisGlobais.dadosFichaEnfermagem?.diag008;
+    ficha.diag009 = VariaveisGlobais.dadosFichaEnfermagem?.diag009;
+    ficha.diag010 = VariaveisGlobais.dadosFichaEnfermagem?.diag010;
+    ficha.diag011 = VariaveisGlobais.dadosFichaEnfermagem?.diag011;
+    ficha.diag012 = VariaveisGlobais.dadosFichaEnfermagem?.diag012;
+    ficha.diag013 = VariaveisGlobais.dadosFichaEnfermagem?.diag013;
+    ficha.diag014 = VariaveisGlobais.dadosFichaEnfermagem?.diag014;
+    ficha.diag015 = VariaveisGlobais.dadosFichaEnfermagem?.diag015;
+    ficha.proc001 = VariaveisGlobais.dadosFichaEnfermagem?.proc001;
+    ficha.proc002 = VariaveisGlobais.dadosFichaEnfermagem?.proc002;
+    ficha.proc003 = VariaveisGlobais.dadosFichaEnfermagem?.proc003;
+    ficha.proc004 = VariaveisGlobais.dadosFichaEnfermagem?.proc004;
+    ficha.proc005 = VariaveisGlobais.dadosFichaEnfermagem?.proc005;
+    ficha.proc006 = VariaveisGlobais.dadosFichaEnfermagem?.proc006;
+    ficha.proc007 = VariaveisGlobais.dadosFichaEnfermagem?.proc007;
+    ficha.proc008 = VariaveisGlobais.dadosFichaEnfermagem?.proc008;
+    ficha.procoutros = VariaveisGlobais.dadosFichaEnfermagem?.procoutros;
+    ficha.procoutrostexto =
+        VariaveisGlobais.dadosFichaEnfermagem?.procoutrostexto;
+    ficha.cuid001 = VariaveisGlobais.dadosFichaEnfermagem?.cuid001;
+    ficha.cuid002 = VariaveisGlobais.dadosFichaEnfermagem?.cuid002;
+    ficha.cuid003 = VariaveisGlobais.dadosFichaEnfermagem?.cuid003;
+    ficha.cuid004 = VariaveisGlobais.dadosFichaEnfermagem?.cuid004;
+    ficha.cuid005 = VariaveisGlobais.dadosFichaEnfermagem?.cuid005;
+    ficha.cuid006 = VariaveisGlobais.dadosFichaEnfermagem?.cuid006;
+    ficha.cuid007 = VariaveisGlobais.dadosFichaEnfermagem?.cuid007;
+    ficha.cuid008 = VariaveisGlobais.dadosFichaEnfermagem?.cuid008;
+    ficha.cuidoutros = VariaveisGlobais.dadosFichaEnfermagem?.cuidoutros;
+    ficha.cuidoutrostexto =
+        VariaveisGlobais.dadosFichaEnfermagem?.cuidoutrostexto;
+    ficha.bradenpercepcaosensorial =
+        VariaveisGlobais.dadosFichaEnfermagem?.bradenpercepcaosensorial;
+    ficha.bradenumidade = VariaveisGlobais.dadosFichaEnfermagem?.bradenumidade;
+    ficha.bradenatividade =
+        VariaveisGlobais.dadosFichaEnfermagem?.bradenatividade;
+    ficha.bradenmobilidade =
+        VariaveisGlobais.dadosFichaEnfermagem?.bradenmobilidade;
+    ficha.bradennutricao =
+        VariaveisGlobais.dadosFichaEnfermagem?.bradennutricao;
+    ficha.bradenficcao = VariaveisGlobais.dadosFichaEnfermagem?.bradenficcao;
+    ficha.observacao = VariaveisGlobais.dadosFichaEnfermagem?.observacao;
+    ficha.assinaturapaciente =
+        VariaveisGlobais.dadosFichaEnfermagem?.assinaturapaciente;
+    ficha.assinaturaprofissional =
+        VariaveisGlobais.dadosFichaEnfermagem?.assinaturaprofissional;
+    ficha.latitude = VariaveisGlobais.dadosFichaEnfermagem?.latitude;
+    ficha.longitude = VariaveisGlobais.dadosFichaEnfermagem?.longitude;
+    ficha.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
+    FichaEnfermagemDb db = FichaEnfermagemDb();
     db.incluir(ficha);
     Navigator.pushNamed(context, "agenda");
   }

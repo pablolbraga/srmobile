@@ -1220,7 +1220,6 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
     ficha.bradenmobilidade = int.tryParse(_selBradenMobilidade);
     ficha.bradennutricao = int.tryParse(_selBradenNutricao);
     ficha.bradenficcao = int.tryParse(_selBradenFiccaoCisalhamento);
-
     ficha.observacao = _ctrObservacao.text;
     VariaveisGlobais.dadosFichaEnfermagem = ficha;
     Navigator.pushNamed(context, "assinatura_paciente");
