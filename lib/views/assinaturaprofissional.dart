@@ -12,12 +12,14 @@ import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:signature/signature.dart';
 import 'package:srmobile/db/fichaenfermagemdb.dart';
 import 'package:srmobile/db/fichamedicadb.dart';
+import 'package:srmobile/db/fichanutricaodb.dart';
 import 'package:srmobile/db/fichaterapiadb.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/fichaenfermagemdbmodel.dart';
 import 'package:srmobile/models/fichamedicadbmodel.dart';
+import 'package:srmobile/models/fichanutricaodbmodel.dart';
 import 'package:srmobile/models/fichaterapiadbmodel.dart';
 
 class AssinaturaProfissional extends StatefulWidget {
@@ -149,6 +151,28 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                   _enviarDados(
                                       URL_ADICIONAR_FICHA_ENFERMAGEM,
                                       VariaveisGlobais.dadosFichaEnfermagem
+                                          ?.toJson());
+                                }
+                                break;
+
+                              case 122633: // Nutricionista
+                                {
+                                  VariaveisGlobais.dadosFichaNutricao?.datafim =
+                                      dataFinal;
+                                  VariaveisGlobais.dadosFichaNutricao
+                                          ?.assinaturapaciente =
+                                      VariaveisGlobais.assinaturaPaciente;
+                                  VariaveisGlobais.dadosFichaNutricao
+                                          ?.assinaturaprofissional =
+                                      VariaveisGlobais.assinaturaProfissional;
+                                  VariaveisGlobais.dadosFichaNutricao
+                                      ?.latitude = _ctrLatitude.text;
+                                  VariaveisGlobais.dadosFichaNutricao
+                                      ?.longitude = _ctrLongitude.text;
+                                  _enviarDadosNutricaoBancoInterno();
+                                  _enviarDados(
+                                      URL_ADICIONAR_FICHA_NUTRICAO,
+                                      VariaveisGlobais.dadosFichaNutricao
                                           ?.toJson());
                                 }
                                 break;
@@ -471,6 +495,90 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
     ficha.longitude = VariaveisGlobais.dadosFichaEnfermagem?.longitude;
     ficha.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
     FichaEnfermagemDb db = FichaEnfermagemDb();
+    db.incluir(ficha);
+    Navigator.pushNamed(context, "agenda");
+  }
+
+  void _enviarDadosNutricaoBancoInterno() {
+    var ficha = FichaNutricaoDbModel();
+    ficha.idadmission = VariaveisGlobais.dadosAgenda?.idadmission;
+    ficha.datainicio = VariaveisGlobais.dataInicioAtendimento;
+    ficha.idprofessional = VariaveisGlobais.dadosUsuario?.idperson;
+    ficha.idprofagenda = VariaveisGlobais.dadosAgenda?.idprofagenda;
+    ficha.idcapconsult = VariaveisGlobais.dadosAgenda?.idcapconsult;
+    ficha.acompanhante = VariaveisGlobais.dadosFichaNutricao?.acompanhante;
+    ficha.grupohas = VariaveisGlobais.dadosFichaNutricao?.grupohas;
+    ficha.grupodiabetes = VariaveisGlobais.dadosFichaNutricao?.grupodiabetes;
+    ficha.grupodislipidemia =
+        VariaveisGlobais.dadosFichaNutricao?.grupodislipidemia;
+    ficha.grupoimobilidade =
+        VariaveisGlobais.dadosFichaNutricao?.grupoimobilidade;
+    ficha.grupoobesidade = VariaveisGlobais.dadosFichaNutricao?.grupoobesidade;
+    ficha.grupodesnutricao =
+        VariaveisGlobais.dadosFichaNutricao?.grupodesnutricao;
+    ficha.grupooutros = VariaveisGlobais.dadosFichaNutricao?.grupooutros;
+    ficha.nutricao = VariaveisGlobais.dadosFichaNutricao?.nutricao;
+    ficha.nutricaotipoenteral =
+        VariaveisGlobais.dadosFichaNutricao?.nutricaotipoenteral;
+    ficha.dietaenteral = VariaveisGlobais.dadosFichaNutricao?.dietaenteral;
+    ficha.dietaindustipo = VariaveisGlobais.dadosFichaNutricao?.dietaindustipo;
+    ficha.dietaindustfornecedor =
+        VariaveisGlobais.dadosFichaNutricao?.dietaindustfornecedor;
+    ficha.dietaindustmanipqtde =
+        VariaveisGlobais.dadosFichaNutricao?.dietaindustmanipqtde;
+    ficha.dietaindustmanipdesc =
+        VariaveisGlobais.dadosFichaNutricao?.dietaindustmanipdesc;
+    ficha.dietaindustprontaqtde =
+        VariaveisGlobais.dadosFichaNutricao?.dietaindustprontaqtde;
+    ficha.dietaindustprontadesc =
+        VariaveisGlobais.dadosFichaNutricao?.dietaindustprontadesc;
+    ficha.dietaindustprontafab =
+        VariaveisGlobais.dadosFichaNutricao?.dietaindustprontafab;
+    ficha.avalsubjingesta =
+        VariaveisGlobais.dadosFichaNutricao?.avalsubjingesta;
+    ficha.avalsubjpesotipo =
+        VariaveisGlobais.dadosFichaNutricao?.avalsubjpesotipo;
+    ficha.avalsubjpesoqtde =
+        VariaveisGlobais.dadosFichaNutricao?.avalsubjpesoqtde;
+    ficha.avalsubjpesotempo =
+        VariaveisGlobais.dadosFichaNutricao?.avalsubjpesotempo;
+    ficha.avalsubjsintomadiarreia =
+        VariaveisGlobais.dadosFichaNutricao?.avalsubjsintomadiarreia;
+    ficha.avalsubjsintomahiporexia =
+        VariaveisGlobais.dadosFichaNutricao?.avalsubjsintomahiporexia;
+    ficha.avalsubjsintomaconstipacao =
+        VariaveisGlobais.dadosFichaNutricao?.avalsubjsintomaconstipacao;
+    ficha.avalsubjsintomaoutros =
+        VariaveisGlobais.dadosFichaNutricao?.avalsubjsintomaoutros;
+    ficha.avalsubjritmointestinal =
+        VariaveisGlobais.dadosFichaNutricao?.avalsubjritmointestinal;
+    ficha.avalantroaj = VariaveisGlobais.dadosFichaNutricao?.avalantroaj;
+    ficha.avalantropeso = VariaveisGlobais.dadosFichaNutricao?.avalantropeso;
+    ficha.avalantrocircabd =
+        VariaveisGlobais.dadosFichaNutricao?.avalantrocircabd;
+    ficha.avalantroimc = VariaveisGlobais.dadosFichaNutricao?.avalantroimc;
+    ficha.avalantrocp = VariaveisGlobais.dadosFichaNutricao?.avalantrocp;
+    ficha.avalantroidade = VariaveisGlobais.dadosFichaNutricao?.avalantroidade;
+    ficha.avalantrodct = VariaveisGlobais.dadosFichaNutricao?.avalantrodct;
+    ficha.avalantrocb = VariaveisGlobais.dadosFichaNutricao?.avalantrocb;
+    ficha.avalantrocmb = VariaveisGlobais.dadosFichaNutricao?.avalantrocmb;
+    ficha.avalantroaltura =
+        VariaveisGlobais.dadosFichaNutricao?.avalantroaltura;
+    ficha.diagnutriabaixo65 =
+        VariaveisGlobais.dadosFichaNutricao?.diagnutriabaixo65;
+    ficha.diagnutriacima65 =
+        VariaveisGlobais.dadosFichaNutricao?.diagnutriacima65;
+    ficha.diagnutridesc = VariaveisGlobais.dadosFichaNutricao?.diagnutridesc;
+    ficha.manterconduta = VariaveisGlobais.dadosFichaNutricao?.manterconduta;
+    ficha.conduta = VariaveisGlobais.dadosFichaNutricao?.conduta;
+    ficha.assinaturapaciente =
+        VariaveisGlobais.dadosFichaNutricao?.assinaturapaciente;
+    ficha.assinaturaprofissional =
+        VariaveisGlobais.dadosFichaNutricao?.assinaturaprofissional;
+    ficha.latitude = VariaveisGlobais.dadosFichaNutricao?.latitude;
+    ficha.longitude = VariaveisGlobais.dadosFichaNutricao?.longitude;
+    ficha.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
+    FichaNutricaoDb db = FichaNutricaoDb();
     db.incluir(ficha);
     Navigator.pushNamed(context, "agenda");
   }

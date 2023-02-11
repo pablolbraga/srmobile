@@ -1,4 +1,6 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
+
+import 'package:flutter/material.dart';
 
 const URL_BASE =
     "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
@@ -88,6 +90,65 @@ const TB_FICHAENFERMAGEM_LATITUDE = "LATITUDE";
 const TB_FICHAENFERMAGEM_LONGITUDE = "LONGITUDE";
 const TB_FICHAENFERMAGEM_NMPACIENTE = "NMPACIENTE";
 
+const TB_FICHANUTRICAO = "TB_FICHANUTRICAO";
+const TB_FICHANUTRICAO_ID = "ID";
+const TB_FICHANUTRICAO_IDADMISSION = "IDADMISSION";
+const TB_FICHANUTRICAO_DATAINICIO = "DATAINICIO";
+const TB_FICHANUTRICAO_DATAFIM = "DATAFIM";
+const TB_FICHANUTRICAO_IDPROFESSIONAL = "IDPROFESSIONAL";
+const TB_FICHANUTRICAO_IDPROFAGENDA = "IDPROFAGENDA";
+const TB_FICHANUTRICAO_IDCAPCONSULT = "IDCAPCONSULT";
+const TB_FICHANUTRICAO_ACOMPANHANTE = "ACOMPANHANTE";
+const TB_FICHANUTRICAO_GRUPOHAS = "GRUPOHAS";
+const TB_FICHANUTRICAO_GRUPODIABETES = "GRUPODIABETES";
+const TB_FICHANUTRICAO_GRUPODISLIPIDEMIA = "GRUPODISLIPIDEMIA";
+const TB_FICHANUTRICAO_GRUPOIMOBILIDADE = "GRUPOIMOBILIDADE";
+const TB_FICHANUTRICAO_GRUPOOBESIDADE = "GRUPOOBESIDADE";
+const TB_FICHANUTRICAO_GRUPODESNUTRICAO = "GRUPODESNUTRICAO";
+const TB_FICHANUTRICAO_GRUPOOUTROS = "GRUPOOUTROS";
+const TB_FICHANUTRICAO_NUTRICAO = "NUTRICAO";
+const TB_FICHANUTRICAO_NUTRICAOTIPOENTERAL = "NUTRICAOTIPOENTERAL";
+const TB_FICHANUTRICAO_NUTRICAOOUTROS = "NUTRICAOOUTROS";
+const TB_FICHANUTRICAO_DIETAENTERAL = "DIETAENTERAL";
+const TB_FICHANUTRICAO_DIETAENTERALENTUPIMENTO = "DIETAENTERALENTUPIMENTO";
+const TB_FICHANUTRICAO_DIETAINDUSTIPO = "DIETAINDUSTIPO";
+const TB_FICHANUTRICAO_DIETAINDUSFORNECEDOR = "DIETAINDUSFORNECEDOR";
+const TB_FICHANUTRICAO_DIETAINDUSMANIPQTDE = "DIETAINDUSMANIPQTDE";
+const TB_FICHANUTRICAO_DIETAINDUSMANIPDESC = "DIETAINDUSMANIPDESC";
+const TB_FICHANUTRICAO_DIETAINDUSPRONTAQTDE = "DIETAINDUSPRONTAQTDE";
+const TB_FICHANUTRICAO_DIETAINDUSPRONTADESC = "DIETAINDUSPRONTADESC";
+const TB_FICHANUTRICAO_DIETAINDUSPRONTAFAB = "DIETAINDUSPRONTAFAB";
+const TB_FICHANUTRICAO_AVALSUBJINGESTA = "AVALSUBJINGESTA";
+const TB_FICHANUTRICAO_AVALSUBJPESOTIPO = "AVALSUBJPESOTIPO";
+const TB_FICHANUTRICAO_AVALSUBJPESOQTDE = "AVALSUBJPESOQTDE";
+const TB_FICHANUTRICAO_AVALSUBJPESOTEMPO = "AVALSUBJPESOTEMPO";
+const TB_FICHANUTRICAO_AVALSUBJSINTOMADIARREIA = "AVALSUBJSINTOMADIARREIA";
+const TB_FICHANUTRICAO_AVALSUBJSINTOMAHIPOREXIA = "AVALSUBJSINTOMAHIPOREXIA";
+const TB_FICHANUTRICAO_AVALSUBJSINTOMACONSTIPACAO =
+    "AVALSUBJSINTOMACONSTIPACAO";
+const TB_FICHANUTRICAO_AVALSUBJSINTOMAOUTROS = "AVALSUBJSINTOMAOUTROS";
+const TB_FICHANUTRICAO_AVALSUBJRITMOINTESTINAL = "AVALSUBJRITMOINTESTINAL";
+const TB_FICHANUTRICAO_AVALANTROAJ = "AVALANTROAJ";
+const TB_FICHANUTRICAO_AVALANTROPESO = "AVALANTROPESO";
+const TB_FICHANUTRICAO_AVALANTROCIRCABD = "AVALANTROCIRCABD";
+const TB_FICHANUTRICAO_AVALANTROIMC = "AVALANTROIMC";
+const TB_FICHANUTRICAO_AVALANTROCP = "AVALANTROCP";
+const TB_FICHANUTRICAO_AVALANTROIDADE = "AVALANTROIDADE";
+const TB_FICHANUTRICAO_AVALANTRODCT = "AVALANTRODCT";
+const TB_FICHANUTRICAO_AVALANTROCB = "AVALANTROCB";
+const TB_FICHANUTRICAO_AVALANTROCMB = "AVALANTROCMB";
+const TB_FICHANUTRICAO_AVALANTROALTURA = "AVALANTROALTURA";
+const TB_FICHANUTRICAO_DIAGNUTRIABAIXO65 = "DIAGNUTRIABAIXO65";
+const TB_FICHANUTRICAO_DIAGNUTRIACIMA65 = "DIAGNUTRIACIMA65";
+const TB_FICHANUTRICAO_DIAGNUTRIDESC = "DIAGNUTRIDESC";
+const TB_FICHANUTRICAO_MANTERCONDUTA = "MANTERCONDUTA";
+const TB_FICHANUTRICAO_CONDUTA = "CONDUTA";
+const TB_FICHANUTRICAO_ASSINATURAPACIENTE = "ASSINATURAPACIENTE";
+const TB_FICHANUTRICAO_ASSINATURAPROFISSIONAL = "ASSINATURAPROFISSIONAL";
+const TB_FICHANUTRICAO_LATITUDE = "LATITUDE";
+const TB_FICHANUTRICAO_LONGITUDE = "LONGITUDE";
+const TB_FICHANUTRICAO_NMPACIENTE = "NMPACIENTE";
+
 const URL_ESQUECEU_SENHA = "${URL_BASE}esqueceusenha/";
 const URL_VALIDAR_LOGIN_SENHA = "${URL_BASE}validarloginsenha/";
 const URL_ALTERAR_SENHA = "${URL_BASE}alterarsenha/";
@@ -95,6 +156,7 @@ const URL_LISTAR_AGENDA = "${URL_BASE}listaragendaporprofissional/";
 const URL_ADICIONAR_FICHA_TERAPIA = "${URL_BASE}addfichaterapia/";
 const URL_ADICIONAR_FICHA_MEDICA = "${URL_BASE}addfichamedica/";
 const URL_ADICIONAR_FICHA_ENFERMAGEM = "${URL_BASE}addfichaenfermagem/";
+const URL_ADICIONAR_FICHA_NUTRICAO = "${URL_BASE}addfichanutricao/";
 
 const URL_RETORNAR_PLANO_TERAPEUTICO = "${URL_BASE}retornarplanoterapeutico/";
 
@@ -158,3 +220,101 @@ const List<String> LISTA_FICHATERAPIA_EXECUCAO = [
   'MÍNIMA',
   'NÃO REALIZADO'
 ];
+
+List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_TIPONUTRICAO {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("ORAL")),
+    const DropdownMenuItem(value: "2", child: Text("ENTERAL")),
+    const DropdownMenuItem(value: "3", child: Text("AMBOS")),
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_TIPONUTRICAO_ENTERAL {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("SNE")),
+    const DropdownMenuItem(value: "2", child: Text("GASTROSTOMIA")),
+    const DropdownMenuItem(value: "3", child: Text("OUTROS")),
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_DIETAENTERAL {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("ARTESANAL")),
+    const DropdownMenuItem(value: "2", child: Text("INDUSTRIALIZADO")),
+    const DropdownMenuItem(value: "3", child: Text("AMBOS")),
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>>
+    get LISTA_FICHANUTRICAO_DIETAENTERAL_INDUSTRIALIZADO {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("MANIPULADA EM DOMICILIO")),
+    const DropdownMenuItem(value: "2", child: Text("PRONTA")),
+    const DropdownMenuItem(value: "3", child: Text("AMBAS")),
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_DIETAENTERAL_FORNECEDOR {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("BENEFICIÁRIO")),
+    const DropdownMenuItem(value: "2", child: Text("PLANO")),
+    const DropdownMenuItem(value: "3", child: Text("AMBOS")),
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_AVALSUBJETIVA_INGESTA {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("AUMENTADA")),
+    const DropdownMenuItem(value: "2", child: Text("DIMINUÍDA")),
+    const DropdownMenuItem(value: "3", child: Text("NORMAL")),
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_AVALSUBJETIVA_PESO {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("PERDA DE PESO")),
+    const DropdownMenuItem(value: "2", child: Text("GANHO DE PESO")),
+    const DropdownMenuItem(value: "3", child: Text("SEM ALTERAÇÕES")),
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>>
+    get LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ABAIXO65ANOS {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("NÃO ATRIBUÍDO")),
+    const DropdownMenuItem(value: "2", child: Text("BAIXO PESO")),
+    const DropdownMenuItem(value: "3", child: Text("EUTROFIA")),
+    const DropdownMenuItem(value: "4", child: Text("PRÉ-OBESIDADE")),
+    const DropdownMenuItem(value: "5", child: Text("OBESIDADE 1")),
+    const DropdownMenuItem(value: "6", child: Text("OBESIDADE 2")),
+    const DropdownMenuItem(value: "7", child: Text("OBESIDADE 3")),
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>>
+    get LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ACIMA65ANOS {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("NÃO ATRIBUÍDO")),
+    const DropdownMenuItem(value: "2", child: Text("BAIXO PESO")),
+    const DropdownMenuItem(value: "3", child: Text("EUTROFIA")),
+    const DropdownMenuItem(value: "4", child: Text("OBESIDADE")),
+  ];
+  return menuItems;
+}
