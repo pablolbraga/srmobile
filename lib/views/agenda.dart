@@ -104,6 +104,13 @@ class _AgendaState extends State<Agenda> {
                                   Navigator.pushNamed(
                                       context, "fichaenfermagem");
                                   break;
+                                case 122633: // Nutricionista
+                                  Navigator.pushNamed(context, "fichanutricao");
+                                  break;
+                                case 171086: // Técnico da Base
+                                  Navigator.pushNamed(
+                                      context, "fichatecnicobase");
+                                  break;
                                 default:
                                   Navigator.pushNamed(context, "fichaterapia");
                               }

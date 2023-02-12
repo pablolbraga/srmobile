@@ -7,6 +7,7 @@ import 'package:srmobile/views/esqueceusenha.dart';
 import 'package:srmobile/views/fichaenfermagem.dart';
 import 'package:srmobile/views/fichamedica.dart';
 import 'package:srmobile/views/fichanutricao.dart';
+import 'package:srmobile/views/fichatecnicobase.dart';
 import 'package:srmobile/views/fichaterapia.dart';
 import 'package:srmobile/views/login.dart';
 import 'package:srmobile/views/opcao.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         "fichamedica": (context) => const FichaMedica(),
         "fichaenfermagem": (context) => const FichaEnfermagem(),
         "fichanutricao": (context) => const FichaNutricao(),
+        "fichatecnicobase": (context) => const FichaTecnicoBase(),
         "assinatura_paciente": (context) => const AssinaturaPaciente(),
         "assinatura_profissional": (context) => const AssinaturaProfissional()
       },

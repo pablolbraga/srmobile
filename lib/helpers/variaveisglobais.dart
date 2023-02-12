@@ -2,6 +2,7 @@ import 'package:srmobile/models/agendamodel.dart';
 import 'package:srmobile/models/fichaenfermagemmodel.dart';
 import 'package:srmobile/models/fichamedicamodel.dart';
 import 'package:srmobile/models/fichanutricaomodel.dart';
+import 'package:srmobile/models/fichatecnicobasemodel.dart';
 import 'package:srmobile/models/fichaterapiamodel.dart';
 import 'package:srmobile/models/usuariomodel.dart';
 
@@ -15,4 +16,5 @@ class VariaveisGlobais {
   static FichaMedicaModel? dadosFichaMedica;
   static FichaEnfermagemModel? dadosFichaEnfermagem;
   static FichaNutricaoModel? dadosFichaNutricao;
+  static FichaTecnicoBaseModel? dadosFichaTecnicoBase;
 }

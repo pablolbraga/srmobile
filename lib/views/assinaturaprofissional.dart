@@ -13,6 +13,7 @@ import 'package:signature/signature.dart';
 import 'package:srmobile/db/fichaenfermagemdb.dart';
 import 'package:srmobile/db/fichamedicadb.dart';
 import 'package:srmobile/db/fichanutricaodb.dart';
+import 'package:srmobile/db/fichatecnicobasedb.dart';
 import 'package:srmobile/db/fichaterapiadb.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
@@ -20,6 +21,7 @@ import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/fichaenfermagemdbmodel.dart';
 import 'package:srmobile/models/fichamedicadbmodel.dart';
 import 'package:srmobile/models/fichanutricaodbmodel.dart';
+import 'package:srmobile/models/fichatecnicobasedbmodel.dart';
 import 'package:srmobile/models/fichaterapiadbmodel.dart';
 
 class AssinaturaProfissional extends StatefulWidget {
@@ -173,6 +175,28 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
                                   _enviarDados(
                                       URL_ADICIONAR_FICHA_NUTRICAO,
                                       VariaveisGlobais.dadosFichaNutricao
+                                          ?.toJson());
+                                }
+                                break;
+
+                              case 171086: // Técnico da Base
+                                {
+                                  VariaveisGlobais.dadosFichaTecnicoBase
+                                      ?.datafim = dataFinal;
+                                  VariaveisGlobais.dadosFichaTecnicoBase
+                                          ?.assinaturapaciente =
+                                      VariaveisGlobais.assinaturaPaciente;
+                                  VariaveisGlobais.dadosFichaTecnicoBase
+                                          ?.assinaturaprofissional =
+                                      VariaveisGlobais.assinaturaProfissional;
+                                  VariaveisGlobais.dadosFichaTecnicoBase
+                                      ?.latitude = _ctrLatitude.text;
+                                  VariaveisGlobais.dadosFichaTecnicoBase
+                                      ?.longitude = _ctrLongitude.text;
+                                  _enviarDadosTecnicoBaseBancoInterno();
+                                  _enviarDados(
+                                      URL_ADICIONAR_FICHA_TECNICOBASE,
+                                      VariaveisGlobais.dadosFichaTecnicoBase
                                           ?.toJson());
                                 }
                                 break;
@@ -503,6 +527,7 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
     var ficha = FichaNutricaoDbModel();
     ficha.idadmission = VariaveisGlobais.dadosAgenda?.idadmission;
     ficha.datainicio = VariaveisGlobais.dataInicioAtendimento;
+    ficha.datafim = VariaveisGlobais.dadosFichaNutricao?.datafim;
     ficha.idprofessional = VariaveisGlobais.dadosUsuario?.idperson;
     ficha.idprofagenda = VariaveisGlobais.dadosAgenda?.idprofagenda;
     ficha.idcapconsult = VariaveisGlobais.dadosAgenda?.idcapconsult;
@@ -579,6 +604,80 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
     ficha.longitude = VariaveisGlobais.dadosFichaNutricao?.longitude;
     ficha.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
     FichaNutricaoDb db = FichaNutricaoDb();
+    db.incluir(ficha);
+    Navigator.pushNamed(context, "agenda");
+  }
+
+  void _enviarDadosTecnicoBaseBancoInterno() {
+    var ficha = FichaTecnicoBaseDbModel();
+    ficha.idadmission = VariaveisGlobais.dadosFichaTecnicoBase?.idadmission;
+    ficha.datainicio = VariaveisGlobais.dadosFichaTecnicoBase?.datainicio;
+    ficha.datafim = VariaveisGlobais.dadosFichaTecnicoBase?.datafim;
+    ficha.idprofessional =
+        VariaveisGlobais.dadosFichaTecnicoBase?.idprofessional;
+    ficha.idprofagenda = VariaveisGlobais.dadosFichaTecnicoBase?.idprofagenda;
+    ficha.idcapconsult = VariaveisGlobais.dadosFichaTecnicoBase?.idcapconsult;
+    ficha.tipochamada = VariaveisGlobais.dadosFichaTecnicoBase?.tipochamada;
+    ficha.administracaomedim =
+        VariaveisGlobais.dadosFichaTecnicoBase?.administracaomedim;
+    ficha.administracaomediv =
+        VariaveisGlobais.dadosFichaTecnicoBase?.administracaomediv;
+    ficha.administracaomedsc =
+        VariaveisGlobais.dadosFichaTecnicoBase?.administracaomedsc;
+    ficha.administracaomed =
+        VariaveisGlobais.dadosFichaTecnicoBase?.administracaomed;
+    ficha.clister = VariaveisGlobais.dadosFichaTecnicoBase?.clister;
+    ficha.curativo = VariaveisGlobais.dadosFichaTecnicoBase?.curativo;
+    ficha.cateterismovesicalalivio =
+        VariaveisGlobais.dadosFichaTecnicoBase?.cateterismovesicalalivio;
+    ficha.cateterismovericalurina =
+        VariaveisGlobais.dadosFichaTecnicoBase?.cateterismovericalurina;
+    ficha.cuidadogerais = VariaveisGlobais.dadosFichaTecnicoBase?.cuidadogerais;
+    ficha.ecg = VariaveisGlobais.dadosFichaTecnicoBase?.ecg;
+    ficha.puncao = VariaveisGlobais.dadosFichaTecnicoBase?.puncao;
+    ficha.retiradapontos =
+        VariaveisGlobais.dadosFichaTecnicoBase?.retiradapontos;
+    ficha.outrosprocedimentos =
+        VariaveisGlobais.dadosFichaTecnicoBase?.outrosprocedimentos;
+    ficha.abd = VariaveisGlobais.dadosFichaTecnicoBase?.abd;
+    ficha.algodao = VariaveisGlobais.dadosFichaTecnicoBase?.algodao;
+    ficha.agulha = VariaveisGlobais.dadosFichaTecnicoBase?.agulha;
+    ficha.alcool = VariaveisGlobais.dadosFichaTecnicoBase?.alcool;
+    ficha.atadura = VariaveisGlobais.dadosFichaTecnicoBase?.atadura;
+    ficha.cateter = VariaveisGlobais.dadosFichaTecnicoBase?.cateter;
+    ficha.equipo = VariaveisGlobais.dadosFichaTecnicoBase?.equipo;
+    ficha.extensor1via = VariaveisGlobais.dadosFichaTecnicoBase?.extensor1via;
+    ficha.extensor2via = VariaveisGlobais.dadosFichaTecnicoBase?.extensor2via;
+    ficha.gazeacolchoada =
+        VariaveisGlobais.dadosFichaTecnicoBase?.gazeacolchoada;
+    ficha.gazeembebida = VariaveisGlobais.dadosFichaTecnicoBase?.gazeembebida;
+    ficha.gazeesteril = VariaveisGlobais.dadosFichaTecnicoBase?.gazeesteril;
+    ficha.heparina = VariaveisGlobais.dadosFichaTecnicoBase?.heparina;
+    ficha.ivfix = VariaveisGlobais.dadosFichaTecnicoBase?.ivfix;
+    ficha.jelco = VariaveisGlobais.dadosFichaTecnicoBase?.jelco;
+    ficha.bisturi = VariaveisGlobais.dadosFichaTecnicoBase?.bisturi;
+    ficha.luvaesteril = VariaveisGlobais.dadosFichaTecnicoBase?.luvaesteril;
+    ficha.luvaprocedimento =
+        VariaveisGlobais.dadosFichaTecnicoBase?.luvaprocedimento;
+    ficha.mascara = VariaveisGlobais.dadosFichaTecnicoBase?.mascara;
+    ficha.micropore2510 = VariaveisGlobais.dadosFichaTecnicoBase?.micropore2510;
+    ficha.micropore5010 = VariaveisGlobais.dadosFichaTecnicoBase?.micropore5010;
+    ficha.scalp = VariaveisGlobais.dadosFichaTecnicoBase?.scalp;
+    ficha.seringa = VariaveisGlobais.dadosFichaTecnicoBase?.seringa;
+    ficha.sorofisiologico =
+        VariaveisGlobais.dadosFichaTecnicoBase?.sorofisiologico;
+    ficha.outrosmateriais =
+        VariaveisGlobais.dadosFichaTecnicoBase?.outrosmateriais;
+    ficha.medicamentos = VariaveisGlobais.dadosFichaTecnicoBase?.medicamentos;
+    ficha.evolucao = VariaveisGlobais.dadosFichaTecnicoBase?.evolucao;
+    ficha.assinaturapaciente =
+        VariaveisGlobais.dadosFichaTecnicoBase?.assinaturapaciente;
+    ficha.assinaturaprofissional =
+        VariaveisGlobais.dadosFichaTecnicoBase?.assinaturaprofissional;
+    ficha.latitude = VariaveisGlobais.dadosFichaTecnicoBase?.latitude;
+    ficha.longitude = VariaveisGlobais.dadosFichaTecnicoBase?.longitude;
+    ficha.nmpaciente = VariaveisGlobais.dadosAgenda?.nmpaciente;
+    FichaTecnicoBaseDb db = FichaTecnicoBaseDb();
     db.incluir(ficha);
     Navigator.pushNamed(context, "agenda");
   }
