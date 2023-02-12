@@ -17,4 +17,9 @@ class VariaveisGlobais {
   static FichaEnfermagemModel? dadosFichaEnfermagem;
   static FichaNutricaoModel? dadosFichaNutricao;
   static FichaTecnicoBaseModel? dadosFichaTecnicoBase;
+
+  static String? dataIniVisitaRealizada;
+  static String? dataFimVisitaRealizada;
+  static String? pathPdf;
+  static int? tipoRedirecionamento;
 }

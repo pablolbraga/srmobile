@@ -11,6 +11,9 @@ import 'package:srmobile/views/fichatecnicobase.dart';
 import 'package:srmobile/views/fichaterapia.dart';
 import 'package:srmobile/views/login.dart';
 import 'package:srmobile/views/opcao.dart';
+import 'package:srmobile/views/visitasrealizadas.dart';
+import 'package:srmobile/views/visitasrealizadasfiltro.dart';
+import 'package:srmobile/views/visualizarpdf.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +41,10 @@ class MyApp extends StatelessWidget {
         "fichanutricao": (context) => const FichaNutricao(),
         "fichatecnicobase": (context) => const FichaTecnicoBase(),
         "assinatura_paciente": (context) => const AssinaturaPaciente(),
-        "assinatura_profissional": (context) => const AssinaturaProfissional()
+        "assinatura_profissional": (context) => const AssinaturaProfissional(),
+        "visitasrealizadasfiltro": (context) => const VisitasRealizadasFiltro(),
+        "visitasrealizadas": (context) => const VisitasRealizadas(),
+        "visualizarpdf": (context) => const VisualizarPdf()
       },
     );
   }

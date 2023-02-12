@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 const URL_BASE =
     "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
+const IP_INTRANET = "http://200.150.138.34:8001/sauderesidence";
 
 const BANCODB = "srmobile.db";
 
@@ -215,6 +216,19 @@ const URL_ADICIONAR_FICHA_NUTRICAO = "${URL_BASE}addfichanutricao/";
 const URL_ADICIONAR_FICHA_TECNICOBASE = "${URL_BASE}addfichatecnicobase/";
 
 const URL_RETORNAR_PLANO_TERAPEUTICO = "${URL_BASE}retornarplanoterapeutico/";
+
+const URL_PDF_VISUALIZAR_PDF = "$IP_INTRANET/outras/visualizarpdf.php?b64=";
+
+const URL_PDF_IMPRIMIR_FICHA_MEDICA =
+    "$IP_INTRANET/intranet/mobileMedico/imprimirAcompanhamentoMedico2Via.php?adm=";
+const URL_PDF_IMPRIMIR_FICHA_ENFERMAGEM =
+    "$IP_INTRANET/intranet/mobileEnfa/imprimirFichaEnfermagem.php?adm=";
+const URL_PDF_IMPRIMIR_FICHA_NUTRICAO =
+    "$IP_INTRANET/intranet/mobileEspecialidade/imprimirAcompanhamentoNutricionista2Via.php?adm=";
+const URL_PDF_IMPRIMIR_FICHA_TECNICOBASE =
+    "$IP_INTRANET/intranet/agendamento_visitas/imprimirAcompanhamentoTecBase.php?adm=";
+const URL_PDF_IMPRIMIR_FICHA_ESPECIALIDADE =
+    "$IP_INTRANET/intranet/mobileEspecialidade/imprimirAcompanhamentoEspecialidade2Via.php";
 
 const LBL_FICHAENF_DIAGNOSTICO_001 = "Risco para aspiração";
 const LBL_FICHAENF_DIAGNOSTICO_002 = "Nutrição alterada";

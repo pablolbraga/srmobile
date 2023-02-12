@@ -42,6 +42,24 @@ class _OpcaoState extends State<Opcao> {
                       },
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.fromLTRB(32, 16, 32, 16),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(32),
+                        ),
+                      ),
+                      child: const Text(
+                        "Visitas Realizadas",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, "visitasrealizadasfiltro");
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
