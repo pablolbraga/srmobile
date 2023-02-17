@@ -11,6 +11,7 @@ import 'package:srmobile/views/fichatecnicobase.dart';
 import 'package:srmobile/views/fichaterapia.dart';
 import 'package:srmobile/views/login.dart';
 import 'package:srmobile/views/opcao.dart';
+import 'package:srmobile/views/pacientes.dart';
 import 'package:srmobile/views/visitasrealizadas.dart';
 import 'package:srmobile/views/visitasrealizadasfiltro.dart';
 import 'package:srmobile/views/visualizarpdf.dart';
@@ -44,7 +45,8 @@ class MyApp extends StatelessWidget {
         "assinatura_profissional": (context) => const AssinaturaProfissional(),
         "visitasrealizadasfiltro": (context) => const VisitasRealizadasFiltro(),
         "visitasrealizadas": (context) => const VisitasRealizadas(),
-        "visualizarpdf": (context) => const VisualizarPdf()
+        "visualizarpdf": (context) => const VisualizarPdf(),
+        "pacientes": (context) => const Pacientes()
       },
     );
   }

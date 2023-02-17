@@ -209,6 +209,7 @@ const URL_ESQUECEU_SENHA = "${URL_BASE}esqueceusenha/";
 const URL_VALIDAR_LOGIN_SENHA = "${URL_BASE}validarloginsenha/";
 const URL_ALTERAR_SENHA = "${URL_BASE}alterarsenha/";
 const URL_LISTAR_AGENDA = "${URL_BASE}listaragendaporprofissional/";
+const URL_LISTAR_PACIENTES = "${URL_BASE}listarpacientesgeral/";
 const URL_ADICIONAR_FICHA_TERAPIA = "${URL_BASE}addfichaterapia/";
 const URL_ADICIONAR_FICHA_MEDICA = "${URL_BASE}addfichamedica/";
 const URL_ADICIONAR_FICHA_ENFERMAGEM = "${URL_BASE}addfichaenfermagem/";
