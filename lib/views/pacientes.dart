@@ -75,6 +75,7 @@ class _PacientesState extends State<Pacientes> {
                             onTap: () {
                               VariaveisGlobais.dadosPaciente =
                                   snapshot.data[indice];
+                              Navigator.pushNamed(context, "pacienteopcao");
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(18.0),
