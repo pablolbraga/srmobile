@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 
+//const URL_BASE =
+//    "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
 const URL_BASE =
-    "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
+    "http://192.168.0.77:8080/SaudeResidenceHomeCareServices/srhcws/";
 const IP_INTRANET = "http://200.150.138.34:8001/sauderesidence";
 
 const BANCODB = "srmobile.db";
@@ -209,12 +211,15 @@ const URL_ESQUECEU_SENHA = "${URL_BASE}esqueceusenha/";
 const URL_VALIDAR_LOGIN_SENHA = "${URL_BASE}validarloginsenha/";
 const URL_ALTERAR_SENHA = "${URL_BASE}alterarsenha/";
 const URL_LISTAR_AGENDA = "${URL_BASE}listaragendaporprofissional/";
-const URL_LISTAR_PACIENTES = "${URL_BASE}listarpacientesgeral/";
+const URL_LISTAR_PACIENTES = "${URL_BASE}listarpacientesgeral";
+const URL_LISTAR_PRESCRICAO_MEDICA = "${URL_BASE}listarprescricaomedica/";
+
 const URL_ADICIONAR_FICHA_TERAPIA = "${URL_BASE}addfichaterapia/";
 const URL_ADICIONAR_FICHA_MEDICA = "${URL_BASE}addfichamedica/";
 const URL_ADICIONAR_FICHA_ENFERMAGEM = "${URL_BASE}addfichaenfermagem/";
 const URL_ADICIONAR_FICHA_NUTRICAO = "${URL_BASE}addfichanutricao/";
 const URL_ADICIONAR_FICHA_TECNICOBASE = "${URL_BASE}addfichatecnicobase/";
+const URL_ALTERAR_PRESCRICAO_MEDICA = "${URL_BASE}addprescricaomedica/";
 
 const URL_RETORNAR_PLANO_TERAPEUTICO = "${URL_BASE}retornarplanoterapeutico/";
 
@@ -395,6 +400,53 @@ List<DropdownMenuItem<String>> get LISTA_FICHATECNICOBASE_TIPOCHAMADA {
     const DropdownMenuItem(value: "", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("PROCEDIMENTO")),
     const DropdownMenuItem(value: "2", child: Text("ENTREGA")),
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>> get LISTA_PRESCRICAOMEDICA_VIAS {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "...", child: Text("...")),
+    const DropdownMenuItem(value: "VO", child: Text("VO")),
+    const DropdownMenuItem(value: "IM", child: Text("IM")),
+    const DropdownMenuItem(value: "SNE", child: Text("SNE")),
+    const DropdownMenuItem(value: "EV", child: Text("EV")),
+    const DropdownMenuItem(value: "SC", child: Text("SC")),
+    const DropdownMenuItem(value: "Nasal", child: Text("NASAL")),
+    const DropdownMenuItem(value: "VR", child: Text("VR")),
+    const DropdownMenuItem(value: "Inalatorio", child: Text("INALATÓRIO")),
+    const DropdownMenuItem(value: "Ocular", child: Text("OCULAR")),
+    const DropdownMenuItem(value: "Tópico", child: Text("TÓPICO")),
+    const DropdownMenuItem(value: "GTT", child: Text("GTT")),
+    const DropdownMenuItem(
+        value: "SVD - Sist Aberto", child: Text("SVD - SIST. ABERTO")),
+    const DropdownMenuItem(value: "PERIDURAL", child: Text("PERIDURAL")),
+    const DropdownMenuItem(value: "EV em BIC", child: Text("EV EM BIC")),
+    const DropdownMenuItem(value: "EV Em Bolus", child: Text("EV EM BOLUS")),
+    const DropdownMenuItem(
+        value: "SVD - Sist Fechado", child: Text("SVD - SIST. FECHADO")),
+    const DropdownMenuItem(value: "Tópico Oral", child: Text("TÓPICO ORAL")),
+    const DropdownMenuItem(
+        value: "EV p/ Hidratação", child: Text("EV P/ HIDRATAÇÃO")),
+    const DropdownMenuItem(value: "SNG", child: Text("SNG")),
+    const DropdownMenuItem(value: "SL", child: Text("SL")),
+    const DropdownMenuItem(value: "Otologico", child: Text("OTOLÓGICO")),
+    const DropdownMenuItem(
+        value: "EV em Bolus II", child: Text("EV EM BOLUS II")),
+    const DropdownMenuItem(value: "SOG", child: Text("SOG")),
+    const DropdownMenuItem(
+        value: "HIPODERMOCLISE", child: Text("HIPODERMOCLISE"))
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>> get LISTA_PRESCRICAOMEDICA_TIPOENVIO {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("IMEDIATO")),
+    const DropdownMenuItem(value: "2", child: Text("24 HORAS")),
+    const DropdownMenuItem(value: "3", child: Text("SEMANAL"))
   ];
   return menuItems;
 }

@@ -1,7 +1,6 @@
 // ignore_for_file: unnecessary_new, unused_local_variable, unused_field, prefer_is_empty
 
 import 'package:flutter/material.dart';
-import 'package:srmobile/helpers/variaveisglobais.dart';
 
 class PacienteOpcao extends StatefulWidget {
   const PacienteOpcao({super.key});
@@ -38,7 +37,9 @@ class _PacienteOpcaoState extends State<PacienteOpcao> {
                         "Prescrição Médica",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "prescricaomedicapesq");
+                      },
                     ),
                   ),
                   Padding(
