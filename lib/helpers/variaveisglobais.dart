@@ -6,6 +6,7 @@ import 'package:srmobile/models/fichatecnicobasemodel.dart';
 import 'package:srmobile/models/fichaterapiamodel.dart';
 import 'package:srmobile/models/pacientemodel.dart';
 import 'package:srmobile/models/prescricaomedicamodel.dart';
+import 'package:srmobile/models/prescricaoenfermagemmodel.dart';
 import 'package:srmobile/models/usuariomodel.dart';
 
 class VariaveisGlobais {
@@ -21,6 +22,7 @@ class VariaveisGlobais {
   static FichaTecnicoBaseModel? dadosFichaTecnicoBase;
   static PacienteModel? dadosPaciente;
   static PrescricaoMedicaModel? dadosPrescricaoMedica;
+  static PrescricaoEnfermagemModel? dadosPrescricaoEnfermagem;
 
   static String? dataIniVisitaRealizada;
   static String? dataFimVisitaRealizada;

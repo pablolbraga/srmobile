@@ -55,7 +55,10 @@ class _PacienteOpcaoState extends State<PacienteOpcao> {
                         "Prescrição de Enfermagem",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, "prescricaoenfermagempesq");
+                      },
                     ),
                   ),
                   Padding(

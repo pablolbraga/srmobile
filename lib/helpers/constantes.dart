@@ -213,6 +213,8 @@ const URL_ALTERAR_SENHA = "${URL_BASE}alterarsenha/";
 const URL_LISTAR_AGENDA = "${URL_BASE}listaragendaporprofissional/";
 const URL_LISTAR_PACIENTES = "${URL_BASE}listarpacientesgeral";
 const URL_LISTAR_PRESCRICAO_MEDICA = "${URL_BASE}listarprescricaomedica/";
+const URL_LISTAR_PRESCRICAO_ENFERMAGEM =
+    "${URL_BASE}listarprescricaoenfermagem/";
 
 const URL_ADICIONAR_FICHA_TERAPIA = "${URL_BASE}addfichaterapia/";
 const URL_ADICIONAR_FICHA_MEDICA = "${URL_BASE}addfichamedica/";
@@ -220,6 +222,7 @@ const URL_ADICIONAR_FICHA_ENFERMAGEM = "${URL_BASE}addfichaenfermagem/";
 const URL_ADICIONAR_FICHA_NUTRICAO = "${URL_BASE}addfichanutricao/";
 const URL_ADICIONAR_FICHA_TECNICOBASE = "${URL_BASE}addfichatecnicobase/";
 const URL_ALTERAR_PRESCRICAO_MEDICA = "${URL_BASE}addprescricaomedica/";
+const URL_ALTERAR_PRESCRICAO_ENFERMAGEM = "${URL_BASE}addsolicitarmaterial/";
 
 const URL_RETORNAR_PLANO_TERAPEUTICO = "${URL_BASE}retornarplanoterapeutico/";
 

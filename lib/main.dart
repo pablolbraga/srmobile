@@ -13,6 +13,8 @@ import 'package:srmobile/views/login.dart';
 import 'package:srmobile/views/opcao.dart';
 import 'package:srmobile/views/pacienteopcao.dart';
 import 'package:srmobile/views/pacientes.dart';
+import 'package:srmobile/views/prescricaoenfermagemcad.dart';
+import 'package:srmobile/views/prescricaoenfermagempesq.dart';
 import 'package:srmobile/views/prescricaomedicacad.dart';
 import 'package:srmobile/views/prescricaomedicapesq.dart';
 import 'package:srmobile/views/visitasrealizadas.dart';
@@ -52,7 +54,10 @@ class MyApp extends StatelessWidget {
         "pacientes": (context) => const Pacientes(),
         "pacienteopcao": (context) => const PacienteOpcao(),
         "prescricaomedicapesq": (context) => const PrescricaoMedicaPesq(),
-        "prescricaomedicacad": (context) => const PrescricaoMedicaCad()
+        "prescricaomedicacad": (context) => const PrescricaoMedicaCad(),
+        "prescricaoenfermagempesq": (context) =>
+            const PrescricaoEnfermagemPesq(),
+        "prescricaoenfermagemcad": (context) => const PrescricaoEnfermagemCad()
       },
     );
   }

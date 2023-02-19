@@ -43,6 +43,7 @@ dependencies:
   location: ^4.4.0
   sqflite: ^2.2.3
   syncfusion_flutter_pdfviewer: ^20.4.49
+  validatorless: ^1.2.3
   path: 
 
 dev_dependencies:
