@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 //const URL_BASE =
 //    "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
 const URL_BASE =
-    "http://192.168.0.77:8080/SaudeResidenceHomeCareServices/srhcws/";
+    "http://192.168.68.109:8080/SaudeResidenceHomeCareServices/srhcws/";
 const IP_INTRANET = "http://200.150.138.34:8001/sauderesidence";
 
 const BANCODB = "srmobile.db";
@@ -215,6 +215,8 @@ const URL_LISTAR_PACIENTES = "${URL_BASE}listarpacientesgeral";
 const URL_LISTAR_PRESCRICAO_MEDICA = "${URL_BASE}listarprescricaomedica/";
 const URL_LISTAR_PRESCRICAO_ENFERMAGEM =
     "${URL_BASE}listarprescricaoenfermagem/";
+const URL_LISTAR_PROCEDIMENTO_ENFERMAGEM =
+    "${URL_BASE}listarprocedimentoenfermagem/";
 
 const URL_ADICIONAR_FICHA_TERAPIA = "${URL_BASE}addfichaterapia/";
 const URL_ADICIONAR_FICHA_MEDICA = "${URL_BASE}addfichamedica/";
@@ -223,6 +225,8 @@ const URL_ADICIONAR_FICHA_NUTRICAO = "${URL_BASE}addfichanutricao/";
 const URL_ADICIONAR_FICHA_TECNICOBASE = "${URL_BASE}addfichatecnicobase/";
 const URL_ALTERAR_PRESCRICAO_MEDICA = "${URL_BASE}addprescricaomedica/";
 const URL_ALTERAR_PRESCRICAO_ENFERMAGEM = "${URL_BASE}addsolicitarmaterial/";
+const URL_ALTERAR_PROCEDIMENTO_ENFERMAGEM =
+    "${URL_BASE}addsolicitarprocedimento/";
 
 const URL_RETORNAR_PLANO_TERAPEUTICO = "${URL_BASE}retornarplanoterapeutico/";
 
@@ -450,6 +454,36 @@ List<DropdownMenuItem<String>> get LISTA_PRESCRICAOMEDICA_TIPOENVIO {
     const DropdownMenuItem(value: "1", child: Text("IMEDIATO")),
     const DropdownMenuItem(value: "2", child: Text("24 HORAS")),
     const DropdownMenuItem(value: "3", child: Text("SEMANAL"))
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>> get LISTA_PROCEDIMENTOENFERMAGEM_PROCEDIMENTO {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(
+        value: "TROCA DE TRAQUEOSTOMO", child: Text("TROCA DE TRAQUEOSTOMO")),
+    const DropdownMenuItem(
+        value: "TROCA DE CATETER DE GASTROSTOMIA",
+        child: Text("TROCA DE CATETER DE GASTROSTOMIA")),
+    const DropdownMenuItem(
+        value: "PUNÇÃO DE ACESSO CENTRAL",
+        child: Text("PUNÇÃO DE ACESSO CENTRAL")),
+    const DropdownMenuItem(
+        value: "DEBRIDAMENTO DA LESÃO POR PRESSÃO",
+        child: Text("DEBRIDAMENTO DA LESÃO POR PRESSÃO")),
+    const DropdownMenuItem(
+        value: "AVALIAÇÃO MÉDICA EM UTI MÓVEL",
+        child: Text("AVALIAÇÃO MÉDICA EM UTI MÓVEL")),
+    const DropdownMenuItem(
+        value: "EXAME FORA DO DOMÍCILIO",
+        child: Text("EXAME FORA DO DOMÍCILIO")),
+    const DropdownMenuItem(
+        value: "INTERNAMENTO DOMICILIAR",
+        child: Text("INTERNAMENTO DOMICILIAR")),
+    const DropdownMenuItem(
+        value: "RX DO TÓRAX NO LEITO", child: Text("RX DO TÓRAX NO LEITO")),
+    const DropdownMenuItem(value: "OUTROS", child: Text("OUTROS"))
   ];
   return menuItems;
 }

@@ -17,6 +17,8 @@ import 'package:srmobile/views/prescricaoenfermagemcad.dart';
 import 'package:srmobile/views/prescricaoenfermagempesq.dart';
 import 'package:srmobile/views/prescricaomedicacad.dart';
 import 'package:srmobile/views/prescricaomedicapesq.dart';
+import 'package:srmobile/views/procedimentoenfermagemcad.dart';
+import 'package:srmobile/views/procedimentoenfermagempesq.dart';
 import 'package:srmobile/views/visitasrealizadas.dart';
 import 'package:srmobile/views/visitasrealizadasfiltro.dart';
 import 'package:srmobile/views/visualizarpdf.dart';
@@ -57,7 +59,11 @@ class MyApp extends StatelessWidget {
         "prescricaomedicacad": (context) => const PrescricaoMedicaCad(),
         "prescricaoenfermagempesq": (context) =>
             const PrescricaoEnfermagemPesq(),
-        "prescricaoenfermagemcad": (context) => const PrescricaoEnfermagemCad()
+        "prescricaoenfermagemcad": (context) => const PrescricaoEnfermagemCad(),
+        "procedimentoenfermagempesq": (context) =>
+            const ProcedimentoEnfermagemPesq(),
+        "procedimentoenfermagemcad": (context) =>
+            const ProcedimentoEnfermagemCad()
       },
     );
   }
