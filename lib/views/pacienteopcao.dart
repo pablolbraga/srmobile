@@ -129,7 +129,9 @@ class _PacienteOpcaoState extends State<PacienteOpcao> {
                         "Solicitar Retorno de Exame",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "retornoexame");
+                      },
                     ),
                   ),
                   Padding(

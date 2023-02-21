@@ -23,6 +23,7 @@ import 'package:srmobile/views/prescricaomedicacad.dart';
 import 'package:srmobile/views/prescricaomedicapesq.dart';
 import 'package:srmobile/views/procedimentoenfermagemcad.dart';
 import 'package:srmobile/views/procedimentoenfermagempesq.dart';
+import 'package:srmobile/views/retornoexame.dart';
 import 'package:srmobile/views/visitasrealizadas.dart';
 import 'package:srmobile/views/visitasrealizadasfiltro.dart';
 import 'package:srmobile/views/visualizarpdf.dart';
@@ -71,7 +72,8 @@ class MyApp extends StatelessWidget {
         "equipamentopesq": (context) => const EquipamentoPesq(),
         "equipamentocad": (context) => const EquipamentoCad(),
         "examepesq": (context) => const ExamePesq(),
-        "examecad": (context) => const ExameCad()
+        "examecad": (context) => const ExameCad(),
+        "retornoexame": (context) => const RetornoExame()
       },
     );
   }

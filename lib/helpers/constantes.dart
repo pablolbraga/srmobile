@@ -231,6 +231,7 @@ const URL_ALTERAR_PROCEDIMENTO_ENFERMAGEM =
     "${URL_BASE}addsolicitarprocedimento/";
 const URL_ALTERAR_EQUIPAMENTO = "${URL_BASE}addsolicitarequipamento/";
 const URL_ALTERAR_EXAME = "${URL_BASE}addsolicitarexame/";
+const URL_ALTERAR_RETORNOEXAME = "${URL_BASE}addretornoexame/";
 
 const URL_RETORNAR_PLANO_TERAPEUTICO = "${URL_BASE}retornarplanoterapeutico/";
 
