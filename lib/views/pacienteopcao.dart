@@ -111,7 +111,9 @@ class _PacienteOpcaoState extends State<PacienteOpcao> {
                         "Exames",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "examepesq");
+                      },
                     ),
                   ),
                   Padding(

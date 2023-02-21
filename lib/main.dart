@@ -6,6 +6,8 @@ import 'package:srmobile/views/assinaturaprofissional.dart';
 import 'package:srmobile/views/equipamentocad.dart';
 import 'package:srmobile/views/equipamentopesq.dart';
 import 'package:srmobile/views/esqueceusenha.dart';
+import 'package:srmobile/views/examecad.dart';
+import 'package:srmobile/views/examepesq.dart';
 import 'package:srmobile/views/fichaenfermagem.dart';
 import 'package:srmobile/views/fichamedica.dart';
 import 'package:srmobile/views/fichanutricao.dart';
@@ -67,7 +69,9 @@ class MyApp extends StatelessWidget {
         "procedimentoenfermagemcad": (context) =>
             const ProcedimentoEnfermagemCad(),
         "equipamentopesq": (context) => const EquipamentoPesq(),
-        "equipamentocad": (context) => const EquipamentoCad()
+        "equipamentocad": (context) => const EquipamentoCad(),
+        "examepesq": (context) => const ExamePesq(),
+        "examecad": (context) => const ExameCad()
       },
     );
   }

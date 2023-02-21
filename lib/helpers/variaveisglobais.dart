@@ -1,5 +1,6 @@
 import 'package:srmobile/models/agendamodel.dart';
 import 'package:srmobile/models/equipamentomodel.dart';
+import 'package:srmobile/models/examemodel.dart';
 import 'package:srmobile/models/fichaenfermagemmodel.dart';
 import 'package:srmobile/models/fichamedicamodel.dart';
 import 'package:srmobile/models/fichanutricaomodel.dart';
@@ -27,6 +28,7 @@ class VariaveisGlobais {
   static PrescricaoEnfermagemModel? dadosPrescricaoEnfermagem;
   static ProcedimentoEnfermagemModel? dadosProcedimentoEnfermagem;
   static EquipamentoModel? dadosEquipamento;
+  static ExameModel? dadosExame;
 
   static String? dataIniVisitaRealizada;
   static String? dataFimVisitaRealizada;

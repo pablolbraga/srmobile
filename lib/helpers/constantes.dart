@@ -218,6 +218,7 @@ const URL_LISTAR_PRESCRICAO_ENFERMAGEM =
 const URL_LISTAR_PROCEDIMENTO_ENFERMAGEM =
     "${URL_BASE}listarprocedimentoenfermagem/";
 const URL_LISTAR_EQUIPAMENTO = "${URL_BASE}listarequipamentos/";
+const URL_LISTAR_EXAME = "${URL_BASE}listarexamesporadmissao/";
 
 const URL_ADICIONAR_FICHA_TERAPIA = "${URL_BASE}addfichaterapia/";
 const URL_ADICIONAR_FICHA_MEDICA = "${URL_BASE}addfichamedica/";
@@ -229,6 +230,7 @@ const URL_ALTERAR_PRESCRICAO_ENFERMAGEM = "${URL_BASE}addsolicitarmaterial/";
 const URL_ALTERAR_PROCEDIMENTO_ENFERMAGEM =
     "${URL_BASE}addsolicitarprocedimento/";
 const URL_ALTERAR_EQUIPAMENTO = "${URL_BASE}addsolicitarequipamento/";
+const URL_ALTERAR_EXAME = "${URL_BASE}addsolicitarexame/";
 
 const URL_RETORNAR_PLANO_TERAPEUTICO = "${URL_BASE}retornarplanoterapeutico/";
 
