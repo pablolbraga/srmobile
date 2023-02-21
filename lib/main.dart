@@ -3,6 +3,8 @@ import 'package:srmobile/views/agenda.dart';
 import 'package:srmobile/views/alterarsenha.dart';
 import 'package:srmobile/views/assinaturapaciente.dart';
 import 'package:srmobile/views/assinaturaprofissional.dart';
+import 'package:srmobile/views/equipamentocad.dart';
+import 'package:srmobile/views/equipamentopesq.dart';
 import 'package:srmobile/views/esqueceusenha.dart';
 import 'package:srmobile/views/fichaenfermagem.dart';
 import 'package:srmobile/views/fichamedica.dart';
@@ -63,7 +65,9 @@ class MyApp extends StatelessWidget {
         "procedimentoenfermagempesq": (context) =>
             const ProcedimentoEnfermagemPesq(),
         "procedimentoenfermagemcad": (context) =>
-            const ProcedimentoEnfermagemCad()
+            const ProcedimentoEnfermagemCad(),
+        "equipamentopesq": (context) => const EquipamentoPesq(),
+        "equipamentocad": (context) => const EquipamentoCad()
       },
     );
   }
