@@ -147,7 +147,9 @@ class _PacienteOpcaoState extends State<PacienteOpcao> {
                         "Intercorrências",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "intercorrencia");
+                      },
                     ),
                   ),
                   Padding(

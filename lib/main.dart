@@ -13,6 +13,7 @@ import 'package:srmobile/views/fichamedica.dart';
 import 'package:srmobile/views/fichanutricao.dart';
 import 'package:srmobile/views/fichatecnicobase.dart';
 import 'package:srmobile/views/fichaterapia.dart';
+import 'package:srmobile/views/intercorrencia.dart';
 import 'package:srmobile/views/login.dart';
 import 'package:srmobile/views/opcao.dart';
 import 'package:srmobile/views/pacienteopcao.dart';
@@ -73,7 +74,8 @@ class MyApp extends StatelessWidget {
         "equipamentocad": (context) => const EquipamentoCad(),
         "examepesq": (context) => const ExamePesq(),
         "examecad": (context) => const ExameCad(),
-        "retornoexame": (context) => const RetornoExame()
+        "retornoexame": (context) => const RetornoExame(),
+        "intercorrencia": (context) => const Intercorrencia()
       },
     );
   }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 //const URL_BASE =
 //    "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
 const URL_BASE =
-    "http://192.168.0.77:8080/SaudeResidenceHomeCareServices/srhcws/";
+    "http://192.168.68.101:8080/SaudeResidenceHomeCareServices/srhcws/";
 const IP_INTRANET = "http://200.150.138.34:8001/sauderesidence";
 
 const BANCODB = "srmobile.db";
@@ -232,6 +232,7 @@ const URL_ALTERAR_PROCEDIMENTO_ENFERMAGEM =
 const URL_ALTERAR_EQUIPAMENTO = "${URL_BASE}addsolicitarequipamento/";
 const URL_ALTERAR_EXAME = "${URL_BASE}addsolicitarexame/";
 const URL_ALTERAR_RETORNOEXAME = "${URL_BASE}addretornoexame/";
+const URL_ALTERAR_INTERCORRENCIA = "${URL_BASE}addintercorrencia/";
 
 const URL_RETORNAR_PLANO_TERAPEUTICO = "${URL_BASE}retornarplanoterapeutico/";
 
@@ -489,6 +490,26 @@ List<DropdownMenuItem<String>> get LISTA_PROCEDIMENTOENFERMAGEM_PROCEDIMENTO {
     const DropdownMenuItem(
         value: "RX DO TÓRAX NO LEITO", child: Text("RX DO TÓRAX NO LEITO")),
     const DropdownMenuItem(value: "OUTROS", child: Text("OUTROS"))
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>> get LISTA_INTERCORRENCIA_TIPO {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("CLÍNICA")),
+    const DropdownMenuItem(value: "2", child: Text("RETORNO DE EXAME")),
+    const DropdownMenuItem(value: "3", child: Text("ATENDIMENTO EMERGÊNCIA")),
+    const DropdownMenuItem(value: "4", child: Text("ALTERAÇÃO DE PRESCRIÇÃO"))
+  ];
+  return menuItems;
+}
+
+List<DropdownMenuItem<String>> get LISTA_INTERCORRENCIA_GRAUURGENCIA {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "1", child: Text("NÃO URGENTE")),
+    const DropdownMenuItem(value: "2", child: Text("URGENTE"))
   ];
   return menuItems;
 }
