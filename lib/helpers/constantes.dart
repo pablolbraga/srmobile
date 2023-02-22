@@ -237,6 +237,8 @@ const URL_ALTERAR_INTERCORRENCIA = "${URL_BASE}addintercorrencia/";
 const URL_RETORNAR_PLANO_TERAPEUTICO = "${URL_BASE}retornarplanoterapeutico/";
 
 const URL_PDF_VISUALIZAR_PDF = "$IP_INTRANET/outras/visualizarpdf.php?b64=";
+const URL_BUSCAR_ULTIMA_VISITA_REALIZADA =
+    "${URL_BASE}buscarultimavisitarealizadaporadmissao/";
 
 const URL_PDF_IMPRIMIR_FICHA_MEDICA =
     "$IP_INTRANET/intranet/mobileMedico/imprimirAcompanhamentoMedico2Via.php?adm=";

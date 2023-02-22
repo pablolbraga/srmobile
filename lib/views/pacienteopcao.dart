@@ -1,6 +1,12 @@
-// ignore_for_file: unnecessary_new, unused_local_variable, unused_field, prefer_is_empty
+// ignore_for_file: unnecessary_new, unused_local_variable, unused_field, prefer_is_empty, prefer_interpolation_to_compose_strings, use_build_context_synchronously
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:srmobile/helpers/constantes.dart';
+import 'package:srmobile/helpers/uteis.dart';
+import 'package:srmobile/helpers/variaveisglobais.dart';
+import 'package:srmobile/models/visitasrealizadasmodel.dart';
+import 'package:srmobile/views/visualizarpdf.dart';
 
 class PacienteOpcao extends StatefulWidget {
   const PacienteOpcao({super.key});
@@ -165,7 +171,9 @@ class _PacienteOpcaoState extends State<PacienteOpcao> {
                         "Última Visita Realizada",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _abrirUltimaFicha();
+                      },
                     ),
                   ),
                 ],
@@ -180,5 +188,41 @@ class _PacienteOpcaoState extends State<PacienteOpcao> {
   Future<bool> _voltarTela() async {
     Navigator.pushNamed(context, "pacientes");
     return true;
+  }
+
+  void _abrirUltimaFicha() async {
+    var idadmissao = VariaveisGlobais.dadosPaciente?.idadmission;
+    var idespecialidade = VariaveisGlobais.dadosUsuario?.idespecialidade;
+    setState(() {
+      VariaveisGlobais.pathPdf = "";
+    });
+    String urlLocal =
+        "$URL_BUSCAR_ULTIMA_VISITA_REALIZADA$idadmissao/$idespecialidade";
+    if (idespecialidade == 148815) {
+      // Medico
+      Response response = await Dio().get(urlLocal);
+      var lista;
+      if (response.statusCode == 200) {
+        lista = (response.data as List).map((item) {
+          return VisitasRealizadasModel.fromJson(item);
+        }).toList();
+        if (lista[0].imagem == "") {
+          setState(() {
+            VariaveisGlobais.pathPdf =
+                "$URL_PDF_IMPRIMIR_FICHA_MEDICA$idadmissao&evol=${lista[0].idevolution}";
+          });
+        } else {
+          setState(() {
+            VariaveisGlobais.pathPdf = URL_PDF_VISUALIZAR_PDF + lista[0].imagem;
+          });
+        }
+        VariaveisGlobais.tipoRedirecionamento = 1;
+        Navigator.pushNamed(context, "visualizarpdf");
+      } else {
+        Uteis.mostrarAviso(context, "Aviso", "Erro ao visualizar a ficha.");
+      }
+    } else {
+      Uteis.mostrarAviso(context, "Aviso", "Visualização não disponível.");
+    }
   }
 }

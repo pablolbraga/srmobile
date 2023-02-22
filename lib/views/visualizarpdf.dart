@@ -42,7 +42,7 @@ class _VisualizarPdfState extends State<VisualizarPdf> {
 
   Future<bool> _onBackPressed() async {
     if (VariaveisGlobais.tipoRedirecionamento == 1) {
-      Navigator.pushNamed(context, "dadospacienteopcao");
+      Navigator.pushNamed(context, "pacienteopcao");
     } else {
       Navigator.pushNamed(context, "visitasrealizadas");
     }
