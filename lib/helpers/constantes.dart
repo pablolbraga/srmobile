@@ -238,11 +238,11 @@ const URL_LISTAR_PROCEDIMENTO_ENFERMAGEM =
 const URL_LISTAR_EQUIPAMENTO = "${URL_BASE}listarequipamentos/";
 const URL_LISTAR_EXAME = "${URL_BASE}listarexamesporadmissao/";
 
-const URL_ADICIONAR_FICHA_TERAPIA = "${URL_BASE}addfichaterapia/";
-const URL_ADICIONAR_FICHA_MEDICA = "${URL_BASE}addfichamedica/";
-const URL_ADICIONAR_FICHA_ENFERMAGEM = "${URL_BASE}addfichaenfermagem/";
-const URL_ADICIONAR_FICHA_NUTRICAO = "${URL_BASE}addfichanutricao/";
-const URL_ADICIONAR_FICHA_TECNICOBASE = "${URL_BASE}addfichatecnicobase/";
+const URL_ADICIONAR_FICHA_TERAPIA = "${URL_BASE}addfichaterapia";
+const URL_ADICIONAR_FICHA_MEDICA = "${URL_BASE}addfichamedica";
+const URL_ADICIONAR_FICHA_ENFERMAGEM = "${URL_BASE}addfichaenfermagem";
+const URL_ADICIONAR_FICHA_NUTRICAO = "${URL_BASE}addfichanutricao";
+const URL_ADICIONAR_FICHA_TECNICOBASE = "${URL_BASE}addfichatecnicobase";
 const URL_ALTERAR_PRESCRICAO_MEDICA = "${URL_BASE}addprescricaomedica/";
 const URL_ALTERAR_PRESCRICAO_ENFERMAGEM = "${URL_BASE}addsolicitarmaterial/";
 const URL_ALTERAR_PROCEDIMENTO_ENFERMAGEM =

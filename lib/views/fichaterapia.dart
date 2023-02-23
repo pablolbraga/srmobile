@@ -122,7 +122,10 @@ class _FichaTerapiaState extends State<FichaTerapia> {
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                       onPressed: () {
-                        _validarCampos();
+                        var formValid = _formKey.currentState!.validate();
+                        if (formValid) {
+                          _validarCampos();
+                        }
                       },
                     ),
                   ),
