@@ -5,10 +5,28 @@ import 'package:flutter/material.dart';
 //const URL_BASE =
 //    "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
 const URL_BASE =
-    "http://192.168.68.101:8080/SaudeResidenceHomeCareServices/srhcws/";
+    "http://192.168.0.77:8080/SaudeResidenceHomeCareServices/srhcws/";
 const IP_INTRANET = "http://200.150.138.34:8001/sauderesidence";
 
 const BANCODB = "srmobile.db";
+
+const TB_FICHATERAPIA = "TB_FICHATERAPIA";
+const TB_FICHATERAPIA_ID = "ID";
+const TB_FICHATERAPIA_IDADMISSION = "IDADMISSION";
+const TB_FICHATERAPIA_IDCAPCONSULT = "IDCAPCONSULT";
+const TB_FICHATERAPIA_IDPROFAGENDA = "IDPROFAGENDA";
+const TB_FICHATERAPIA_DATAINICIO = "DATAINICIO";
+const TB_FICHATERAPIA_DATAFIM = "DATAFIM";
+const TB_FICHATERAPIA_IDPROFESSIONAL = "IDPROFESSIONAL";
+const TB_FICHATERAPIA_IDESPECIALIDADE = "IDESPECIALIDADE";
+const TB_FICHATERAPIA_NMPACIENTE = "NMPACIENTE";
+const TB_FICHATERAPIA_LATITUDE = "LATITUDE";
+const TB_FICHATERAPIA_LONGITUDE = "LONGITUDE";
+const TB_FICHATERAPIA_PARTICIPACAOCLIENTE = "PARTICIPACAOCLIENTE";
+const TB_FICHATERAPIA_EXECUCAOTECNICAPROPOSTA = "EXECUCAOTECNICAPROPOSTA";
+const TB_FICHATERAPIA_OBSERVACAO = "OBSERVACAO";
+const TB_FICHATERAPIA_ASSINATURAPACIENTE = "ASSINATURAPACIENTE";
+const TB_FICHATERAPIA_ASSINATURAPROFISSIONAL = "ASSINATURAPROFISSIONAL";
 
 const TB_FICHAENFERMAGEM = "TB_FICHAENFERMAGEM";
 const TB_FICHAENFERMAGEM_ID = "ID";
@@ -296,21 +314,30 @@ const LBL_FICHAENF_PLANOCUIDADO_007 =
 const LBL_FICHAENF_PLANOCUIDADO_008 =
     "Antes de administrar medicação em comprimidos por cateteres (nasoenteral ou nasogástrico), macerar, colocar de molho e administrar a medicação.";
 
-const List<String> LISTA_FICHATERAPIA_PARTICIPACAO = [
-  'SELECIONE',
-  'ATIVO',
-  'ATIVO ASSISTIDO',
-  'PASSIVO',
-  'NÃO REALIZADO'
-];
+List<DropdownMenuItem<String>> get LISTA_FICHATERAPIA_PARTICIPACAO {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "ATIVO", child: Text("ATIVO")),
+    const DropdownMenuItem(
+        value: "ATIVO ASSISTIDO", child: Text("ATIVO ASSISTIDO")),
+    const DropdownMenuItem(value: "PASSIVO", child: Text("PASSIVO")),
+    const DropdownMenuItem(
+        value: "NÃO REALIZADO", child: Text("NÃO REALIZADO")),
+  ];
+  return menuItems;
+}
 
-const List<String> LISTA_FICHATERAPIA_EXECUCAO = [
-  'SELECIONE',
-  'COMPLETA',
-  'PARCIAL',
-  'MÍNIMA',
-  'NÃO REALIZADO'
-];
+List<DropdownMenuItem<String>> get LISTA_FICHATERAPIA_EXECUCAO {
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "COMPLETA", child: Text("COMPLETA")),
+    const DropdownMenuItem(value: "PARCIAL", child: Text("PARCIAL")),
+    const DropdownMenuItem(value: "MÍNIMA", child: Text("MÍNIMA")),
+    const DropdownMenuItem(
+        value: "NÃO REALIZADO", child: Text("NÃO REALIZADO")),
+  ];
+  return menuItems;
+}
 
 List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_TIPONUTRICAO {
   List<DropdownMenuItem<String>> menuItems = [

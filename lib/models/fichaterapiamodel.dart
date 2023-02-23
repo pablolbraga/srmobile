@@ -1,6 +1,7 @@
 class FichaTerapiaModel {
   int? idadmission;
   int? idprofessional;
+  int? idespecialidade;
   int? idcapconsult;
   int? idprofagenda;
   String? datainicio;
@@ -16,6 +17,7 @@ class FichaTerapiaModel {
   FichaTerapiaModel(
       {this.idadmission,
       this.idprofessional,
+      this.idespecialidade,
       this.idcapconsult,
       this.idprofagenda,
       this.datainicio,
@@ -32,6 +34,7 @@ class FichaTerapiaModel {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['idadmission'] = idadmission;
     data['idprofessional'] = idprofessional;
+    data['idespecialidade'] = idespecialidade;
     data['idcapconsult'] = idcapconsult;
     data['idprofagenda'] = idprofagenda;
     data['datainicio'] = datainicio;

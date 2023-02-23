@@ -13,6 +13,7 @@ class FichaTerapiaDbModel extends FichaTerapiaModel {
     this.nmpaciente = map['NMPACIENTE'];
     this.idadmission = map['IDADMISSION'];
     this.idprofessional = map['IDPROFESSIONAL'];
+    this.idespecialidade = map['IDESPECIALIDADE'];
     this.idcapconsult = map['IDCAPCONSULT'];
     this.idprofagenda = map['IDPROFAGENDA'];
     this.datainicio = map['DATAINICIO'];
