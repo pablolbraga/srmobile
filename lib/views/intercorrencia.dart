@@ -107,7 +107,7 @@ class _IntercorrenciaState extends State<Intercorrencia> {
                     keyboardType: TextInputType.text,
                     validator: Validatorless.required("Campo Obrigatório"),
                     maxLength: 5,
-                    decoration: InputDecoration(hintText: "HH:MM"),
+                    decoration: const InputDecoration(hintText: "HH:MM"),
                   ),
                 ),
                 const SizedBox(height: 20),
