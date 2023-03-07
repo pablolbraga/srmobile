@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 //const URL_BASE =
 //    "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
 const URL_BASE =
-    "http://192.168.0.77:8080/SaudeResidenceHomeCareServices/srhcws/";
+    "http://192.168.0.118:8080/SaudeResidenceHomeCareServices/srhcws/";
 const IP_INTRANET = "http://200.150.138.34:8001/sauderesidence";
 
 const BANCODB = "srmobile.db";
