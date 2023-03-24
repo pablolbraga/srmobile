@@ -14,15 +14,15 @@ class SolicitacaoEquipamentoModel {
 
   SolicitacaoEquipamentoModel(
       {this.nmsolicitante,
-      this.idadmission,
-      this.idusuario,
-      this.idpaciente,
-      this.idperson,
-      this.nmpaciente,
-      this.tipoalteracao,
-      this.equipamento,
-      this.observacao,
-      this.justificativa});
+        this.idadmission,
+        this.idusuario,
+        this.idpaciente,
+        this.idperson,
+        this.nmpaciente,
+        this.tipoalteracao,
+        this.equipamento,
+        this.observacao,
+        this.justificativa});
 
   SolicitacaoEquipamentoModel.fromJson(Map<String, dynamic> json) {
     nmsolicitante = json['nmsolicitante'];

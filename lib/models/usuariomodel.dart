@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_this, prefer_collection_literals, unnecessary_new
-
 class UsuarioModel {
   int? idusuario;
   String? nome;
@@ -14,15 +12,15 @@ class UsuarioModel {
 
   UsuarioModel(
       {this.idusuario,
-      this.nome,
-      this.login,
-      this.email,
-      this.idperson,
-      this.primeiroacesso,
-      this.idespecialidade,
-      this.apelido,
-      this.nmespecialidade,
-      this.registro});
+        this.nome,
+        this.login,
+        this.email,
+        this.idperson,
+        this.primeiroacesso,
+        this.idespecialidade,
+        this.apelido,
+        this.nmespecialidade,
+        this.registro});
 
   UsuarioModel.fromJson(Map<String, dynamic> json) {
     idusuario = json['idusuario'];

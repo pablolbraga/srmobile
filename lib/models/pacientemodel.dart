@@ -7,10 +7,10 @@ class PacienteModel {
 
   PacienteModel(
       {this.idadmission,
-      this.nome,
-      this.nmconvenio,
-      this.nmservico,
-      this.idpatient});
+        this.nome,
+        this.nmconvenio,
+        this.nmservico,
+        this.idpatient});
 
   PacienteModel.fromJson(Map<String, dynamic> json) {
     idadmission = json['idadmission'];

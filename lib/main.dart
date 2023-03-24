@@ -16,7 +16,7 @@ import 'package:srmobile/views/fichaterapia.dart';
 import 'package:srmobile/views/intercorrencia.dart';
 import 'package:srmobile/views/login.dart';
 import 'package:srmobile/views/opcao.dart';
-import 'package:srmobile/views/pacienteopcao.dart';
+import 'package:srmobile/views/pacientesopcao.dart';
 import 'package:srmobile/views/pacientes.dart';
 import 'package:srmobile/views/prescricaoenfermagemcad.dart';
 import 'package:srmobile/views/prescricaoenfermagempesq.dart';

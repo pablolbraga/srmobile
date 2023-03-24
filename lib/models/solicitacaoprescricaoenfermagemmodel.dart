@@ -18,19 +18,19 @@ class SolicitacaoPrescricaoEnfermagemModel {
 
   SolicitacaoPrescricaoEnfermagemModel(
       {this.tipo,
-      this.idprofissionalsolicitante,
-      this.idpaciente,
-      this.datasolicitacao,
-      this.nmmaterial,
-      this.quantidade,
-      this.frequencia,
-      this.posologia,
-      this.via,
-      this.duracao,
-      this.observacao,
-      this.justificativa,
-      this.status,
-      this.idadmission});
+        this.idprofissionalsolicitante,
+        this.idpaciente,
+        this.datasolicitacao,
+        this.nmmaterial,
+        this.quantidade,
+        this.frequencia,
+        this.posologia,
+        this.via,
+        this.duracao,
+        this.observacao,
+        this.justificativa,
+        this.status,
+        this.idadmission});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

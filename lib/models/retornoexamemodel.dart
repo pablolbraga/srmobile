@@ -9,10 +9,10 @@ class RetornoExameModel {
 
   RetornoExameModel(
       {this.idadmission,
-      this.idprofessional,
-      this.dataretorno,
-      this.acompanhante,
-      this.observacao});
+        this.idprofessional,
+        this.dataretorno,
+        this.acompanhante,
+        this.observacao});
 
   RetornoExameModel.fromJson(Map<String, dynamic> json) {
     idadmission = json['idadmission'];

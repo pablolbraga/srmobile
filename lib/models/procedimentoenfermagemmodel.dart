@@ -8,9 +8,9 @@ class ProcedimentoEnfermagemModel {
 
   ProcedimentoEnfermagemModel(
       {this.idprocedimento,
-      this.idprescricao,
-      this.nmprocedimento,
-      this.nmfrequencia});
+        this.idprescricao,
+        this.nmprocedimento,
+        this.nmfrequencia});
 
   ProcedimentoEnfermagemModel.fromJson(Map<String, dynamic> json) {
     idprocedimento = json['idprocedimento'];

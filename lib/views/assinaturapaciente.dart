@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:signature/signature.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
+import 'package:signature/signature.dart';
 
 class AssinaturaPaciente extends StatefulWidget {
   const AssinaturaPaciente({super.key});

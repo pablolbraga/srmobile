@@ -11,12 +11,12 @@ class SolicitacaoProcedimentoEnfermagemModel {
 
   SolicitacaoProcedimentoEnfermagemModel(
       {this.nmsolicitante,
-      this.idadmission,
-      this.nmpaciente,
-      this.tipoalteracao,
-      this.procedimento,
-      this.observacao,
-      this.justificativa});
+        this.idadmission,
+        this.nmpaciente,
+        this.tipoalteracao,
+        this.procedimento,
+        this.observacao,
+        this.justificativa});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

@@ -1,9 +1,7 @@
-// ignore_for_file: sort_child_properties_last, prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
+import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/models/fichaterapiamodel.dart';
 import 'package:validatorless/validatorless.dart';
 

@@ -15,16 +15,16 @@ class PrescricaoEnfermagemModel {
 
   PrescricaoEnfermagemModel(
       {this.id,
-      this.idpatient,
-      this.idprescricao,
-      this.idadmission,
-      this.nmpaciente,
-      this.idproduto,
-      this.nmproduto,
-      this.quantidade,
-      this.unidmed,
-      this.frequencia,
-      this.nmprocedimento});
+        this.idpatient,
+        this.idprescricao,
+        this.idadmission,
+        this.nmpaciente,
+        this.idproduto,
+        this.nmproduto,
+        this.quantidade,
+        this.unidmed,
+        this.frequencia,
+        this.nmprocedimento});
 
   PrescricaoEnfermagemModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

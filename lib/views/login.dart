@@ -1,21 +1,20 @@
-// ignore_for_file: unnecessary_new, unused_local_variable, unused_field, prefer_is_empty
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
-import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
+import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/models/usuariomodel.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  const Login({Key? key}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
+  late ProgressDialog pr;
   final TextEditingController _ctrLogin = TextEditingController();
   final TextEditingController _ctrSenha = TextEditingController();
   bool _esconderSenha = true;
@@ -23,21 +22,21 @@ class _LoginState extends State<Login> {
   bool _serviceStatus = false;
   late LocationPermission permission;
   bool _hasPermission = false;
-  late ProgressDialog pr;
+
   @override
   Widget build(BuildContext context) {
     pr = ProgressDialog(context, showLogs: true);
     pr.style(message: "Validando dados...");
     _validarPermissoes();
     return WillPopScope(
-      onWillPop: _voltarTela,
-      child: Scaffold(
-        body: Container(
-          decoration: const BoxDecoration(color: Color(0xffD9EFF3)),
-          padding: const EdgeInsets.all(16),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
+        onWillPop: _voltarTela,
+        child: Scaffold(
+          body: Container(
+              decoration: const BoxDecoration(color: Color(0xffD9EFF3)),
+              padding: const EdgeInsets.all(16),
+              child: Center(
+                  child: SingleChildScrollView(
+                      child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
@@ -110,8 +109,8 @@ class _LoginState extends State<Login> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.fromLTRB(32, 16, 32, 16),
-                        shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(32),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(32),
                         ),
                       ),
                       child: const Text(
@@ -155,12 +154,8 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+              )))),
+        ));
   }
 
   Future<bool> _voltarTela() async {
@@ -172,6 +167,37 @@ class _LoginState extends State<Login> {
     setState(() {
       _esconderSenha = !_esconderSenha;
     });
+  }
+
+  void _validarPermissoes() async {
+    _serviceStatus = await Geolocator.isLocationServiceEnabled();
+    if (_serviceStatus) {
+      permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          setState(() {
+            _hasPermission = false;
+            _mensagemErro = "As permissões de localização foram negadas.";
+          });
+        } else if (permission == LocationPermission.deniedForever) {
+          setState(() {
+            _hasPermission = false;
+            _mensagemErro =
+                "AS permissões de localização estão negadas permanentemente.";
+          });
+        } else {
+          _hasPermission = true;
+        }
+      } else {
+        _hasPermission = true;
+      }
+    } else {
+      setState(() {
+        _hasPermission = false;
+        _mensagemErro = "O serviço de GPS não está ativada. Ative o GPS";
+      });
+    }
   }
 
   void _validarCampos() {
@@ -229,37 +255,6 @@ class _LoginState extends State<Login> {
     } else {
       setState(() {
         _mensagemErro = "Erro ao acessar o sistema.";
-      });
-    }
-  }
-
-  void _validarPermissoes() async {
-    _serviceStatus = await Geolocator.isLocationServiceEnabled();
-    if (_serviceStatus) {
-      permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          setState(() {
-            _hasPermission = false;
-            _mensagemErro = "As permissões de localização foram negadas.";
-          });
-        } else if (permission == LocationPermission.deniedForever) {
-          setState(() {
-            _hasPermission = false;
-            _mensagemErro =
-                "AS permissões de localização estão negadas permanentemente.";
-          });
-        } else {
-          _hasPermission = true;
-        }
-      } else {
-        _hasPermission = true;
-      }
-    } else {
-      setState(() {
-        _hasPermission = false;
-        _mensagemErro = "O serviço de GPS não está ativada. Ative o GPS";
       });
     }
   }

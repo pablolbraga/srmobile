@@ -12,13 +12,13 @@ class ExameModel {
 
   ExameModel(
       {this.id,
-      this.idimagem,
-      this.idexame,
-      this.nmexame,
-      this.datareq,
-      this.dataprogres,
-      this.datarealres,
-      this.nmsolicitante});
+        this.idimagem,
+        this.idexame,
+        this.nmexame,
+        this.datareq,
+        this.dataprogres,
+        this.datarealres,
+        this.nmsolicitante});
 
   ExameModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

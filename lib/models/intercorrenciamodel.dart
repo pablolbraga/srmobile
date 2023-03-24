@@ -15,16 +15,16 @@ class IntercorrenciaModel {
 
   IntercorrenciaModel(
       {this.idadmission,
-      this.grauurgencia,
-      this.classificacao,
-      this.tipointercorrencia,
-      this.dataevento,
-      this.datamaxima,
-      this.horamaxima,
-      this.nmprofissional,
-      this.registroprofissional,
-      this.descricao,
-      this.acaotomada});
+        this.grauurgencia,
+        this.classificacao,
+        this.tipointercorrencia,
+        this.dataevento,
+        this.datamaxima,
+        this.horamaxima,
+        this.nmprofissional,
+        this.registroprofissional,
+        this.descricao,
+        this.acaotomada});
 
   IntercorrenciaModel.fromJson(Map<String, dynamic> json) {
     idadmission = json['idadmission'];

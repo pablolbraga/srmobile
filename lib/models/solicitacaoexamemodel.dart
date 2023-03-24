@@ -11,12 +11,12 @@ class SolicitacaoExameModel {
 
   SolicitacaoExameModel(
       {this.nmsolicitante,
-      this.idadmission,
-      this.nmpaciente,
-      this.tipoalteracao,
-      this.exames,
-      this.observacao,
-      this.justificativa});
+        this.idadmission,
+        this.nmpaciente,
+        this.tipoalteracao,
+        this.exames,
+        this.observacao,
+        this.justificativa});
 
   SolicitacaoExameModel.fromJson(Map<String, dynamic> json) {
     nmsolicitante = json['nmsolicitante'];

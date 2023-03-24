@@ -3,8 +3,8 @@
 import 'package:date_format/date_format.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
+import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/models/agendamodel.dart';
 
 class Agenda extends StatefulWidget {

@@ -16,19 +16,19 @@ class FichaTerapiaModel {
 
   FichaTerapiaModel(
       {this.idadmission,
-      this.idprofessional,
-      this.idespecialidade,
-      this.idcapconsult,
-      this.idprofagenda,
-      this.datainicio,
-      this.datafim,
-      this.participacaocliente,
-      this.execucaotecnicaproposta,
-      this.observacao,
-      this.assinaturapaciente,
-      this.assinaturaprofissional,
-      this.latitude,
-      this.longitude});
+        this.idprofessional,
+        this.idespecialidade,
+        this.idcapconsult,
+        this.idprofagenda,
+        this.datainicio,
+        this.datafim,
+        this.participacaocliente,
+        this.execucaotecnicaproposta,
+        this.observacao,
+        this.assinaturapaciente,
+        this.assinaturaprofissional,
+        this.latitude,
+        this.longitude});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
