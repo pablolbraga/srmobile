@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 
@@ -20,19 +20,28 @@ const URL_ADICIONAR_FICHA_NUTRICAO = "${URL_BASE}addfichanutricao";
 const URL_ADICIONAR_FICHA_TECNICOBASE = "${URL_BASE}addfichatecnicobase";
 const URL_RETORNAR_PLANO_TERAPEUTICO = "${URL_BASE}retornarplanoterapeutico/";
 const URL_LISTAR_PACIENTES = "${URL_BASE}listarpacientesgeral";
-const URL_BUSCAR_ULTIMA_VISITA_REALIZADA = "${URL_BASE}buscarultimavisitarealizadaporadmissao/";
-const URL_PDF_IMPRIMIR_FICHA_MEDICA = "$IP_INTRANET/intranet/mobileMedico/imprimirAcompanhamentoMedico2Via.php?adm=";
+const URL_BUSCAR_ULTIMA_VISITA_REALIZADA =
+    "${URL_BASE}buscarultimavisitarealizadaporadmissao/";
+const URL_PDF_IMPRIMIR_FICHA_MEDICA =
+    "$IP_INTRANET/intranet/mobileMedico/imprimirAcompanhamentoMedico2Via.php?adm=";
 const URL_PDF_VISUALIZAR_PDF = "$IP_INTRANET/outras/visualizarpdf.php?b64=";
-const URL_PDF_IMPRIMIR_FICHA_ENFERMAGEM = "$IP_INTRANET/intranet/mobileEnfa/imprimirFichaEnfermagem.php?adm=";
-const URL_PDF_IMPRIMIR_FICHA_NUTRICAO = "$IP_INTRANET/intranet/mobileEspecialidade/imprimirAcompanhamentoNutricionista2Via.php?adm=";
-const URL_PDF_IMPRIMIR_FICHA_TECNICOBASE = "$IP_INTRANET/intranet/agendamento_visitas/imprimirAcompanhamentoTecBase.php?adm=";
-const URL_PDF_IMPRIMIR_FICHA_ESPECIALIDADE = "$IP_INTRANET/intranet/mobileEspecialidade/imprimirAcompanhamentoEspecialidade2Via.php";
+const URL_PDF_IMPRIMIR_FICHA_ENFERMAGEM =
+    "$IP_INTRANET/intranet/mobileEnfa/imprimirFichaEnfermagem.php?adm=";
+const URL_PDF_IMPRIMIR_FICHA_NUTRICAO =
+    "$IP_INTRANET/intranet/mobileEspecialidade/imprimirAcompanhamentoNutricionista2Via.php?adm=";
+const URL_PDF_IMPRIMIR_FICHA_TECNICOBASE =
+    "$IP_INTRANET/intranet/agendamento_visitas/imprimirAcompanhamentoTecBase.php?adm=";
+const URL_PDF_IMPRIMIR_FICHA_ESPECIALIDADE =
+    "$IP_INTRANET/intranet/mobileEspecialidade/imprimirAcompanhamentoEspecialidade2Via.php";
 const URL_LISTAR_PRESCRICAO_MEDICA = "${URL_BASE}listarprescricaomedica/";
 const URL_ALTERAR_PRESCRICAO_MEDICA = "${URL_BASE}addprescricaomedica/";
-const URL_LISTAR_PRESCRICAO_ENFERMAGEM = "${URL_BASE}listarprescricaoenfermagem/";
+const URL_LISTAR_PRESCRICAO_ENFERMAGEM =
+    "${URL_BASE}listarprescricaoenfermagem/";
 const URL_ALTERAR_PRESCRICAO_ENFERMAGEM = "${URL_BASE}addsolicitarmaterial/";
-const URL_LISTAR_PROCEDIMENTO_ENFERMAGEM = "${URL_BASE}listarprocedimentoenfermagem/";
-const URL_ALTERAR_PROCEDIMENTO_ENFERMAGEM = "${URL_BASE}addsolicitarprocedimento/";
+const URL_LISTAR_PROCEDIMENTO_ENFERMAGEM =
+    "${URL_BASE}listarprocedimentoenfermagem/";
+const URL_ALTERAR_PROCEDIMENTO_ENFERMAGEM =
+    "${URL_BASE}addsolicitarprocedimento/";
 const URL_LISTAR_EQUIPAMENTO = "${URL_BASE}listarequipamentos/";
 const URL_ALTERAR_EQUIPAMENTO = "${URL_BASE}addsolicitarequipamento/";
 const URL_LISTAR_EXAME = "${URL_BASE}listarexamesporadmissao/";
@@ -97,7 +106,7 @@ List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_DIETAENTERAL {
 }
 
 List<DropdownMenuItem<String>>
-get LISTA_FICHANUTRICAO_DIETAENTERAL_INDUSTRIALIZADO {
+    get LISTA_FICHANUTRICAO_DIETAENTERAL_INDUSTRIALIZADO {
   List<DropdownMenuItem<String>> menuItems = [
     const DropdownMenuItem(value: "", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("MANIPULADA EM DOMICILIO")),
@@ -138,7 +147,7 @@ List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_AVALSUBJETIVA_PESO {
 }
 
 List<DropdownMenuItem<String>>
-get LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ABAIXO65ANOS {
+    get LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ABAIXO65ANOS {
   List<DropdownMenuItem<String>> menuItems = [
     const DropdownMenuItem(value: "", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("NÃO ATRIBUÍDO")),
@@ -153,7 +162,7 @@ get LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ABAIXO65ANOS {
 }
 
 List<DropdownMenuItem<String>>
-get LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ACIMA65ANOS {
+    get LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ACIMA65ANOS {
   List<DropdownMenuItem<String>> menuItems = [
     const DropdownMenuItem(value: "", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("NÃO ATRIBUÍDO")),
@@ -276,7 +285,8 @@ const LBL_FICHAENF_DIAGNOSTICO_002 = "Nutrição alterada";
 const LBL_FICHAENF_DIAGNOSTICO_003 = "Memória Prejudicada";
 const LBL_FICHAENF_DIAGNOSTICO_004 = "Incontinência Urinária";
 const LBL_FICHAENF_DIAGNOSTICO_005 = "Risco de Quedas";
-const LBL_FICHAENF_DIAGNOSTICO_006 = "Risco para integridade da pele prejudicada";
+const LBL_FICHAENF_DIAGNOSTICO_006 =
+    "Risco para integridade da pele prejudicada";
 const LBL_FICHAENF_DIAGNOSTICO_007 = "Controle ineficaz do regime terapêutico";
 const LBL_FICHAENF_DIAGNOSTICO_008 = "Deglutição prejudicada";
 const LBL_FICHAENF_DIAGNOSTICO_009 = "Padrão de sono perturbado";
@@ -287,21 +297,31 @@ const LBL_FICHAENF_DIAGNOSTICO_013 = "Mobilidade física prejudicada";
 const LBL_FICHAENF_DIAGNOSTICO_014 = "Eliminação urinária prejudicada";
 const LBL_FICHAENF_DIAGNOSTICO_015 = "Risco para infecção";
 
-const LBL_FICHAENF_PROCEDIMENTO_001 = "Colocação e/ou troca de cateter vesical de demora";
-const LBL_FICHAENF_PROCEDIMENTO_002 = "Colocação e/ou troca de cateter nasoenteral";
-const LBL_FICHAENF_PROCEDIMENTO_003 = "Colocação e/ou troca de cateter nasogástrico";
+const LBL_FICHAENF_PROCEDIMENTO_001 =
+    "Colocação e/ou troca de cateter vesical de demora";
+const LBL_FICHAENF_PROCEDIMENTO_002 =
+    "Colocação e/ou troca de cateter nasoenteral";
+const LBL_FICHAENF_PROCEDIMENTO_003 =
+    "Colocação e/ou troca de cateter nasogástrico";
 const LBL_FICHAENF_PROCEDIMENTO_004 = "Troca de traqueóstomo";
 const LBL_FICHAENF_PROCEDIMENTO_005 = "Cateterismo vesical de alívio";
 const LBL_FICHAENF_PROCEDIMENTO_006 = "Troca de cistostomia";
 const LBL_FICHAENF_PROCEDIMENTO_007 = "Troca de cateter de gastrostomia";
 const LBL_FICHAENF_PROCEDIMENTO_008 = "Outros procedimentos";
 
-const LBL_FICHAENF_PLANOCUIDADO_001 = "Elevar a cabeceira a 45 graus, no mínimo, para administrar a dieta ou ofertar a alimentação por via oral.";
-const LBL_FICHAENF_PLANOCUIDADO_002 = "Para a dieta enteral, se houver necessidade de aspiração de vias aéreas durante a aspiração.";
-const LBL_FICHAENF_PLANOCUIDADO_003 = "Realizar higiene íntima, com troca de fraldas (se necessário), após urinar ou evacuar.";
-const LBL_FICHAENF_PLANOCUIDADO_004 = "Realizar mudanças de decúbito(de posição) a cada 02 e 03 horas.";
-const LBL_FICHAENF_PLANOCUIDADO_005 = "Fazer uso de almofadas, travesseiros, rolos de apoiar e dar conforto ao paciente.";
-const LBL_FICHAENF_PLANOCUIDADO_006 = "Fazer uso do AGE(óleo com ácidos graxos essenciais) nos locais com maior predisposição para o desenvolvimento de úlceras, como região sacra, maleolar, trocantórica e calcânea.";
-const LBL_FICHAENF_PLANOCUIDADO_007 = "Lavar cateter nasoenteral, nasogástrico ou de gastrostomia, SEMPRE, antes e após admnistração de dieta ou medicação";
-const LBL_FICHAENF_PLANOCUIDADO_008 = "Antes de administrar medicação em comprimidos por cateteres (nasoenteral ou nasogástrico), macerar, colocar de molho e administrar a medicação.";
-
+const LBL_FICHAENF_PLANOCUIDADO_001 =
+    "Elevar a cabeceira a 45 graus, no mínimo, para administrar a dieta ou ofertar a alimentação por via oral.";
+const LBL_FICHAENF_PLANOCUIDADO_002 =
+    "Para a dieta enteral, se houver necessidade de aspiração de vias aéreas durante a aspiração.";
+const LBL_FICHAENF_PLANOCUIDADO_003 =
+    "Realizar higiene íntima, com troca de fraldas (se necessário), após urinar ou evacuar.";
+const LBL_FICHAENF_PLANOCUIDADO_004 =
+    "Realizar mudanças de decúbito(de posição) a cada 02 e 03 horas.";
+const LBL_FICHAENF_PLANOCUIDADO_005 =
+    "Fazer uso de almofadas, travesseiros, rolos de apoiar e dar conforto ao paciente.";
+const LBL_FICHAENF_PLANOCUIDADO_006 =
+    "Fazer uso do AGE(óleo com ácidos graxos essenciais) nos locais com maior predisposição para o desenvolvimento de úlceras, como região sacra, maleolar, trocantórica e calcânea.";
+const LBL_FICHAENF_PLANOCUIDADO_007 =
+    "Lavar cateter nasoenteral, nasogástrico ou de gastrostomia, SEMPRE, antes e após admnistração de dieta ou medicação";
+const LBL_FICHAENF_PLANOCUIDADO_008 =
+    "Antes de administrar medicação em comprimidos por cateteres (nasoenteral ou nasogástrico), macerar, colocar de molho e administrar a medicação.";
