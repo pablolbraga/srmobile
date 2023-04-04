@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals
+
 class PrescricaoMedicaModel {
   int? id;
   int? idproduto;
@@ -11,14 +13,14 @@ class PrescricaoMedicaModel {
 
   PrescricaoMedicaModel(
       {this.id,
-        this.idproduto,
-        this.nmproduto,
-        this.quantidade,
-        this.unidmed,
-        this.frequencia,
-        this.instrucao,
-        this.horarios,
-        this.via});
+      this.idproduto,
+      this.nmproduto,
+      this.quantidade,
+      this.unidmed,
+      this.frequencia,
+      this.instrucao,
+      this.horarios,
+      this.via});
 
   PrescricaoMedicaModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

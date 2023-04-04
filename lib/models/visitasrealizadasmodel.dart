@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals, unnecessary_new
+
 class VisitasRealizadasModel {
   int? idevolution;
   int? idadmission;
@@ -13,16 +15,16 @@ class VisitasRealizadasModel {
 
   VisitasRealizadasModel(
       {this.idevolution,
-        this.idadmission,
-        this.nmpaciente,
-        this.idprofessional,
-        this.nmprofessional,
-        this.dataini,
-        this.datafim,
-        this.idprofagenda,
-        this.idespecialidade,
-        this.nmespecialidade,
-        this.imagem});
+      this.idadmission,
+      this.nmpaciente,
+      this.idprofessional,
+      this.nmprofessional,
+      this.dataini,
+      this.datafim,
+      this.idprofagenda,
+      this.idespecialidade,
+      this.nmespecialidade,
+      this.imagem});
 
   VisitasRealizadasModel.fromJson(Map<String, dynamic> json) {
     idevolution = json['idevolution'];

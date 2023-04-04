@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_collection_literals, unnecessary_new
 
 class AgendaModel {
   int? idcapconsult;
@@ -13,15 +14,15 @@ class AgendaModel {
 
   AgendaModel(
       {this.idcapconsult,
-        this.idadmission,
-        this.idpatient,
-        this.idperson,
-        this.nmpaciente,
-        this.idconvenio,
-        this.nmconvenio,
-        this.idade,
-        this.idprofagenda,
-        this.idevolucao});
+      this.idadmission,
+      this.idpatient,
+      this.idperson,
+      this.nmpaciente,
+      this.idconvenio,
+      this.nmconvenio,
+      this.idade,
+      this.idprofagenda,
+      this.idevolucao});
 
   AgendaModel.fromJson(Map<String, dynamic> json) {
     idcapconsult = json['idcapconsult'];

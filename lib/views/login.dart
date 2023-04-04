@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -46,6 +48,9 @@ class _LoginState extends State<Login> {
                       width: 300,
                       height: 250,
                     ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 8),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8),
@@ -147,6 +152,20 @@ class _LoginState extends State<Login> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8),
                     child: Center(
+                      child: GestureDetector(
+                        child: const Text(
+                          "2023.03.01.001",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 8),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Center(
                       child: Text(
                         _mensagemErro,
                         style: const TextStyle(color: Colors.red, fontSize: 20),
@@ -236,7 +255,7 @@ class _LoginState extends State<Login> {
       }).toList();
       Future.delayed(const Duration(seconds: 5)).then((value) {
         pr.hide().whenComplete(() {
-          if (usuarios.length > 0) {
+          if (usuarios.isNotEmpty) {
             if (usuarios[0].primeiroacesso == "S") {
               // Acessa a tela para colocar uma nova senha
               Navigator.pushNamed(context, "alterarsenha");

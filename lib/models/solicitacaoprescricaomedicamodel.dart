@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals
+
 class SolicitacaoPrescricaoMedicaModel {
   int? idusuariosolicitante;
   String? datasolicitacao;
@@ -16,19 +18,19 @@ class SolicitacaoPrescricaoMedicaModel {
 
   SolicitacaoPrescricaoMedicaModel(
       {this.idusuariosolicitante,
-        this.datasolicitacao,
-        this.idpaciente,
-        this.observacaosolicitante,
-        this.justificativa,
-        this.medicamento,
-        this.dose,
-        this.posologia,
-        this.status,
-        this.duracao,
-        this.via,
-        this.idadmission,
-        this.tipoenvio,
-        this.tipoalteracao});
+      this.datasolicitacao,
+      this.idpaciente,
+      this.observacaosolicitante,
+      this.justificativa,
+      this.medicamento,
+      this.dose,
+      this.posologia,
+      this.status,
+      this.duracao,
+      this.via,
+      this.idadmission,
+      this.tipoenvio,
+      this.tipoalteracao});
 
   SolicitacaoPrescricaoMedicaModel.fromJson(Map<String, dynamic> json) {
     idusuariosolicitante = json['idusuariosolicitante'];

@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables
+
 import 'package:date_format/date_format.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
