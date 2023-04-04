@@ -780,7 +780,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
             InputDecorator(
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                labelText: "Tipo",
+                labelText: "Percepção Sensorial",
                 labelStyle: const TextStyle(color: Colors.blue),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)),
@@ -801,8 +801,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
                     });
                   },
                   items: const [
-                    DropdownMenuItem(
-                        value: "0", child: Text("PERCEPÇÃO SENSORIAL")),
+                    DropdownMenuItem(value: "0", child: Text("SELECIONE")),
                     DropdownMenuItem(
                         value: "1", child: Text("COMPLETAMENTE LIMITADO")),
                     DropdownMenuItem(
@@ -819,7 +818,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
             InputDecorator(
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                labelText: "Tipo",
+                labelText: "Umidade",
                 labelStyle: const TextStyle(color: Colors.blue),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)),
@@ -840,7 +839,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
                     });
                   },
                   items: const [
-                    DropdownMenuItem(value: "0", child: Text("UMIDADE")),
+                    DropdownMenuItem(value: "0", child: Text("SELECIONE")),
                     DropdownMenuItem(
                         value: "1", child: Text("CONSTANTEMENTE ÚMIDA")),
                     DropdownMenuItem(value: "2", child: Text("MUITO ÚMIDA")),
@@ -858,7 +857,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
             InputDecorator(
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                labelText: "Tipo",
+                labelText: "Atividade",
                 labelStyle: const TextStyle(color: Colors.blue),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)),
@@ -879,7 +878,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
                     });
                   },
                   items: const [
-                    DropdownMenuItem(value: "0", child: Text("ATIVIDADE")),
+                    DropdownMenuItem(value: "0", child: Text("SELECIONE")),
                     DropdownMenuItem(value: "1", child: Text("ACAMADO")),
                     DropdownMenuItem(
                         value: "2", child: Text("RESTRITO À CADEITA")),
@@ -897,7 +896,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
             InputDecorator(
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                labelText: "Tipo",
+                labelText: "Mobilidade",
                 labelStyle: const TextStyle(color: Colors.blue),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)),
@@ -918,7 +917,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
                     });
                   },
                   items: const [
-                    DropdownMenuItem(value: "0", child: Text("MOBILIDADE")),
+                    DropdownMenuItem(value: "0", child: Text("SELECIONE")),
                     DropdownMenuItem(
                         value: "1", child: Text("COMPLETAMENTE IMÓVEL")),
                     DropdownMenuItem(value: "2", child: Text("MUITO LIMITADO")),
@@ -936,7 +935,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
             InputDecorator(
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                labelText: "Tipo",
+                labelText: "Nutrição",
                 labelStyle: const TextStyle(color: Colors.blue),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)),
@@ -957,7 +956,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
                     });
                   },
                   items: const [
-                    DropdownMenuItem(value: "0", child: Text("NUTRIÇÃO")),
+                    DropdownMenuItem(value: "0", child: Text("SELECIONE")),
                     DropdownMenuItem(value: "1", child: Text("MUITO POBRE")),
                     DropdownMenuItem(
                         value: "2", child: Text("PROVAVELMENTE INADEQUEADO")),
@@ -973,7 +972,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
             InputDecorator(
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                labelText: "Tipo",
+                labelText: "Ficção/Cisalhamento",
                 labelStyle: const TextStyle(color: Colors.blue),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)),
@@ -994,8 +993,7 @@ class _FichaEnfermagemState extends State<FichaEnfermagem> {
                     });
                   },
                   items: const [
-                    DropdownMenuItem(
-                        value: "0", child: Text("FICÇÃO/CISALHAMENTO")),
+                    DropdownMenuItem(value: "0", child: Text("SELECIONE")),
                     DropdownMenuItem(value: "1", child: Text("PROBLEMA")),
                     DropdownMenuItem(
                         value: "2", child: Text("POTÊNCIAL PARA PROBLEMAS")),
