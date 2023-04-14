@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 
-const URL_BASE =
-    "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
 //const URL_BASE =
-//    "http://192.168.0.118:8080/SaudeResidenceHomeCareServices/srhcws/";
+//    "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
+const URL_BASE =
+    "http://192.168.0.118:8080/SaudeResidenceHomeCareServices/srhcws/";
 const IP_INTRANET = "http://200.150.138.34:8001/sauderesidence";
 
 //urls--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ const URL_PDF_IMPRIMIR_FICHA_TECNICOBASE =
 const URL_PDF_IMPRIMIR_FICHA_ESPECIALIDADE =
     "$IP_INTRANET/intranet/mobileEspecialidade/imprimirAcompanhamentoEspecialidade2Via.php";
 const URL_LISTAR_PRESCRICAO_MEDICA = "${URL_BASE}listarprescricaomedica/";
-const URL_ALTERAR_PRESCRICAO_MEDICA = "${URL_BASE}addprescricaomedica/";
+const URL_ALTERAR_PRESCRICAO_MEDICA = "${URL_BASE}addsolicitarmedicamento/";
 const URL_LISTAR_PRESCRICAO_ENFERMAGEM =
     "${URL_BASE}listarprescricaoenfermagem/";
 const URL_ALTERAR_PRESCRICAO_ENFERMAGEM = "${URL_BASE}addsolicitarmaterial/";

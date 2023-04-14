@@ -8,7 +8,7 @@ import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/prescricaomedicamodel.dart';
-import 'package:srmobile/models/solicitacaoprescricaomedicamodel.dart';
+import 'package:srmobile/models/solicitacaomedicamentomodel.dart';
 
 class PrescricaoMedicaPesq extends StatefulWidget {
   const PrescricaoMedicaPesq({super.key});
@@ -225,7 +225,7 @@ class _PrescricaoMedicaPesqState extends State<PrescricaoMedicaPesq> {
 
   void _enviarExclusao(String medicamento, String justificativa) async {
     try {
-      SolicitacaoPrescricaoMedicaModel sol = SolicitacaoPrescricaoMedicaModel();
+      SolicitacaoMedicamentoModel sol = SolicitacaoMedicamentoModel();
       sol.tipoenvio = 4;
       sol.tipoalteracao = 3;
       sol.idusuariosolicitante = VariaveisGlobais.dadosUsuario?.idusuario;

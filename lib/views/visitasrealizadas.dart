@@ -3,6 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:srmobile/helpers/constantes.dart';
+import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/visitasrealizadasmodel.dart';
 
@@ -135,7 +136,7 @@ class _VisitasRealizadasState extends State<VisitasRealizadas> {
   Future<List<VisitasRealizadasModel>> _listarVisitasRealizadas() async {
     var idperson = VariaveisGlobais.dadosUsuario?.idperson;
     String url = URL_BASE +
-        "/listarvisitasrealizadas/" +
+        "listarvisitasrealizadas/" +
         VariaveisGlobais.dataIniVisitaRealizada! +
         "/" +
         VariaveisGlobais.dataFimVisitaRealizada! +
@@ -147,6 +148,9 @@ class _VisitasRealizadasState extends State<VisitasRealizadas> {
       lista = (response.data as List).map((item) {
         return VisitasRealizadasModel.fromJson(item);
       }).toList();
+    } else {
+      Uteis.mostrarAviso(context, "Erro",
+          "Erro ao enviar os dados. Erro: ${response.statusMessage}$response");
     }
     return lista;
   }

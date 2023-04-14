@@ -7,7 +7,7 @@ import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
-import 'package:srmobile/models/solicitacaoprescricaomedicamodel.dart';
+import 'package:srmobile/models/solicitacaomedicamentomodel.dart';
 
 class PrescricaoMedicaCad extends StatefulWidget {
   const PrescricaoMedicaCad({super.key});
@@ -223,7 +223,7 @@ class _PrescricaoMedicaCadState extends State<PrescricaoMedicaCad> {
   void _enviarDados() {
     pr.show();
     try {
-      SolicitacaoPrescricaoMedicaModel sol = SolicitacaoPrescricaoMedicaModel();
+      SolicitacaoMedicamentoModel sol = SolicitacaoMedicamentoModel();
       sol.idusuariosolicitante = VariaveisGlobais.dadosUsuario?.idusuario;
       sol.datasolicitacao = formatDate(
           DateTime.now(), [dd, '/', mm, '/', yyyy, ' ', HH, ':', nn, ':', ss]);

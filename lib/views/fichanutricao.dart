@@ -206,11 +206,33 @@ class _FichaNutricaoState extends State<FichaNutricao> {
             const SizedBox(height: 10),
             Visibility(
               visible: _habilitaEnteral,
-              child: criaDropDownButton(
-                  context,
-                  "Se Enteral",
-                  _selNutricaoEnteral,
-                  LISTA_FICHANUTRICAO_TIPONUTRICAO_ENTERAL),
+              child: InputDecorator(
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  labelText: "Se Enteral",
+                  labelStyle: const TextStyle(color: Colors.blue),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    value: _selNutricaoEnteral,
+                    icon: const Icon(
+                      Icons.arrow_drop_down,
+                      color: Colors.blue,
+                    ),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: const TextStyle(color: Colors.blue),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        _selNutricaoEnteral = newValue!;
+                      });
+                    },
+                    items: LISTA_FICHANUTRICAO_TIPONUTRICAO_ENTERAL,
+                  ),
+                ),
+              ),
             ),
             const SizedBox(height: 10),
             criarTextFormField(_ctrNutricaoOutros, "Outras Nutrições",
@@ -377,11 +399,35 @@ class _FichaNutricaoState extends State<FichaNutricao> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    criaDropDownButton(
-                        context,
-                        "Fornecedor",
-                        _selDietaEnteralIndustrializadaFornecedor,
-                        LISTA_FICHANUTRICAO_DIETAENTERAL_FORNECEDOR),
+                    InputDecorator(
+                      decoration: InputDecoration(
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 10.0),
+                        labelText: "Fornecedor",
+                        labelStyle: const TextStyle(color: Colors.blue),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0)),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          value: _selDietaEnteralIndustrializadaFornecedor,
+                          icon: const Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.blue,
+                          ),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: const TextStyle(color: Colors.blue),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _selDietaEnteralIndustrializadaFornecedor =
+                                  newValue!;
+                            });
+                          },
+                          items: LISTA_FICHANUTRICAO_DIETAENTERAL_FORNECEDOR,
+                        ),
+                      ),
+                    ),
                     Visibility(
                       visible:
                           _habilitaDietaEnteralIndustrializadoManipuladaDomicilio,
