@@ -156,6 +156,14 @@ class _ProcedimentoEnfermagemPesqState
       lista = (response.data as List).map((item) {
         return ProcedimentoEnfermagemModel.fromJson(item);
       }).toList();
+    } else {
+      Uteis.mostrarAviso(
+          context,
+          "Erro Proc. Enf.",
+          "Erro ao listar os procedimentos de enfermagem. Erro: " +
+              response.statusMessage.toString() +
+              ", " +
+              response.toString());
     }
     return lista;
   }
