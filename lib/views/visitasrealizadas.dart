@@ -160,7 +160,7 @@ class _VisitasRealizadasState extends State<VisitasRealizadas> {
     var url;
     List<VisitasRealizadasModel> lista = [];
     String urlVisita = URL_BASE +
-        "/buscarvisitarealizadaporevolucao/" +
+        "buscarvisitarealizadaporevolucao/" +
         idevolucao.toString() +
         "/" +
         idespecialidade.toString();

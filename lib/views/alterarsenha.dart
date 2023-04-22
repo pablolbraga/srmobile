@@ -189,7 +189,7 @@ class _AlterarSenhaState extends State<AlterarSenha> {
   }
 
   void _enviarDados() async {
-    var idperson = VariaveisGlobais.dadosUsuario?.idperson;
+    var idperson = VariaveisGlobais.dadosUsuario?.idusuario;
     pr.show();
     String url = "$URL_ALTERAR_SENHA${idperson.toString()}/${_ctrSenha.text}";
     Future.delayed(const Duration(seconds: 5)).then((value) {

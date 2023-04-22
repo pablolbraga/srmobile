@@ -3,9 +3,11 @@
 import 'package:flutter/material.dart';
 
 //const URL_BASE =
-//    "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
+//    "http://35.247.217.138:8080/SaudeResidenceHomeCareServices/srhcws/";
 const URL_BASE =
-    "http://192.168.68.103:8080/SaudeResidenceHomeCareServices/srhcws/";
+    "http://profissionaisexternos.sauderesidence.tk/SaudeResidenceHomeCareServices/srhcws/";
+//const URL_BASE =
+//    "http://192.168.68.103:8080/SaudeResidenceHomeCareServices/srhcws/";
 const IP_INTRANET = "http://200.150.138.34:8001/sauderesidence";
 
 //urls--------------------------------------------------------------------------
