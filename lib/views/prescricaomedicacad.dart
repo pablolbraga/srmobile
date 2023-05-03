@@ -1,13 +1,14 @@
 // ignore_for_file: use_build_context_synchronously, unnecessary_new
 
 import 'package:date_format/date_format.dart';
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/solicitacaomedicamentomodel.dart';
+import 'package:uno/uno.dart';
 
 class PrescricaoMedicaCad extends StatefulWidget {
   const PrescricaoMedicaCad({super.key});
@@ -24,6 +25,7 @@ class _PrescricaoMedicaCadState extends State<PrescricaoMedicaCad> {
   final _ctrObservacao = TextEditingController();
   final _ctrJustificativa = TextEditingController();
   final _ctrDuracao = TextEditingController();
+  final uno = Uno();
   String _selVia = '';
   String _selTipoEnvio = '';
   int? tipoalteracao = 0;
@@ -239,16 +241,15 @@ class _PrescricaoMedicaCadState extends State<PrescricaoMedicaCad> {
       sol.idadmission = VariaveisGlobais.dadosPaciente?.idadmission;
       sol.tipoalteracao = tipoalteracao;
       sol.tipoenvio = int.tryParse(_selTipoEnvio);
-      Dio dio = new Dio();
       Future.delayed(const Duration(seconds: 10)).then((value) {
         pr.hide().whenComplete(() async {
           Response response =
-              await dio.post(URL_ALTERAR_PRESCRICAO_MEDICA, data: sol.toJson());
-          if (response.statusCode == 200) {
+              await uno.post(URL_ALTERAR_PRESCRICAO_MEDICA, data: sol.toJson());
+          if (response.status == 200) {
             Navigator.pushNamed(context, "prescricaomedicapesq");
           } else {
             Uteis.mostrarAviso(context, "Erro",
-                "Erro ao enviar os dados. Erro: ${response.statusMessage}, $response");
+                "Erro ao enviar os dados. Erro: ${response.status}, $response");
           }
         });
       });

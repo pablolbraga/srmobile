@@ -1,7 +1,7 @@
 // ignore_for_file: sort_child_properties_last, avoid_unnecessary_containers, prefer_typing_uninitialized_variables, prefer_interpolation_to_compose_strings, use_build_context_synchronously
 
 import 'package:date_format/date_format.dart';
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/constantes.dart';
@@ -9,6 +9,7 @@ import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/prescricaoenfermagemmodel.dart';
 import 'package:srmobile/models/solicitacaoprescricaoenfermagemmodel.dart';
+import 'package:uno/uno.dart';
 
 class PrescricaoEnfermagemPesq extends StatefulWidget {
   const PrescricaoEnfermagemPesq({super.key});
@@ -22,6 +23,8 @@ class _PrescricaoEnfermagemPesqState extends State<PrescricaoEnfermagemPesq> {
   var nome = VariaveisGlobais.dadosPaciente?.nome;
   final _ctrMotivoExclusao = TextEditingController();
   late ProgressDialog pr;
+  final uno = Uno();
+
   @override
   Widget build(BuildContext context) {
     pr = ProgressDialog(context, showLogs: true);
@@ -160,9 +163,9 @@ class _PrescricaoEnfermagemPesqState extends State<PrescricaoEnfermagemPesq> {
   Future<List<PrescricaoEnfermagemModel>> _listarItens() async {
     var idpaciente = VariaveisGlobais.dadosPaciente?.idadmission;
     String url = URL_LISTAR_PRESCRICAO_ENFERMAGEM + idpaciente.toString();
-    Response response = await Dio().get(url);
+    Response response = await uno.get(url);
     var lista;
-    if (response.statusCode == 200) {
+    if (response.status == 200) {
       lista = (response.data as List).map((item) {
         return PrescricaoEnfermagemModel.fromJson(item);
       }).toList();
@@ -252,20 +255,19 @@ class _PrescricaoEnfermagemPesqState extends State<PrescricaoEnfermagemPesq> {
       sol.idadmission = VariaveisGlobais.dadosPaciente?.idadmission;
       sol.via = "";
 
-      Dio dio = Dio();
       pr.show();
       Response response =
-          await dio.post(URL_ALTERAR_PRESCRICAO_ENFERMAGEM, data: sol.toJson());
+          await uno.post(URL_ALTERAR_PRESCRICAO_ENFERMAGEM, data: sol.toJson());
       Future.delayed(const Duration(seconds: 10)).then((value) {
         pr.hide().whenComplete(() async {
-          if (response.statusCode == 200) {
+          if (response.status == 200) {
             Navigator.pushNamed(context, "prescricaoenfermagempesq");
           } else {
             Uteis.mostrarAviso(
                 context,
                 "Erro",
                 "Erro ao enviar os dados. Erro: " +
-                    response.statusMessage.toString() +
+                    response.status.toString() +
                     ", " +
                     response.toString());
           }

@@ -1,11 +1,12 @@
 // ignore_for_file: unnecessary_new, unused_local_variable, unused_field, prefer_is_empty, prefer_interpolation_to_compose_strings, use_build_context_synchronously, prefer_typing_uninitialized_variables
 
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/visitasrealizadasmodel.dart';
+import 'package:uno/uno.dart';
 
 class PacienteOpcao extends StatefulWidget {
   const PacienteOpcao({super.key});
@@ -15,6 +16,8 @@ class PacienteOpcao extends StatefulWidget {
 }
 
 class _PacienteOpcaoState extends State<PacienteOpcao> {
+  final uno = Uno();
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -199,9 +202,9 @@ class _PacienteOpcaoState extends State<PacienteOpcao> {
         "$URL_BUSCAR_ULTIMA_VISITA_REALIZADA$idadmissao/$idespecialidade";
     if (idespecialidade == 148815) {
       // Medico
-      Response response = await Dio().get(urlLocal);
+      Response response = await uno.get(urlLocal);
       var lista;
-      if (response.statusCode == 200) {
+      if (response.status == 200) {
         lista = (response.data as List).map((item) {
           return VisitasRealizadasModel.fromJson(item);
         }).toList();

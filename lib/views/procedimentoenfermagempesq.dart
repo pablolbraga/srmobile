@@ -1,6 +1,6 @@
 // ignore_for_file: sort_child_properties_last, avoid_unnecessary_containers, prefer_typing_uninitialized_variables, prefer_interpolation_to_compose_strings, use_build_context_synchronously
 
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/constantes.dart';
@@ -8,6 +8,7 @@ import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/procedimentoenfermagemmodel.dart';
 import 'package:srmobile/models/solicitacaoprocedimentoenfermagemmodel.dart';
+import 'package:uno/uno.dart';
 
 class ProcedimentoEnfermagemPesq extends StatefulWidget {
   const ProcedimentoEnfermagemPesq({super.key});
@@ -22,6 +23,8 @@ class _ProcedimentoEnfermagemPesqState
   var nome = VariaveisGlobais.dadosPaciente?.nome;
   final _ctrMotivoExclusao = TextEditingController();
   late ProgressDialog pr;
+  final uno = Uno();
+
   @override
   Widget build(BuildContext context) {
     pr = ProgressDialog(context, showLogs: true);
@@ -150,9 +153,9 @@ class _ProcedimentoEnfermagemPesqState
   Future<List<ProcedimentoEnfermagemModel>> _listarItens() async {
     var idpaciente = VariaveisGlobais.dadosPaciente?.idadmission;
     String url = URL_LISTAR_PROCEDIMENTO_ENFERMAGEM + idpaciente.toString();
-    Response response = await Dio().get(url);
+    Response response = await uno.get(url);
     var lista;
-    if (response.statusCode == 200) {
+    if (response.status == 200) {
       lista = (response.data as List).map((item) {
         return ProcedimentoEnfermagemModel.fromJson(item);
       }).toList();
@@ -161,7 +164,7 @@ class _ProcedimentoEnfermagemPesqState
           context,
           "Erro Proc. Enf.",
           "Erro ao listar os procedimentos de enfermagem. Erro: " +
-              response.statusMessage.toString() +
+              response.status.toString() +
               ", " +
               response.toString());
     }
@@ -244,20 +247,19 @@ class _ProcedimentoEnfermagemPesqState
       sol.observacao = "";
       sol.justificativa = justificativa;
 
-      Dio dio = Dio();
       pr.show();
-      Response response = await dio.post(URL_ALTERAR_PROCEDIMENTO_ENFERMAGEM,
+      Response response = await uno.post(URL_ALTERAR_PROCEDIMENTO_ENFERMAGEM,
           data: sol.toJson());
       Future.delayed(const Duration(seconds: 10)).then((value) {
         pr.hide().whenComplete(() async {
-          if (response.statusCode == 200) {
+          if (response.status == 200) {
             Navigator.pushNamed(context, "procedimentoenfermagempesq");
           } else {
             Uteis.mostrarAviso(
                 context,
                 "Erro",
                 "Erro ao enviar os dados. Erro: " +
-                    response.statusMessage.toString() +
+                    response.status.toString() +
                     ", " +
                     response.toString());
           }

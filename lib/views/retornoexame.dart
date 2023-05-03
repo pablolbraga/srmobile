@@ -1,9 +1,10 @@
 import 'package:date_format/date_format.dart';
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/models/retornoexamemodel.dart';
+import 'package:uno/uno.dart';
 import 'package:validatorless/validatorless.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
@@ -22,6 +23,8 @@ class _RetornoExameState extends State<RetornoExame> {
   final _ctrAcompanhante = TextEditingController();
   final _ctrObservacao = TextEditingController();
   final _ctrJustificativa = TextEditingController();
+  final uno = Uno();
+
   int? tipoalteracao = 0;
 
   @override
@@ -164,16 +167,15 @@ class _RetornoExameState extends State<RetornoExame> {
       sol.dataretorno = _ctrDataRetorno.text;
       sol.acompanhante = _ctrAcompanhante.text;
       sol.observacao = _ctrObservacao.text;
-      Dio dio = Dio();
       Response response =
-          await dio.post(URL_ALTERAR_RETORNOEXAME, data: sol.toJson());
+          await uno.post(URL_ALTERAR_RETORNOEXAME, data: sol.toJson());
       Future.delayed(const Duration(seconds: 10)).then((value) {
         pr.hide().whenComplete(() {
-          if (response.statusCode == 200) {
+          if (response.status == 200) {
             Navigator.pushNamed(context, "pacienteopcao");
           } else {
             Uteis.mostrarAviso(context, "Erro",
-                "Erro ao enviar os dados. Erro: ${response.statusMessage}, $response");
+                "Erro ao enviar os dados. Erro: ${response.status}, $response");
           }
         });
       });

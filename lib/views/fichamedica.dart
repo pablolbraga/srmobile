@@ -1,11 +1,12 @@
 // ignore_for_file: unused_local_variable, sort_child_properties_last
 
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/fichamedicamodel.dart';
+import 'package:uno/uno.dart';
 
 class FichaMedica extends StatefulWidget {
   const FichaMedica({super.key});
@@ -38,6 +39,7 @@ class _FichaMedicaState extends State<FichaMedica> {
   final _ctrOutrasOstomias = TextEditingController();
   final _ctrListaProblema = TextEditingController();
   final _ctrOrientacaoConduta = TextEditingController();
+  final uno = Uno();
 
   bool _ctrNutricaoOral = false;
   bool _ctrNutricaoGT = false;
@@ -775,9 +777,9 @@ class _FichaMedicaState extends State<FichaMedica> {
 
   void retornarPlanoTerapeutico(int? idadmission) async {
     String url = URL_RETORNAR_PLANO_TERAPEUTICO + idadmission.toString();
-    Response response = await Dio().get(url);
+    Response response = await uno.get(url);
     var retorno = "";
-    if (response.statusCode == 200) {
+    if (response.status == 200) {
       retorno = response.data.toString();
     }
     setState(() {

@@ -1,10 +1,11 @@
 // ignore_for_file: sort_child_properties_last, avoid_unnecessary_containers, prefer_typing_uninitialized_variables
 
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/pacientemodel.dart';
+import 'package:uno/uno.dart';
 
 class Pacientes extends StatefulWidget {
   const Pacientes({super.key});
@@ -14,6 +15,8 @@ class Pacientes extends StatefulWidget {
 }
 
 class _PacientesState extends State<Pacientes> {
+  final uno = Uno();
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -122,9 +125,9 @@ class _PacientesState extends State<Pacientes> {
 
   Future<List<PacienteModel>> _listarPacientes() async {
     String url = URL_LISTAR_PACIENTES;
-    Response response = await Dio().get(url);
+    Response response = await uno.get(url);
     var lista;
-    if (response.statusCode == 200) {
+    if (response.status == 200) {
       lista = (response.data as List).map((item) {
         return PacienteModel.fromJson(item);
       }).toList();

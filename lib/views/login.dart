@@ -1,12 +1,13 @@
 // ignore_for_file: unused_field
 
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/models/usuariomodel.dart';
+import 'package:uno/uno.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -19,6 +20,7 @@ class _LoginState extends State<Login> {
   late ProgressDialog pr;
   final TextEditingController _ctrLogin = TextEditingController();
   final TextEditingController _ctrSenha = TextEditingController();
+  final uno = Uno();
   bool _esconderSenha = true;
   String _mensagemErro = "";
   bool _serviceStatus = false;
@@ -154,7 +156,7 @@ class _LoginState extends State<Login> {
                     child: Center(
                       child: GestureDetector(
                         child: const Text(
-                          "2023.03.01.001",
+                          "2023.05.01.001",
                           style: TextStyle(color: Colors.red),
                         ),
                       ),
@@ -248,8 +250,9 @@ class _LoginState extends State<Login> {
   void _acessarSistema() async {
     pr.show();
     String url = "$URL_VALIDAR_LOGIN_SENHA${_ctrLogin.text}/${_ctrSenha.text}";
-    Response response = await Dio().get(url);
-    if (response.statusCode == 200) {
+    final response = await uno.get(url);
+    //Response response = await Dio().get(url);
+    if (response.status == 200) {
       var usuarios = (response.data as List).map((item) {
         return UsuarioModel.fromJson(item);
       }).toList();

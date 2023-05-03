@@ -1,8 +1,9 @@
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/models/solicitacaoexamemodel.dart';
+import 'package:uno/uno.dart';
 import 'package:validatorless/validatorless.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
@@ -21,6 +22,7 @@ class _ExameCadState extends State<ExameCad> {
   final _ctrObservacao = TextEditingController();
   final _ctrJustificativa = TextEditingController();
   int? tipoalteracao = 0;
+  final uno = Uno();
 
   @override
   void dispose() {
@@ -131,15 +133,14 @@ class _ExameCadState extends State<ExameCad> {
       sol.observacao = _ctrObservacao.text;
       sol.tipoalteracao = 1;
       sol.exames = _ctrExame.text;
-      Dio dio = Dio();
-      Response response = await dio.post(URL_ALTERAR_EXAME, data: sol.toJson());
+      Response response = await uno.post(URL_ALTERAR_EXAME, data: sol.toJson());
       Future.delayed(const Duration(seconds: 10)).then((value) {
         pr.hide().whenComplete(() {
-          if (response.statusCode == 200) {
+          if (response.status == 200) {
             Navigator.pushNamed(context, "examepesq");
           } else {
             Uteis.mostrarAviso(context, "Erro",
-                "Erro ao enviar os dados. Erro: ${response.statusMessage}, $response");
+                "Erro ao enviar os dados. Erro: ${response.status}, $response");
           }
         });
       });
