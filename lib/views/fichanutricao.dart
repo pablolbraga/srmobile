@@ -15,6 +15,7 @@ class FichaNutricao extends StatefulWidget {
 
 class _FichaNutricaoState extends State<FichaNutricao> {
   var nome = VariaveisGlobais.dadosAgenda?.nmpaciente;
+  var idade = VariaveisGlobais.dadosAgenda?.idade;
 
   final _ctrAcompanhante = TextEditingController();
   final _ctrGrupoOutros = TextEditingController();
@@ -62,15 +63,15 @@ class _FichaNutricaoState extends State<FichaNutricao> {
   bool _ctrSintomasConstipacao = false;
   bool _ctrManterConduta = false;
 
-  String _selNutricao = "";
-  String _selNutricaoEnteral = "";
-  String _selDietaEnteral = "";
-  String _selDietaEnteralIndustrializadaTipo = "";
-  String _selDietaEnteralIndustrializadaFornecedor = "";
-  final String _selAvaliacaoSubjetivaIngesta = "";
-  final String _selAvaliacaoSubjetivaPeso = "";
-  final String _selDiagnosticoNutricionalAbaixo65 = "";
-  final String _selDiagnosticoNutricionalAcima65 = "";
+  String _selNutricao = "0";
+  String _selNutricaoEnteral = "0";
+  String _selDietaEnteral = "0";
+  String _selDietaEnteralIndustrializadaTipo = "0";
+  String _selDietaEnteralIndustrializadaFornecedor = "0";
+  String _selAvaliacaoSubjetivaIngesta = "0";
+  String _selAvaliacaoSubjetivaPeso = "0";
+  String _selDiagnosticoNutricionalAbaixo65 = "0";
+  String _selDiagnosticoNutricionalAcima65 = "0";
 
   @override
   Widget build(BuildContext context) {
@@ -187,12 +188,12 @@ class _FichaNutricaoState extends State<FichaNutricao> {
                       if (_selNutricao == "2") {
                         setState(() {
                           _habilitaEnteral = true;
-                          _selNutricaoEnteral = "";
+                          _selNutricaoEnteral = "0";
                         });
                       } else if (_selNutricao == "3") {
                         setState(() {
                           _habilitaEnteral = true;
-                          _selNutricaoEnteral = "";
+                          _selNutricaoEnteral = "0";
                         });
                       } else {
                         _habilitaEnteral = false;
@@ -276,8 +277,8 @@ class _FichaNutricaoState extends State<FichaNutricao> {
                       } else {
                         setState(() {
                           _habilitaDietaEnteralIndustrializado = false;
-                          _selDietaEnteralIndustrializadaTipo = "";
-                          _selDietaEnteralIndustrializadaFornecedor = "";
+                          _selDietaEnteralIndustrializadaTipo = "0";
+                          _selDietaEnteralIndustrializadaFornecedor = "0";
 
                           _habilitaDietaEnteralIndustrializadoPronta = false;
                           _habilitaDietaEnteralIndustrializadoManipuladaDomicilio =
@@ -514,19 +515,65 @@ class _FichaNutricaoState extends State<FichaNutricao> {
             Row(
               children: [
                 Expanded(
-                  child: criaDropDownButton(
-                      context,
-                      "Ingesta",
-                      _selAvaliacaoSubjetivaIngesta,
-                      LISTA_FICHANUTRICAO_AVALSUBJETIVA_INGESTA),
+                  child: InputDecorator(
+                    decoration: InputDecoration(
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10.0),
+                      labelText: "Ingesta",
+                      labelStyle: const TextStyle(color: Colors.blue),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: _selAvaliacaoSubjetivaIngesta,
+                        icon: const Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.blue,
+                        ),
+                        iconSize: 24,
+                        elevation: 16,
+                        style: const TextStyle(color: Colors.blue),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _selAvaliacaoSubjetivaIngesta = newValue!;
+                          });
+                        },
+                        items: LISTA_FICHANUTRICAO_AVALSUBJETIVA_INGESTA,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(width: 5),
                 Expanded(
-                  child: criaDropDownButton(
-                      context,
-                      "Peso",
-                      _selAvaliacaoSubjetivaPeso,
-                      LISTA_FICHANUTRICAO_AVALSUBJETIVA_PESO),
+                  child: InputDecorator(
+                    decoration: InputDecoration(
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10.0),
+                      labelText: "Peso",
+                      labelStyle: const TextStyle(color: Colors.blue),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: _selAvaliacaoSubjetivaPeso,
+                        icon: const Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.blue,
+                        ),
+                        iconSize: 24,
+                        elevation: 16,
+                        style: const TextStyle(color: Colors.blue),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _selAvaliacaoSubjetivaPeso = newValue!;
+                          });
+                        },
+                        items: LISTA_FICHANUTRICAO_AVALSUBJETIVA_PESO,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -590,7 +637,7 @@ class _FichaNutricaoState extends State<FichaNutricao> {
                 "Outros Sintomas não informado", false, false),
             const SizedBox(height: 10),
             criarTextFormField(_ctrRitmoIntestinal, "Ritmo Intestinal (dias)",
-                "Ritmo Intestinal não informado", true, false),
+                "Ritmo Intestinal não informado", false, false),
             const SizedBox(height: 20),
             criarTitulo("Avaliação Antropométrica"),
             const SizedBox(height: 10),
@@ -674,17 +721,67 @@ class _FichaNutricaoState extends State<FichaNutricao> {
             const SizedBox(height: 20),
             criarTitulo("Diagnóstico Nutricional"),
             const SizedBox(height: 10),
-            criaDropDownButton(
-                context,
-                "Abaixo de 65 anos",
-                _selDiagnosticoNutricionalAbaixo65,
-                LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ABAIXO65ANOS),
+            Visibility(
+              visible: idade! < 65,
+              child: InputDecorator(
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  labelText: "Abaixo de 65 anos",
+                  labelStyle: const TextStyle(color: Colors.blue),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    value: _selDiagnosticoNutricionalAbaixo65,
+                    icon: const Icon(
+                      Icons.arrow_drop_down,
+                      color: Colors.blue,
+                    ),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: const TextStyle(color: Colors.blue),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        _selDiagnosticoNutricionalAbaixo65 = newValue!;
+                      });
+                    },
+                    items: LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ABAIXO65ANOS,
+                  ),
+                ),
+              ),
+            ),
             const SizedBox(height: 10),
-            criaDropDownButton(
-                context,
-                "Acima de 65 anos",
-                _selDiagnosticoNutricionalAcima65,
-                LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ACIMA65ANOS),
+            Visibility(
+              visible: idade! >= 65,
+              child: InputDecorator(
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  labelText: "Acima de 65 anos",
+                  labelStyle: const TextStyle(color: Colors.blue),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    value: _selDiagnosticoNutricionalAcima65,
+                    icon: const Icon(
+                      Icons.arrow_drop_down,
+                      color: Colors.blue,
+                    ),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: const TextStyle(color: Colors.blue),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        _selDiagnosticoNutricionalAcima65 = newValue!;
+                      });
+                    },
+                    items: LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ACIMA65ANOS,
+                  ),
+                ),
+              ),
+            ),
             const SizedBox(height: 10),
             criarTextFormField(_ctrDiagnosticoNutricionalDescricao,
                 "Descrição do Diagnóstico Nutricional", "", false, true),
@@ -790,50 +887,15 @@ class _FichaNutricaoState extends State<FichaNutricao> {
     );
   }
 
-  InputDecorator criaDropDownButton(BuildContext context, String titulo,
-      String valor, List<DropdownMenuItem<String>> lista) {
-    return InputDecorator(
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-        labelText: titulo,
-        labelStyle: const TextStyle(color: Colors.blue),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          value: valor,
-          icon: const Icon(
-            Icons.arrow_drop_down,
-            color: Colors.blue,
-          ),
-          iconSize: 24,
-          elevation: 16,
-          style: const TextStyle(color: Colors.blue),
-          onChanged: (String? newValue) {
-            setState(() {
-              valor = newValue!;
-            });
-          },
-          items: lista,
-        ),
-      ),
-    );
-  }
-
   void _validarCampos() {
-    var idade = VariaveisGlobais.dadosAgenda?.idade;
-    if (_selNutricao != "") {
-      if ((_selNutricao == "Enteral") && (_selNutricaoEnteral != "")) {
-        if (_selDietaEnteral != "") {
-          if (_selAvaliacaoSubjetivaIngesta != "") {
-            if (_selAvaliacaoSubjetivaPeso != "") {
+    if (_ctrAcompanhante.text != "") {
+      if (_selNutricao != "0") {
+        if (_selDietaEnteral != "0") {
+          if (_selAvaliacaoSubjetivaIngesta != "0") {
+            if (_selAvaliacaoSubjetivaPeso != "0") {
               if (_ctrRitmoIntestinal.text != "") {
-                if ((idade! <= 65) &&
-                    (_selDiagnosticoNutricionalAbaixo65 !=
-                        "Abaixo de 65 anos")) {
-                  if ((idade > 65) &&
-                      (_selDiagnosticoNutricionalAcima65 !=
-                          "Acima de 65 anos")) {
+                if (idade! <= 65) {
+                  if (_selDiagnosticoNutricionalAbaixo65 != "0") {
                     if (_ctrConduta.text != "") {
                       _enviarDados();
                     } else {
@@ -842,32 +904,40 @@ class _FichaNutricaoState extends State<FichaNutricao> {
                     }
                   } else {
                     Uteis.mostrarAviso(context, "Aviso",
-                        "Diagnóstico Nutricional acima de 65 anos não informado.");
+                        "Diagnóstico nutricional abaixo de 65 anos não selecionado.");
                   }
                 } else {
-                  Uteis.mostrarAviso(context, "Aviso",
-                      "Diagnóstico Nutricional abaixo de 65 anos não informado.");
+                  if (_selDiagnosticoNutricionalAcima65 != "0") {
+                    if (_ctrConduta.text != "") {
+                      _enviarDados();
+                    } else {
+                      Uteis.mostrarAviso(
+                          context, "Aviso", "Conduta não informada.");
+                    }
+                  } else {
+                    Uteis.mostrarAviso(context, "Aviso",
+                        "Diagnóstico nutricional acima de 65 anos não selecionado.");
+                  }
                 }
               } else {
                 Uteis.mostrarAviso(
-                    context, "Aviso", "Ritmo Intestinal não informado.");
+                    context, "Aviso", "Ritmo intestinal não informado");
               }
             } else {
-              Uteis.mostrarAviso(context, "Aviso", "Peso não selecionado.");
+              Uteis.mostrarAviso(context, "Aviso", "Peso não selecionada");
             }
           } else {
-            Uteis.mostrarAviso(context, "Aviso", "Ingesta não selecionada.");
+            Uteis.mostrarAviso(context, "Aviso", "Ingesta não selecionada");
           }
         } else {
           Uteis.mostrarAviso(
-              context, "Aviso", "Dieta Enteral não selecionado.");
+              context, "Aviso", "Dieta enteral não selecionada.");
         }
       } else {
-        Uteis.mostrarAviso(
-            context, "Aviso", "Nutrição Enteral não selecionado.");
+        Uteis.mostrarAviso(context, "Aviso", "Nutrição não selecionada.");
       }
     } else {
-      Uteis.mostrarAviso(context, "Aviso", "Nutrição não selecionado.");
+      Uteis.mostrarAviso(context, "Aviso", "Acompanhante não informado");
     }
   }
 
@@ -886,12 +956,12 @@ class _FichaNutricaoState extends State<FichaNutricao> {
     ficha.grupoobesidade = _ctrGrupoObesidade == true ? "S" : "N";
     ficha.grupodesnutricao = _ctrGrupoDesnutricao == true ? "S" : "N";
     ficha.grupooutros = _ctrGrupoOutros.text;
-    ficha.nutricao = _selNutricao as int?;
-    ficha.nutricaotipoenteral = _selNutricaoEnteral as int?;
-    ficha.dietaenteral = _selDietaEnteral as int?;
-    ficha.dietaindustipo = _selDietaEnteralIndustrializadaTipo as int?;
+    ficha.nutricao = int.tryParse(_selNutricao);
+    ficha.nutricaotipoenteral = int.tryParse(_selNutricaoEnteral);
+    ficha.dietaenteral = int.tryParse(_selDietaEnteral);
+    ficha.dietaindustipo = int.tryParse(_selDietaEnteralIndustrializadaTipo);
     ficha.dietaindustfornecedor =
-        _selDietaEnteralIndustrializadaFornecedor as int?;
+        int.tryParse(_selDietaEnteralIndustrializadaFornecedor);
     ficha.dietaindustmanipqtde =
         _ctrDietaEnteralIndustrializadoManipuladaDomicilioNecessidadeEnergetica
             .text;
@@ -903,8 +973,8 @@ class _FichaNutricaoState extends State<FichaNutricao> {
         _ctrDietaEnteralIndustrializadoProntaDescricao.text;
     ficha.dietaindustprontafab =
         _ctrDietaEnteralIndustrializadoProntaFabricante.text;
-    ficha.avalsubjingesta = _selAvaliacaoSubjetivaIngesta as int?;
-    ficha.avalsubjpesotipo = _selAvaliacaoSubjetivaPeso as int?;
+    ficha.avalsubjingesta = int.tryParse(_selAvaliacaoSubjetivaIngesta);
+    ficha.avalsubjpesotipo = int.tryParse(_selAvaliacaoSubjetivaPeso);
     ficha.avalsubjpesoqtde = _ctrAvaliacaoSubjetivaKg.text;
     ficha.avalsubjpesotempo = _ctrAvaliacaoSubjetivaDias.text;
     ficha.avalsubjsintomadiarreia = _ctrSintomasDiarreia == true ? "S" : "N";
@@ -924,11 +994,14 @@ class _FichaNutricaoState extends State<FichaNutricao> {
     ficha.avalantrocb = _ctrAvaliacaoAntropometricaCB.text;
     ficha.avalantrocmb = _ctrAvaliacaoAntropometricaCMB.text;
     ficha.avalantroaltura = _ctrAvaliacaoAntropometricaAltura.text;
-    ficha.diagnutriabaixo65 = _selDiagnosticoNutricionalAbaixo65 as int?;
-    ficha.diagnutriacima65 = _selDiagnosticoNutricionalAcima65 as int?;
+    ficha.diagnutriabaixo65 = int.tryParse(_selDiagnosticoNutricionalAbaixo65);
+    ficha.diagnutriacima65 = int.tryParse(_selDiagnosticoNutricionalAcima65);
     ficha.diagnutridesc = _ctrDiagnosticoNutricionalDescricao.text;
     ficha.manterconduta = _ctrManterConduta == true ? "S" : "N";
     ficha.conduta = _ctrConduta.text;
+    ficha.dietaenteralentupimento =
+        _ctrDietaEnteralEntupimentoSonda == true ? "S" : "N";
+    ficha.nutricaotipoenteraloutros = _ctrNutricaoOutros.text;
     VariaveisGlobais.dadosFichaNutricao = ficha;
     Navigator.pushNamed(context, "assinatura_paciente");
   }

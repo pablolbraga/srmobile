@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:date_format/date_format.dart';
-//import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
@@ -13,7 +13,7 @@ import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:signature/signature.dart';
-import 'package:uno/uno.dart';
+//import 'package:uno/uno.dart';
 
 class AssinaturaProfissional extends StatefulWidget {
   const AssinaturaProfissional({super.key});
@@ -34,7 +34,7 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
   String lat = "";
   late ProgressDialog pr;
   late Position position;
-  final uno = Uno();
+  //final uno = Uno();
 
   @override
   Widget build(BuildContext context) {
@@ -281,10 +281,10 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
 
   void _enviarDados(String url, dynamic dados) async {
     pr.show();
-    //Dio dio = Dio();
-    //Response response = await dio.post(url, data: dados);
-    Response response = await uno.post(url, data: dados);
-    if (response.status == 200) {
+    Dio dio = Dio();
+    Response response = await dio.post(url, data: dados);
+    //Response response = await uno.post(url, data: dados);
+    if (response.statusCode == 200) {
       Future.delayed(const Duration(seconds: 10)).then((value) {
         pr.hide().whenComplete(() {
           Navigator.pushNamed(context, "agenda");
@@ -292,7 +292,7 @@ class _AssinaturaProfissionalState extends State<AssinaturaProfissional> {
       });
     } else {
       Uteis.mostrarAviso(context, "Erro",
-          "Erro ao enviar os dados. Erro: ${response.status}$response");
+          "Erro ao enviar os dados. Erro: ${response.statusCode}$response");
     }
   }
 }

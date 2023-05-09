@@ -79,7 +79,7 @@ List<DropdownMenuItem<String>> get LISTA_FICHATERAPIA_EXECUCAO {
 
 List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_TIPONUTRICAO {
   List<DropdownMenuItem<String>> menuItems = [
-    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "0", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("ORAL")),
     const DropdownMenuItem(value: "2", child: Text("ENTERAL")),
     const DropdownMenuItem(value: "3", child: Text("AMBOS")),
@@ -89,7 +89,7 @@ List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_TIPONUTRICAO {
 
 List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_TIPONUTRICAO_ENTERAL {
   List<DropdownMenuItem<String>> menuItems = [
-    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "0", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("SNE")),
     const DropdownMenuItem(value: "2", child: Text("GASTROSTOMIA")),
     const DropdownMenuItem(value: "3", child: Text("OUTROS")),
@@ -99,7 +99,7 @@ List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_TIPONUTRICAO_ENTERAL {
 
 List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_DIETAENTERAL {
   List<DropdownMenuItem<String>> menuItems = [
-    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "0", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("ARTESANAL")),
     const DropdownMenuItem(value: "2", child: Text("INDUSTRIALIZADO")),
     const DropdownMenuItem(value: "3", child: Text("AMBOS")),
@@ -110,7 +110,7 @@ List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_DIETAENTERAL {
 List<DropdownMenuItem<String>>
     get LISTA_FICHANUTRICAO_DIETAENTERAL_INDUSTRIALIZADO {
   List<DropdownMenuItem<String>> menuItems = [
-    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "0", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("MANIPULADA EM DOMICILIO")),
     const DropdownMenuItem(value: "2", child: Text("PRONTA")),
     const DropdownMenuItem(value: "3", child: Text("AMBAS")),
@@ -120,7 +120,7 @@ List<DropdownMenuItem<String>>
 
 List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_DIETAENTERAL_FORNECEDOR {
   List<DropdownMenuItem<String>> menuItems = [
-    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "0", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("BENEFICIÁRIO")),
     const DropdownMenuItem(value: "2", child: Text("PLANO")),
     const DropdownMenuItem(value: "3", child: Text("AMBOS")),
@@ -130,7 +130,7 @@ List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_DIETAENTERAL_FORNECEDOR {
 
 List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_AVALSUBJETIVA_INGESTA {
   List<DropdownMenuItem<String>> menuItems = [
-    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "0", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("AUMENTADA")),
     const DropdownMenuItem(value: "2", child: Text("DIMINUÍDA")),
     const DropdownMenuItem(value: "3", child: Text("NORMAL")),
@@ -140,7 +140,7 @@ List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_AVALSUBJETIVA_INGESTA {
 
 List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_AVALSUBJETIVA_PESO {
   List<DropdownMenuItem<String>> menuItems = [
-    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "0", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("PERDA DE PESO")),
     const DropdownMenuItem(value: "2", child: Text("GANHO DE PESO")),
     const DropdownMenuItem(value: "3", child: Text("SEM ALTERAÇÕES")),
@@ -151,7 +151,7 @@ List<DropdownMenuItem<String>> get LISTA_FICHANUTRICAO_AVALSUBJETIVA_PESO {
 List<DropdownMenuItem<String>>
     get LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ABAIXO65ANOS {
   List<DropdownMenuItem<String>> menuItems = [
-    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "0", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("NÃO ATRIBUÍDO")),
     const DropdownMenuItem(value: "2", child: Text("BAIXO PESO")),
     const DropdownMenuItem(value: "3", child: Text("EUTROFIA")),
@@ -166,7 +166,7 @@ List<DropdownMenuItem<String>>
 List<DropdownMenuItem<String>>
     get LISTA_FICHANUTRICAO_DIAGNUTRICIONAL_ACIMA65ANOS {
   List<DropdownMenuItem<String>> menuItems = [
-    const DropdownMenuItem(value: "", child: Text("SELECIONE")),
+    const DropdownMenuItem(value: "0", child: Text("SELECIONE")),
     const DropdownMenuItem(value: "1", child: Text("NÃO ATRIBUÍDO")),
     const DropdownMenuItem(value: "2", child: Text("BAIXO PESO")),
     const DropdownMenuItem(value: "3", child: Text("EUTROFIA")),
