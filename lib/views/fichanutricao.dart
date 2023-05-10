@@ -894,31 +894,7 @@ class _FichaNutricaoState extends State<FichaNutricao> {
           if (_selAvaliacaoSubjetivaIngesta != "0") {
             if (_selAvaliacaoSubjetivaPeso != "0") {
               if (_ctrRitmoIntestinal.text != "") {
-                if (idade! <= 65) {
-                  if (_selDiagnosticoNutricionalAbaixo65 != "0") {
-                    if (_ctrConduta.text != "") {
-                      _enviarDados();
-                    } else {
-                      Uteis.mostrarAviso(
-                          context, "Aviso", "Conduta não informada.");
-                    }
-                  } else {
-                    Uteis.mostrarAviso(context, "Aviso",
-                        "Diagnóstico nutricional abaixo de 65 anos não selecionado.");
-                  }
-                } else {
-                  if (_selDiagnosticoNutricionalAcima65 != "0") {
-                    if (_ctrConduta.text != "") {
-                      _enviarDados();
-                    } else {
-                      Uteis.mostrarAviso(
-                          context, "Aviso", "Conduta não informada.");
-                    }
-                  } else {
-                    Uteis.mostrarAviso(context, "Aviso",
-                        "Diagnóstico nutricional acima de 65 anos não selecionado.");
-                  }
-                }
+                _enviarDados();
               } else {
                 Uteis.mostrarAviso(
                     context, "Aviso", "Ritmo intestinal não informado");
