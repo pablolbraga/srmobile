@@ -1,11 +1,10 @@
 // ignore_for_file: unnecessary_new, unused_local_variable, unused_field, prefer_is_empty
 
-//import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
-import 'package:uno/uno.dart';
 
 class AlterarSenha extends StatefulWidget {
   const AlterarSenha({super.key});
@@ -21,7 +20,7 @@ class _AlterarSenhaState extends State<AlterarSenha> {
   bool _esconderConfirmarSenha = true;
   String _mensagemErro = "";
   late ProgressDialog pr;
-  final uno = Uno();
+  final dio = Dio();
 
   @override
   Widget build(BuildContext context) {
@@ -198,8 +197,8 @@ class _AlterarSenhaState extends State<AlterarSenha> {
     Future.delayed(const Duration(seconds: 5)).then((value) {
       pr.hide().whenComplete(() async {
         //Response response = await Dio().get(url);
-        Response response = await uno.get(url);
-        if (response.status == 200) {
+        Response response = await dio.get(url);
+        if (response.statusCode == 200) {
           String retorno = response.data.toString();
           if (retorno == "true") {
             setState(() {

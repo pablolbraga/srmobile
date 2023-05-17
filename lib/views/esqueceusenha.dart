@@ -1,10 +1,9 @@
 // ignore_for_file: unnecessary_new, use_build_context_synchronously
 
-//import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/constantes.dart';
-import 'package:uno/uno.dart';
 
 class EsqueceuSenha extends StatefulWidget {
   const EsqueceuSenha({super.key});
@@ -17,7 +16,7 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
   final TextEditingController _ctrLogin = TextEditingController();
   String _mensagemErro = "";
   late ProgressDialog pr;
-  final uno = Uno();
+  final dio = Dio();
 
   @override
   Widget build(BuildContext context) {
@@ -122,8 +121,8 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
     pr.show();
     Future.delayed(const Duration(seconds: 5)).then((value) {
       pr.hide().whenComplete(() async {
-        Response response = await uno.get(url);
-        if (response.status == 200) {
+        Response response = await dio.get(url);
+        if (response.statusCode == 200) {
           Navigator.pushNamed(context, "/");
         } else {
           setState(() {

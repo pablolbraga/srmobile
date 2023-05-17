@@ -1,12 +1,11 @@
 // ignore_for_file: sort_child_properties_last, avoid_unnecessary_containers, prefer_typing_uninitialized_variables, prefer_interpolation_to_compose_strings, use_build_context_synchronously
 
-//import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/examemodel.dart';
-import 'package:uno/uno.dart';
 
 class ExamePesq extends StatefulWidget {
   const ExamePesq({super.key});
@@ -18,7 +17,7 @@ class ExamePesq extends StatefulWidget {
 class _ExamePesqState extends State<ExamePesq> {
   var nome = VariaveisGlobais.dadosPaciente?.nome;
   late ProgressDialog pr;
-  final uno = Uno();
+  final dio = Dio();
 
   @override
   Widget build(BuildContext context) {
@@ -159,9 +158,9 @@ class _ExamePesqState extends State<ExamePesq> {
   Future<List<ExameModel>> _listarItens() async {
     var idpaciente = VariaveisGlobais.dadosPaciente?.idadmission;
     String url = URL_LISTAR_EXAME + idpaciente.toString();
-    Response response = await uno.get(url);
+    Response response = await dio.get(url);
     var lista;
-    if (response.status == 200) {
+    if (response.statusCode == 200) {
       lista = (response.data as List).map((item) {
         return ExameModel.fromJson(item);
       }).toList();

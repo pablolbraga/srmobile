@@ -1,12 +1,11 @@
 // ignore_for_file: sort_child_properties_last, avoid_unnecessary_containers, prefer_typing_uninitialized_variables, unnecessary_new
 
 import 'package:date_format/date_format.dart';
-//import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/models/agendamodel.dart';
-import 'package:uno/uno.dart';
 
 class Agenda extends StatefulWidget {
   const Agenda({super.key});
@@ -16,7 +15,7 @@ class Agenda extends StatefulWidget {
 }
 
 class _AgendaState extends State<Agenda> {
-  final uno = Uno();
+  final dio = Dio();
 
   @override
   Widget build(BuildContext context) {
@@ -167,10 +166,10 @@ class _AgendaState extends State<Agenda> {
     var idperson = VariaveisGlobais.dadosUsuario?.idperson;
     String url = URL_LISTAR_AGENDA + idperson.toString();
 
-    final response = await uno.get(url);
+    final response = await dio.get(url);
     //Response response = await Dio().get(url);
     var lista;
-    if (response.status == 200) {
+    if (response.statusCode == 200) {
       lista = (response.data as List).map((item) {
         return AgendaModel.fromJson(item);
       }).toList();

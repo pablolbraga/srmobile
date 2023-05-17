@@ -1,10 +1,9 @@
 import 'package:date_format/date_format.dart';
-//import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/models/solicitacaoprescricaoenfermagemmodel.dart';
-import 'package:uno/uno.dart';
 import 'package:validatorless/validatorless.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
@@ -26,7 +25,7 @@ class _PrescricaoEnfermagemCadState extends State<PrescricaoEnfermagemCad> {
   final _ctrDuracao = TextEditingController();
   final _ctrObservacao = TextEditingController();
   final _ctrJustificativa = TextEditingController();
-  final uno = Uno();
+  final dio = Dio();
   int? tipoalteracao = 0;
 
   @override
@@ -172,14 +171,14 @@ class _PrescricaoEnfermagemCadState extends State<PrescricaoEnfermagemCad> {
       sol.status = "";
       sol.via = "";
       Response response =
-          await uno.post(URL_ALTERAR_PRESCRICAO_ENFERMAGEM, data: sol.toJson());
+          await dio.post(URL_ALTERAR_PRESCRICAO_ENFERMAGEM, data: sol.toJson());
       Future.delayed(const Duration(seconds: 10)).then((value) {
         pr.hide().whenComplete(() {
-          if (response.status == 200) {
+          if (response.statusCode == 200) {
             Navigator.pushNamed(context, "prescricaoenfermagempesq");
           } else {
             Uteis.mostrarAviso(context, "Erro",
-                "Erro ao enviar os dados. Erro: ${response.status}, $response");
+                "Erro ao enviar os dados. Erro: ${response.statusCode}, $response");
           }
         });
       });

@@ -1,6 +1,6 @@
 // ignore_for_file: sort_child_properties_last, avoid_unnecessary_containers, prefer_typing_uninitialized_variables, prefer_interpolation_to_compose_strings, use_build_context_synchronously
 
-//import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/constantes.dart';
@@ -8,7 +8,6 @@ import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/equipamentomodel.dart';
 import 'package:srmobile/models/solicitacaoequipamentomodel.dart';
-import 'package:uno/uno.dart';
 
 class EquipamentoPesq extends StatefulWidget {
   const EquipamentoPesq({super.key});
@@ -21,7 +20,7 @@ class _EquipamentoPesqState extends State<EquipamentoPesq> {
   var nome = VariaveisGlobais.dadosPaciente?.nome;
   final _ctrMotivoExclusao = TextEditingController();
   late ProgressDialog pr;
-  final uno = Uno();
+  final dio = Dio();
 
   @override
   Widget build(BuildContext context) {
@@ -146,9 +145,9 @@ class _EquipamentoPesqState extends State<EquipamentoPesq> {
   Future<List<EquipamentoModel>> _listarItens() async {
     var idpaciente = VariaveisGlobais.dadosPaciente?.idadmission;
     String url = URL_LISTAR_EQUIPAMENTO + idpaciente.toString();
-    Response response = await uno.get(url);
+    Response response = await dio.get(url);
     var lista;
-    if (response.status == 200) {
+    if (response.statusCode == 200) {
       lista = (response.data as List).map((item) {
         return EquipamentoModel.fromJson(item);
       }).toList();
@@ -235,17 +234,17 @@ class _EquipamentoPesqState extends State<EquipamentoPesq> {
 
       pr.show();
       Response response =
-          await uno.post(URL_ALTERAR_EQUIPAMENTO, data: sol.toJson());
+          await dio.post(URL_ALTERAR_EQUIPAMENTO, data: sol.toJson());
       Future.delayed(const Duration(seconds: 10)).then((value) {
         pr.hide().whenComplete(() async {
-          if (response.status == 200) {
+          if (response.statusCode == 200) {
             Navigator.pushNamed(context, "equipamentopesq");
           } else {
             Uteis.mostrarAviso(
                 context,
                 "Erro",
                 "Erro ao enviar os dados. Erro: " +
-                    response.status.toString() +
+                    response.statusCode.toString() +
                     ", " +
                     response.toString());
           }

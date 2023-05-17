@@ -1,9 +1,8 @@
-//import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/models/solicitacaoequipamentomodel.dart';
-import 'package:uno/uno.dart';
 import 'package:validatorless/validatorless.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
@@ -22,7 +21,7 @@ class _EquipamentoCadState extends State<EquipamentoCad> {
   final _ctrObservacao = TextEditingController();
   final _ctrJustificativa = TextEditingController();
   int? tipoalteracao = 0;
-  final uno = Uno();
+  final dio = Dio();
 
   @override
   void dispose() {
@@ -140,14 +139,14 @@ class _EquipamentoCadState extends State<EquipamentoCad> {
       sol.justificativa = _ctrJustificativa.text;
       //Dio dio = Dio();
       Response response =
-          await uno.post(URL_ALTERAR_EQUIPAMENTO, data: sol.toJson());
+          await dio.post(URL_ALTERAR_EQUIPAMENTO, data: sol.toJson());
       Future.delayed(const Duration(seconds: 10)).then((value) {
         pr.hide().whenComplete(() {
-          if (response.status == 200) {
+          if (response.statusCode == 200) {
             Navigator.pushNamed(context, "equipamentopesq");
           } else {
             Uteis.mostrarAviso(context, "Erro",
-                "Erro ao enviar os dados. Erro: ${response.status}, $response");
+                "Erro ao enviar os dados. Erro: ${response.statusCode}, $response");
           }
         });
       });

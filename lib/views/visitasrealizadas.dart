@@ -1,12 +1,11 @@
 // ignore_for_file: deprecated_member_use, sort_child_properties_last, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, prefer_const_constructors, prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables, unnecessary_brace_in_string_interps, unused_local_variable, use_build_context_synchronously
 
-//import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:srmobile/helpers/constantes.dart';
 import 'package:srmobile/helpers/uteis.dart';
 import 'package:srmobile/helpers/variaveisglobais.dart';
 import 'package:srmobile/models/visitasrealizadasmodel.dart';
-import 'package:uno/uno.dart';
 
 class VisitasRealizadas extends StatefulWidget {
   const VisitasRealizadas({Key? key}) : super(key: key);
@@ -16,7 +15,7 @@ class VisitasRealizadas extends StatefulWidget {
 }
 
 class _VisitasRealizadasState extends State<VisitasRealizadas> {
-  final uno = Uno();
+  final dio = Dio();
 
   @override
   void initState() {
@@ -145,15 +144,15 @@ class _VisitasRealizadasState extends State<VisitasRealizadas> {
         VariaveisGlobais.dataFimVisitaRealizada! +
         "/" +
         idperson.toString();
-    Response response = await uno.get(url);
+    Response response = await dio.get(url);
     var lista;
-    if (response.status == 200) {
+    if (response.statusCode == 200) {
       lista = (response.data as List).map((item) {
         return VisitasRealizadasModel.fromJson(item);
       }).toList();
     } else {
       Uteis.mostrarAviso(context, "Erro",
-          "Erro ao enviar os dados. Erro: ${response.status}$response");
+          "Erro ao enviar os dados. Erro: ${response.statusCode}$response");
     }
     return lista;
   }
@@ -167,8 +166,8 @@ class _VisitasRealizadasState extends State<VisitasRealizadas> {
         idevolucao.toString() +
         "/" +
         idespecialidade.toString();
-    Response response = await uno.get(urlVisita);
-    if (response.status == 200) {
+    Response response = await dio.get(urlVisita);
+    if (response.statusCode == 200) {
       lista = (response.data as List).map((item) {
         return VisitasRealizadasModel.fromJson(item);
       }).toList();
