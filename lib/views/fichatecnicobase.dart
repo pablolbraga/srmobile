@@ -56,7 +56,7 @@ class _FichaTecnicoBaseState extends State<FichaTecnicoBase> {
   bool _ctrTipoProcedimentoPuncaoVenosa = false;
   bool _ctrTipoProcedimentoRetiradaPontos = false;
 
-  final String _selTipoChamada = "";
+  String _selTipoChamada = "";
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +69,33 @@ class _FichaTecnicoBaseState extends State<FichaTecnicoBase> {
         body: ListView(
           padding: const EdgeInsets.all(16.0),
           children: [
-            criaDropDownButton(context, "Tipo da chamada", _selTipoChamada,
-                LISTA_FICHATECNICOBASE_TIPOCHAMADA),
+            InputDecorator(
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
+                labelText: "Tipo da Chamada",
+                labelStyle: const TextStyle(color: Colors.blue),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+              ),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  value: _selTipoChamada,
+                  icon: const Icon(
+                    Icons.arrow_drop_down,
+                    color: Colors.blue,
+                  ),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.blue),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selTipoChamada = newValue!;
+                    });
+                  },
+                  items: LISTA_FICHATECNICOBASE_TIPOCHAMADA,
+                ),
+              ),
+            ),
             const SizedBox(height: 10),
             criarTitulo("Tipo de Procedimento"),
             Row(children: [
@@ -668,7 +693,7 @@ class _FichaTecnicoBaseState extends State<FichaTecnicoBase> {
     ficha.idcapconsult = VariaveisGlobais.dadosAgenda?.idcapconsult;
     ficha.idprofagenda = VariaveisGlobais.dadosAgenda?.idprofagenda;
     ficha.datainicio = VariaveisGlobais.dataInicioAtendimento;
-    ficha.tipochamada = _selTipoChamada as int?;
+    ficha.tipochamada = int.parse(_selTipoChamada);
     ficha.administracaomedim = _ctrTipoProcedimentoIM == true ? 1 : 0;
     ficha.administracaomediv = _ctrTipoProcedimentoIV == true ? 1 : 0;
     ficha.administracaomedsc = _ctrTipoProcedimentoSC == true ? 1 : 0;
