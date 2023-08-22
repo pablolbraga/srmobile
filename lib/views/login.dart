@@ -155,7 +155,7 @@ class _LoginState extends State<Login> {
                     child: Center(
                       child: GestureDetector(
                         child: const Text(
-                          "2023.07.06.001",
+                          "2023.08.22.001",
                           style: TextStyle(color: Colors.red),
                         ),
                       ),
@@ -259,6 +259,7 @@ class _LoginState extends State<Login> {
           if (usuarios.isNotEmpty) {
             if (usuarios[0].primeiroacesso == "S") {
               // Acessa a tela para colocar uma nova senha
+              VariaveisGlobais.dadosUsuario = usuarios[0];
               Navigator.pushNamed(context, "alterarsenha");
             } else {
               // Acesso validado. Vai para à página de opções

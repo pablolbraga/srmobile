@@ -70,11 +70,11 @@ class _PrescricaoMedicaPesqState extends State<PrescricaoMedicaPesq> {
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.data == null) {
                   return Container(
-                    child: Center(
+                    child: const Center(
                       child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
+                          children: [
                             CircularProgressIndicator(
                               backgroundColor: Colors.blue,
                               strokeWidth: 5,

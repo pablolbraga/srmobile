@@ -1,4 +1,4 @@
-// ignore_for_file: sort_child_properties_last, avoid_unnecessary_containers, prefer_typing_uninitialized_variables, unnecessary_new
+// ignore_for_file: sort_child_properties_last, avoid_unnecessary_containers, prefer_typing_uninitialized_variables, unnecessary_new, prefer_const_constructors
 
 import 'package:date_format/date_format.dart';
 import 'package:dio/dio.dart';
